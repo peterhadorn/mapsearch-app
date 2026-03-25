@@ -1,0 +1,288 @@
+{
+  "brand": "MapSearch",
+
+  "nav": {
+    "signIn": "Sign in",
+    "credits": "credits",
+    "buyCredits": "Buy credits"
+  },
+
+  "hero": {
+    "headline": "Search any area. Get every business.",
+    "subheadline": "Find, filter, and export business data from Google Maps. Instantly.",
+    "keywordPlaceholder": "Keyword (e.g. Dentist, Restaurant)",
+    "locationPlaceholder": "City or location",
+    "searchBtn": "Search",
+    "scrollHint": "Learn more",
+    "stat": {
+      "freeCredits": "99 free credits",
+      "instant": "Results in seconds",
+      "freeExport": "Free CSV export"
+    }
+  },
+
+  "filters": {
+    "hasWebsite": "Has website",
+    "noWebsite": "No website",
+    "anyWebsite": "Any",
+    "hasEmail": "Has email",
+    "noEmail": "No email",
+    "anyEmail": "Any",
+    "hasPhone": "Has phone",
+    "noPhone": "No phone",
+    "anyPhone": "Any",
+    "rating": "Rating",
+    "ratingMin": "Min rating",
+    "ratingMax": "Max rating",
+    "reviews": "Reviews",
+    "reviewsMin": "Min reviews",
+    "reviewsMax": "Max reviews",
+    "category": "Category",
+    "categoryPlaceholder": "Filter by category",
+    "claimed": "Claimed listing",
+    "unclaimed": "Unclaimed listing",
+    "anyClaimed": "Any",
+    "priceLevel": "Price level",
+    "priceLevelAny": "Any price level",
+    "hasPhotos": "Has photos",
+    "noPhotos": "No photos",
+    "anyPhotos": "Any",
+    "more": "+ More filters",
+    "clearAll": "Clear all filters",
+    "apply": "Apply filters",
+    "radius": "Radius",
+    "radiusKm": "{value} km"
+  },
+
+  "howItWorks": {
+    "label": "How it works",
+    "title": "Three steps. That's it.",
+    "desc": "No API keys. No task queues. No waiting. Just search, filter, export.",
+    "step1": {
+      "title": "Search any area",
+      "desc": "Type a keyword and pick a location on the map. Add filters for websites, emails, ratings, and more."
+    },
+    "step2": {
+      "title": "Get instant results",
+      "desc": "Results appear in seconds in a clean, sortable table. Every business pinned on the map for geographic context."
+    },
+    "step3": {
+      "title": "Export and use",
+      "desc": "Download your data as a clean CSV. Free export, no extra charge. Your data, your way."
+    }
+  },
+
+  "trust": {
+    "businesses": "200M+",
+    "businessesLabel": "businesses indexed",
+    "speed": "<5s",
+    "speedLabel": "average response",
+    "languages": "4",
+    "languagesLabel": "languages",
+    "export": "Free",
+    "exportLabel": "CSV export included",
+    "subscription": "$0/mo",
+    "subscriptionLabel": "no subscription",
+    "freeCredits": "99",
+    "freeCreditsLabel": "free credits on signup"
+  },
+
+  "pricing": {
+    "label": "Pricing",
+    "title": "Pay as you go. No subscriptions.",
+    "subtitle": "1 credit = 1 business result. Buy what you need, use it whenever.",
+    "creditsUnit": "credits",
+    "popularBadge": "Popular",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "per": "Included with signup",
+      "feat1": "Full search & filter access",
+      "feat2": "Free CSV export",
+      "feat3": "No credit card required",
+      "cta": "Get started free"
+    },
+    "starter": {
+      "name": "Starter",
+      "per": "$1.50 per 1,000 results",
+      "feat1": "Everything in Free",
+      "feat2": "Credits never expire",
+      "cta": "Buy credits"
+    },
+    "growth": {
+      "name": "Growth",
+      "per": "$1.40 per 1,000 results",
+      "feat1": "Everything in Starter",
+      "feat2": "Best value for teams",
+      "cta": "Buy credits"
+    },
+    "pro": {
+      "name": "Pro",
+      "per": "$1.28 per 1,000 results",
+      "feat1": "Everything in Growth",
+      "feat2": "Lowest per-result cost",
+      "cta": "Buy credits"
+    },
+    "agency": "Need more? <strong>Agency pack: 100,000 credits for $120</strong> ($1.20 per 1,000 results)"
+  },
+
+  "compare": {
+    "label": "Why MapSearch",
+    "title": "Same data. Half the price. Better experience.",
+    "feature": "Feature",
+    "others": "Typical tools",
+    "row": {
+      "price": "Price per 1,000 results",
+      "freeCredits": "Free credits",
+      "results": "Time to results",
+      "resultsSlow": "Minutes (queued)",
+      "resultsFast": "Seconds",
+      "export": "CSV export",
+      "exportPaid": "Extra cost",
+      "exportFree": "Free",
+      "map": "Interactive map",
+      "liveTable": "Live filterable table",
+      "languages": "Languages",
+      "langOne": "English only",
+      "langFour": "EN, FR, ES, DE",
+      "subscription": "Subscription required",
+      "subYes": "Often",
+      "subNo": "Never"
+    },
+    "yes": "Yes",
+    "no": "No",
+    "quote": "\"Half the price. Twice the product.\""
+  },
+
+  "cta": {
+    "title": "Ready to find every business in your area?",
+    "desc": "Create your free account and get 99 credits. No credit card required.",
+    "button": "Start searching free"
+  },
+
+  "signup": {
+    "title": "Create your free account",
+    "desc": "Get 99 free credits — enough for your first search. No credit card needed.",
+    "google": "Continue with Google",
+    "or": "or",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@company.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "At least 8 characters",
+    "submit": "Create account",
+    "terms": "By signing up, you agree to our Terms and Privacy Policy.",
+    "loginLink": "Already have an account? Sign in",
+    "success": "Welcome! You have 99 free credits.",
+    "errorEmailTaken": "This email is already registered.",
+    "errorInvalidEmail": "Please enter a valid email address.",
+    "errorPasswordShort": "Password must be at least 8 characters.",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+
+  "login": {
+    "title": "Welcome back",
+    "desc": "Sign in to your MapSearch account.",
+    "submit": "Sign in",
+    "signupLink": "Don't have an account? Sign up free",
+    "errorInvalid": "Invalid email or password.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "forgotPassword": "Forgot your password?"
+  },
+
+  "results": {
+    "showing": "Showing {filtered} of {total} results",
+    "noResults": "No results found",
+    "noResultsDesc": "Try a different keyword or location.",
+    "noFilterMatch": "No results match your filters.",
+    "noFilterMatchDesc": "Try adjusting your filters to see more results.",
+    "loading": "Searching...",
+    "loadingDesc": "This usually takes a few seconds.",
+    "creditsUsed": "{count} credits used",
+    "exportCsv": "Export CSV",
+    "exportReady": "Download ready",
+    "columns": {
+      "businessName": "Business name",
+      "category": "Category",
+      "address": "Address",
+      "city": "City",
+      "phone": "Phone",
+      "website": "Website",
+      "email": "Email",
+      "rating": "Rating",
+      "reviews": "Reviews",
+      "claimed": "Claimed",
+      "photos": "Photos",
+      "priceLevel": "Price level",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "googleMapsLink": "Google Maps",
+      "status": "Status"
+    },
+    "toggleColumns": "Toggle columns",
+    "sortAsc": "Sort ascending",
+    "sortDesc": "Sort descending",
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page": "Page {current} of {total}"
+    }
+  },
+
+  "credits": {
+    "balance": "Credit balance",
+    "remaining": "{count} credits remaining",
+    "lowBalance": "Low credit balance",
+    "lowBalanceDesc": "You have {count} credits left. Buy more to keep searching.",
+    "noCredits": "No credits remaining",
+    "noCreditsDesc": "Purchase credits to continue searching.",
+    "buyMore": "Buy more credits",
+    "history": "Credit history",
+    "transaction": {
+      "signup_bonus": "Signup bonus",
+      "purchase": "Credit purchase",
+      "search": "Search: {keyword} in {location}",
+      "refund": "Refund"
+    },
+    "purchaseSuccess": "Credits added to your account!",
+    "purchaseError": "Payment failed. Please try again."
+  },
+
+  "errors": {
+    "networkError": "Connection error. Please check your internet and try again.",
+    "serverError": "Something went wrong on our end. Please try again later.",
+    "searchFailed": "Search failed. Please try again.",
+    "exportFailed": "Export failed. Please try again.",
+    "sessionExpired": "Your session has expired. Please sign in again.",
+    "rateLimited": "Too many requests. Please wait a moment.",
+    "insufficientCredits": "Not enough credits for this search. You need {required} credits but have {available}.",
+    "invalidKeyword": "Please enter a keyword.",
+    "invalidLocation": "Please select a location.",
+    "tooManyResults": "This search would return too many results. Try narrowing your area or adding filters."
+  },
+
+  "tooltips": {
+    "creditBalance": "Your available search credits. 1 credit = 1 business result.",
+    "hasWebsite": "Filter businesses that have (or don't have) a website.",
+    "hasEmail": "Filter businesses that have (or don't have) a listed email address.",
+    "rating": "Filter by Google Maps star rating (1.0 to 5.0).",
+    "reviews": "Filter by number of Google reviews.",
+    "claimed": "Claimed listings are managed by the business owner on Google.",
+    "priceLevel": "Price level as shown on Google Maps.",
+    "radius": "Adjust the search area around your selected location.",
+    "csvExport": "Download all visible results as a CSV file. No extra charge."
+  },
+
+  "empty": {
+    "noSearches": "No searches yet",
+    "noSearchesDesc": "Start by searching for businesses in any area.",
+    "noHistory": "No credit history",
+    "noHistoryDesc": "Your credit transactions will appear here."
+  },
+
+  "footer": {
+    "copy": "\u00a9 2026 MapSearch. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
+  }
+}

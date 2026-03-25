@@ -1,0 +1,288 @@
+{
+  "brand": "MapSearch",
+
+  "nav": {
+    "signIn": "Iniciar sesion",
+    "credits": "creditos",
+    "buyCredits": "Comprar creditos"
+  },
+
+  "hero": {
+    "headline": "Busca en cualquier zona. Encuentra cada negocio.",
+    "subheadline": "Busca, filtra y exporta datos de negocios de Google Maps. Al instante.",
+    "keywordPlaceholder": "Palabra clave (ej. Dentista, Restaurante)",
+    "locationPlaceholder": "Ciudad o ubicacion",
+    "searchBtn": "Buscar",
+    "scrollHint": "Descubre mas",
+    "stat": {
+      "freeCredits": "99 creditos gratis",
+      "instant": "Resultados en segundos",
+      "freeExport": "Exportacion CSV gratis"
+    }
+  },
+
+  "filters": {
+    "hasWebsite": "Con sitio web",
+    "noWebsite": "Sin sitio web",
+    "anyWebsite": "Cualquiera",
+    "hasEmail": "Con email",
+    "noEmail": "Sin email",
+    "anyEmail": "Cualquiera",
+    "hasPhone": "Con telefono",
+    "noPhone": "Sin telefono",
+    "anyPhone": "Cualquiera",
+    "rating": "Valoracion",
+    "ratingMin": "Valoracion minima",
+    "ratingMax": "Valoracion maxima",
+    "reviews": "Resenas",
+    "reviewsMin": "Resenas minimas",
+    "reviewsMax": "Resenas maximas",
+    "category": "Categoria",
+    "categoryPlaceholder": "Filtrar por categoria",
+    "claimed": "Ficha reclamada",
+    "unclaimed": "Ficha no reclamada",
+    "anyClaimed": "Cualquiera",
+    "priceLevel": "Nivel de precios",
+    "priceLevelAny": "Cualquier nivel",
+    "hasPhotos": "Con fotos",
+    "noPhotos": "Sin fotos",
+    "anyPhotos": "Cualquiera",
+    "more": "+ Mas filtros",
+    "clearAll": "Borrar todos los filtros",
+    "apply": "Aplicar filtros",
+    "radius": "Radio",
+    "radiusKm": "{value} km"
+  },
+
+  "howItWorks": {
+    "label": "Como funciona",
+    "title": "Tres pasos. Nada mas.",
+    "desc": "Sin claves API. Sin colas de espera. Sin demoras. Busca, filtra, exporta.",
+    "step1": {
+      "title": "Busca en cualquier lugar",
+      "desc": "Escribe una palabra clave y elige una ubicacion en el mapa. Anade filtros por sitio web, email, valoracion y mucho mas."
+    },
+    "step2": {
+      "title": "Resultados al instante",
+      "desc": "Los resultados aparecen en segundos en una tabla clara y ordenable. Cada negocio marcado en el mapa para contexto geografico."
+    },
+    "step3": {
+      "title": "Exporta y utiliza",
+      "desc": "Descarga tus datos en un CSV limpio. Exportacion gratuita, sin cargos adicionales. Tus datos, a tu manera."
+    }
+  },
+
+  "trust": {
+    "businesses": "200M+",
+    "businessesLabel": "negocios indexados",
+    "speed": "<5s",
+    "speedLabel": "tiempo de respuesta medio",
+    "languages": "4",
+    "languagesLabel": "idiomas",
+    "export": "Gratis",
+    "exportLabel": "exportacion CSV incluida",
+    "subscription": "$0/mes",
+    "subscriptionLabel": "sin suscripcion",
+    "freeCredits": "99",
+    "freeCreditsLabel": "creditos gratis al registrarte"
+  },
+
+  "pricing": {
+    "label": "Precios",
+    "title": "Paga por uso. Sin suscripciones.",
+    "subtitle": "1 credito = 1 resultado de negocio. Compra lo que necesites, usalo cuando quieras.",
+    "creditsUnit": "creditos",
+    "popularBadge": "Popular",
+    "free": {
+      "name": "Gratis",
+      "price": "$0",
+      "per": "Incluido al registrarte",
+      "feat1": "Acceso completo a busqueda y filtros",
+      "feat2": "Exportacion CSV gratuita",
+      "feat3": "Sin tarjeta de credito",
+      "cta": "Empezar gratis"
+    },
+    "starter": {
+      "name": "Starter",
+      "per": "$1,50 por 1.000 resultados",
+      "feat1": "Todo lo de Gratis",
+      "feat2": "Creditos sin caducidad",
+      "cta": "Comprar creditos"
+    },
+    "growth": {
+      "name": "Growth",
+      "per": "$1,40 por 1.000 resultados",
+      "feat1": "Todo lo de Starter",
+      "feat2": "Mejor relacion calidad-precio",
+      "cta": "Comprar creditos"
+    },
+    "pro": {
+      "name": "Pro",
+      "per": "$1,28 por 1.000 resultados",
+      "feat1": "Todo lo de Growth",
+      "feat2": "Menor coste por resultado",
+      "cta": "Comprar creditos"
+    },
+    "agency": "Necesitas mas? <strong>Pack Agencia: 100.000 creditos por $120</strong> ($1,20 por 1.000 resultados)"
+  },
+
+  "compare": {
+    "label": "Por que MapSearch",
+    "title": "Mismos datos. Mitad de precio. Mejor experiencia.",
+    "feature": "Caracteristica",
+    "others": "Herramientas tipicas",
+    "row": {
+      "price": "Precio por 1.000 resultados",
+      "freeCredits": "Creditos gratis",
+      "results": "Tiempo hasta los resultados",
+      "resultsSlow": "Minutos (en cola)",
+      "resultsFast": "Segundos",
+      "export": "Exportacion CSV",
+      "exportPaid": "Coste extra",
+      "exportFree": "Gratis",
+      "map": "Mapa interactivo",
+      "liveTable": "Tabla filtrable en vivo",
+      "languages": "Idiomas",
+      "langOne": "Solo ingles",
+      "langFour": "EN, FR, ES, DE",
+      "subscription": "Suscripcion necesaria",
+      "subYes": "A menudo",
+      "subNo": "Nunca"
+    },
+    "yes": "Si",
+    "no": "No",
+    "quote": "\"Mitad de precio. El doble de producto.\""
+  },
+
+  "cta": {
+    "title": "Listo para encontrar cada negocio en tu zona?",
+    "desc": "Crea tu cuenta gratuita y recibe 99 creditos. Sin tarjeta de credito.",
+    "button": "Empezar a buscar gratis"
+  },
+
+  "signup": {
+    "title": "Crea tu cuenta gratuita",
+    "desc": "Recibe 99 creditos gratis, suficientes para tu primera busqueda. Sin tarjeta de credito.",
+    "google": "Continuar con Google",
+    "or": "o",
+    "emailLabel": "Email",
+    "emailPlaceholder": "tu@empresa.com",
+    "passwordLabel": "Contrasena",
+    "passwordPlaceholder": "Al menos 8 caracteres",
+    "submit": "Crear cuenta",
+    "terms": "Al registrarte, aceptas nuestros Terminos y Politica de Privacidad.",
+    "loginLink": "Ya tienes cuenta? Inicia sesion",
+    "success": "Bienvenido! Tienes 99 creditos gratis.",
+    "errorEmailTaken": "Este email ya esta registrado.",
+    "errorInvalidEmail": "Introduce una direccion de email valida.",
+    "errorPasswordShort": "La contrasena debe tener al menos 8 caracteres.",
+    "errorGeneric": "Algo salio mal. Intentalo de nuevo."
+  },
+
+  "login": {
+    "title": "Bienvenido de nuevo",
+    "desc": "Inicia sesion en tu cuenta de MapSearch.",
+    "submit": "Iniciar sesion",
+    "signupLink": "No tienes cuenta? Registrate gratis",
+    "errorInvalid": "Email o contrasena incorrectos.",
+    "errorGeneric": "Algo salio mal. Intentalo de nuevo.",
+    "forgotPassword": "Olvidaste tu contrasena?"
+  },
+
+  "results": {
+    "showing": "Mostrando {filtered} de {total} resultados",
+    "noResults": "Sin resultados",
+    "noResultsDesc": "Prueba con otra palabra clave u otra ubicacion.",
+    "noFilterMatch": "Ningun resultado coincide con tus filtros.",
+    "noFilterMatchDesc": "Intenta ajustar tus filtros para ver mas resultados.",
+    "loading": "Buscando...",
+    "loadingDesc": "Normalmente tarda unos segundos.",
+    "creditsUsed": "{count} creditos utilizados",
+    "exportCsv": "Exportar CSV",
+    "exportReady": "Descarga lista",
+    "columns": {
+      "businessName": "Nombre del negocio",
+      "category": "Categoria",
+      "address": "Direccion",
+      "city": "Ciudad",
+      "phone": "Telefono",
+      "website": "Sitio web",
+      "email": "Email",
+      "rating": "Valoracion",
+      "reviews": "Resenas",
+      "claimed": "Reclamada",
+      "photos": "Fotos",
+      "priceLevel": "Nivel de precios",
+      "latitude": "Latitud",
+      "longitude": "Longitud",
+      "googleMapsLink": "Google Maps",
+      "status": "Estado"
+    },
+    "toggleColumns": "Mostrar/ocultar columnas",
+    "sortAsc": "Orden ascendente",
+    "sortDesc": "Orden descendente",
+    "pagination": {
+      "prev": "Anterior",
+      "next": "Siguiente",
+      "page": "Pagina {current} de {total}"
+    }
+  },
+
+  "credits": {
+    "balance": "Saldo de creditos",
+    "remaining": "{count} creditos restantes",
+    "lowBalance": "Saldo bajo de creditos",
+    "lowBalanceDesc": "Te quedan {count} creditos. Compra mas para seguir buscando.",
+    "noCredits": "Sin creditos",
+    "noCreditsDesc": "Compra creditos para continuar buscando.",
+    "buyMore": "Comprar mas creditos",
+    "history": "Historial de creditos",
+    "transaction": {
+      "signup_bonus": "Bonus de registro",
+      "purchase": "Compra de creditos",
+      "search": "Busqueda: {keyword} en {location}",
+      "refund": "Reembolso"
+    },
+    "purchaseSuccess": "Creditos anadidos a tu cuenta!",
+    "purchaseError": "El pago ha fallado. Intentalo de nuevo."
+  },
+
+  "errors": {
+    "networkError": "Error de conexion. Comprueba tu conexion a internet e intentalo de nuevo.",
+    "serverError": "Algo salio mal de nuestro lado. Intentalo mas tarde.",
+    "searchFailed": "La busqueda ha fallado. Intentalo de nuevo.",
+    "exportFailed": "La exportacion ha fallado. Intentalo de nuevo.",
+    "sessionExpired": "Tu sesion ha caducado. Inicia sesion de nuevo.",
+    "rateLimited": "Demasiadas solicitudes. Espera un momento.",
+    "insufficientCredits": "Creditos insuficientes. Necesitas {required} creditos pero tienes {available}.",
+    "invalidKeyword": "Introduce una palabra clave.",
+    "invalidLocation": "Selecciona una ubicacion.",
+    "tooManyResults": "Esta busqueda devolveria demasiados resultados. Reduce la zona o anade filtros."
+  },
+
+  "tooltips": {
+    "creditBalance": "Tus creditos de busqueda disponibles. 1 credito = 1 resultado de negocio.",
+    "hasWebsite": "Filtra negocios que tienen (o no) sitio web.",
+    "hasEmail": "Filtra negocios que tienen (o no) email.",
+    "rating": "Filtra por valoracion de Google Maps (1,0 a 5,0).",
+    "reviews": "Filtra por numero de resenas en Google.",
+    "claimed": "Las fichas reclamadas estan gestionadas por el propietario en Google.",
+    "priceLevel": "Nivel de precios tal como aparece en Google Maps.",
+    "radius": "Ajusta el area de busqueda alrededor de la ubicacion seleccionada.",
+    "csvExport": "Descarga todos los resultados visibles como CSV. Sin cargos adicionales."
+  },
+
+  "empty": {
+    "noSearches": "Aun no has buscado",
+    "noSearchesDesc": "Empieza buscando negocios en cualquier zona.",
+    "noHistory": "Sin historial de creditos",
+    "noHistoryDesc": "Tus transacciones de creditos apareceran aqui."
+  },
+
+  "footer": {
+    "copy": "\u00a9 2026 MapSearch. Todos los derechos reservados.",
+    "privacy": "Privacidad",
+    "terms": "Condiciones",
+    "contact": "Contacto"
+  }
+}

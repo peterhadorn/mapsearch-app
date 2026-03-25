@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MapSearch.app — Component Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    /* Showcase-only styles */
+    .showcase { max-width: 72rem; margin: 0 auto; padding: 2rem; }
+    .showcase h1 { font-size: var(--text-3xl); font-weight: var(--font-bold); margin-bottom: 0.5rem; }
+    .showcase .lead { color: var(--text-secondary); font-size: var(--text-lg); margin-bottom: 3rem; }
+    .section { margin-bottom: 4rem; }
+    .section-title {
+      font-size: var(--text-2xl); font-weight: var(--font-bold); margin-bottom: 0.5rem;
+      padding-bottom: 0.75rem; border-bottom: 2px solid var(--color-primary-500);
+      color: var(--text-primary);
+    }
+    .section-desc { color: var(--text-secondary); font-size: var(--text-sm); margin-bottom: 1.5rem; }
+    .subsection { margin-bottom: 2rem; }
+    .subsection-title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--text-primary); margin-bottom: 1rem; }
+    .demo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .demo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+    .demo-label { font-size: var(--text-xs); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; font-weight: var(--font-semibold); }
+    .demo-card { padding: 1.5rem; border: 1px solid var(--border-default); border-radius: var(--radius-xl); background: var(--bg-primary); }
+    .color-swatch { width: 3rem; height: 3rem; border-radius: var(--radius-lg); border: 1px solid var(--border-default); }
+    .color-row { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+    .color-row span { font-family: var(--font-mono); font-size: var(--text-xs); }
+    .theme-toggle { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 9999; }
+
+    /* SVG icons for demo */
+    .icon-svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+</head>
+<body>
+
+<!-- Theme toggle (fixed) -->
+<div class="theme-toggle">
+  <button class="btn btn-secondary btn-sm" onclick="document.documentElement.toggleAttribute('data-theme'); document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? '' : 'dark';" aria-label="Toggle dark mode">
+    Toggle Dark Mode
+  </button>
+</div>
+
+<div class="showcase">
+
+  <h1>MapSearch.app <span style="color: var(--color-primary-600);">Components</span></h1>
+  <p class="lead">Living style guide. Every component, every state.</p>
+
+  <!-- ============================================ -->
+  <!-- COLORS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Color System</h2>
+    <p class="section-desc">Amber accent for distinctiveness. Warm, professional, not generic SaaS blue.</p>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Primary (Amber)</h3>
+      <div class="demo-row">
+        <div><div class="color-swatch" style="background: var(--color-amber-50);"></div><span style="font-size:0.625rem">50</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-100);"></div><span style="font-size:0.625rem">100</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-200);"></div><span style="font-size:0.625rem">200</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-300);"></div><span style="font-size:0.625rem">300</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-400);"></div><span style="font-size:0.625rem">400</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-500);"></div><span style="font-size:0.625rem">500</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-600);"></div><span style="font-size:0.625rem">600</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-700);"></div><span style="font-size:0.625rem">700</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-800);"></div><span style="font-size:0.625rem">800</span></div>
+        <div><div class="color-swatch" style="background: var(--color-amber-900);"></div><span style="font-size:0.625rem">900</span></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Semantic</h3>
+      <div class="demo-row">
+        <div><div class="color-swatch" style="background: var(--color-success-500);"></div><span style="font-size:0.625rem">Success</span></div>
+        <div><div class="color-swatch" style="background: var(--color-danger-500);"></div><span style="font-size:0.625rem">Danger</span></div>
+        <div><div class="color-swatch" style="background: var(--color-info-500);"></div><span style="font-size:0.625rem">Info</span></div>
+        <div><div class="color-swatch" style="background: var(--color-warning-500);"></div><span style="font-size:0.625rem">Warning</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- BUTTONS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Buttons</h2>
+    <p class="section-desc">Primary, secondary, ghost, danger. Three sizes. All interactive states.</p>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Primary</h3>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary btn-md">Medium</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary btn-md" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Secondary</h3>
+      <div class="demo-row">
+        <button class="btn btn-secondary btn-sm">Small</button>
+        <button class="btn btn-secondary btn-md">Medium</button>
+        <button class="btn btn-secondary btn-lg">Large</button>
+        <button class="btn btn-secondary btn-md" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Ghost</h3>
+      <div class="demo-row">
+        <button class="btn btn-ghost btn-sm">Small</button>
+        <button class="btn btn-ghost btn-md">Medium</button>
+        <button class="btn btn-ghost btn-lg">Large</button>
+        <button class="btn btn-ghost btn-md" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Danger</h3>
+      <div class="demo-row">
+        <button class="btn btn-danger btn-sm">Delete</button>
+        <button class="btn btn-danger btn-md">Delete Account</button>
+        <button class="btn btn-danger btn-lg">Confirm Delete</button>
+        <button class="btn btn-danger btn-md" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Google OAuth</h3>
+      <div class="demo-row">
+        <button class="btn btn-google btn-lg" style="min-width: 16rem;">
+          <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Button with Spinner</h3>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-md" disabled>
+          <span class="spinner spinner--sm" style="border-top-color: #fff;"></span>
+          Searching...
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FORM INPUTS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Form Inputs</h2>
+    <p class="section-desc">Text, search, email, password. All states: default, focus, error, disabled.</p>
+
+    <div class="demo-grid" style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));">
+      <div class="form-group">
+        <label class="form-label" for="input-default">Keyword</label>
+        <input class="form-input" type="text" id="input-default" placeholder="e.g. Dentist, Restaurant...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-search">Search with icon</label>
+        <div class="form-input-search-wrap">
+          <svg class="search-icon icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="form-input" type="search" id="input-search" placeholder="Search businesses...">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-email">Email</label>
+        <input class="form-input" type="email" id="input-email" placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-password">Password</label>
+        <div class="form-input-password-wrap">
+          <input class="form-input" type="password" id="input-password" placeholder="Min. 8 characters">
+          <button class="password-toggle" type="button" aria-label="Toggle password visibility">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-error">Location <span class="form-label-optional">(required)</span></label>
+        <input class="form-input is-error" type="text" id="input-error" value="" aria-invalid="true" aria-describedby="input-error-msg">
+        <span class="form-error" id="input-error-msg">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="12" height="12"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Location is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-disabled">Disabled input</label>
+        <input class="form-input" type="text" id="input-disabled" value="Read-only value" disabled>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SELECT DROPDOWNS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Select Dropdowns</h2>
+
+    <div class="demo-grid" style="grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));">
+      <div class="form-group">
+        <label class="form-label" for="select-default">Category</label>
+        <select class="form-select" id="select-default">
+          <option value="">All categories</option>
+          <option>Restaurant</option>
+          <option>Dentist</option>
+          <option>Hotel</option>
+          <option>Plumber</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="select-price">Price level</label>
+        <select class="form-select" id="select-price">
+          <option value="">Any price</option>
+          <option>$ (Inexpensive)</option>
+          <option>$$ (Moderate)</option>
+          <option>$$$ (Expensive)</option>
+          <option>$$$$ (Very expensive)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="select-disabled">Country (disabled)</label>
+        <select class="form-select" id="select-disabled" disabled>
+          <option>Switzerland</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- RANGE SLIDERS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Range Sliders</h2>
+    <p class="section-desc">For rating (1.0-5.0) and review count (0-1000+). Monospace value display.</p>
+
+    <div class="demo-grid" style="grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));">
+      <div class="demo-card">
+        <div class="range-slider">
+          <div class="range-slider__label-row">
+            <span class="range-slider__label">Minimum rating</span>
+            <span class="range-slider__value" id="rating-value">3.5</span>
+          </div>
+          <input type="range" min="1" max="5" step="0.1" value="3.5"
+                 style="--range-fill: 62.5%;"
+                 oninput="document.getElementById('rating-value').textContent = this.value; this.style.setProperty('--range-fill', ((this.value - 1) / 4 * 100) + '%');">
+          <div class="range-slider__marks">
+            <span>1.0</span><span>2.0</span><span>3.0</span><span>4.0</span><span>5.0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="range-slider">
+          <div class="range-slider__label-row">
+            <span class="range-slider__label">Minimum reviews</span>
+            <span class="range-slider__value" id="reviews-value">50</span>
+          </div>
+          <input type="range" min="0" max="1000" step="10" value="50"
+                 style="--range-fill: 5%;"
+                 oninput="document.getElementById('reviews-value').textContent = this.value >= 1000 ? '1000+' : this.value; this.style.setProperty('--range-fill', (this.value / 1000 * 100) + '%');">
+          <div class="range-slider__marks">
+            <span>0</span><span>250</span><span>500</span><span>750</span><span>1000+</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="range-slider">
+          <div class="range-slider__label-row">
+            <span class="range-slider__label">Radius (km)</span>
+            <span class="range-slider__value" id="radius-value">10</span>
+          </div>
+          <input type="range" min="1" max="50" step="1" value="10"
+                 style="--range-fill: 18.4%;"
+                 oninput="document.getElementById('radius-value').textContent = this.value; this.style.setProperty('--range-fill', ((this.value - 1) / 49 * 100) + '%');">
+          <div class="range-slider__marks">
+            <span>1</span><span>10</span><span>25</span><span>50</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TOGGLE SWITCHES -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Toggle Switches</h2>
+    <p class="section-desc">Binary on/off and three-way (Yes / Any / No) for filter controls.</p>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Binary Toggle</h3>
+      <div class="demo-row">
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input">
+          <span class="toggle__track"><span class="toggle__thumb"></span></span>
+          <span class="toggle__label">Include closed businesses</span>
+        </label>
+      </div>
+      <div class="demo-row">
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" checked>
+          <span class="toggle__track"><span class="toggle__thumb"></span></span>
+          <span class="toggle__label">Show on map</span>
+        </label>
+      </div>
+      <div class="demo-row">
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" disabled>
+          <span class="toggle__track"><span class="toggle__thumb"></span></span>
+          <span class="toggle__label">Disabled toggle</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Three-Way Toggle (Yes / Any / No)</h3>
+      <div class="demo-row" style="gap: 2rem;">
+        <div>
+          <div class="demo-label">Has website</div>
+          <div class="toggle-three" role="radiogroup" aria-label="Has website filter">
+            <div class="toggle-three__option">
+              <input type="radio" name="has-website" id="hw-yes" data-value="yes">
+              <label for="hw-yes">Yes</label>
+            </div>
+            <div class="toggle-three__option">
+              <input type="radio" name="has-website" id="hw-any" data-value="any" checked>
+              <label for="hw-any">Any</label>
+            </div>
+            <div class="toggle-three__option">
+              <input type="radio" name="has-website" id="hw-no" data-value="no">
+              <label for="hw-no">No</label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="demo-label">Has email</div>
+          <div class="toggle-three" role="radiogroup" aria-label="Has email filter">
+            <div class="toggle-three__option">
+              <input type="radio" name="has-email" id="he-yes" data-value="yes" checked>
+              <label for="he-yes">Yes</label>
+            </div>
+            <div class="toggle-three__option">
+              <input type="radio" name="has-email" id="he-any" data-value="any">
+              <label for="he-any">Any</label>
+            </div>
+            <div class="toggle-three__option">
+              <input type="radio" name="has-email" id="he-no" data-value="no">
+              <label for="he-no">No</label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="demo-label">Claimed listing</div>
+          <div class="toggle-three" role="radiogroup" aria-label="Claimed listing filter">
+            <div class="toggle-three__option">
+              <input type="radio" name="claimed" id="cl-yes" data-value="yes">
+              <label for="cl-yes">Yes</label>
+            </div>
+            <div class="toggle-three__option">
+              <input type="radio" name="claimed" id="cl-any" data-value="any" checked>
+              <label for="cl-any">Any</label>
+            </div>
+            <div class="toggle-three__option">
+              <input type="radio" name="claimed" id="cl-no" data-value="no" checked>
+              <label for="cl-no">No</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- BADGES -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Badges</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Variants</h3>
+      <div class="demo-row">
+        <span class="badge badge-success">Has website</span>
+        <span class="badge badge-success">Has email</span>
+        <span class="badge badge-neutral">No website</span>
+        <span class="badge badge-neutral">No email</span>
+        <span class="badge badge-warning">Unclaimed</span>
+        <span class="badge badge-danger">Closed</span>
+        <span class="badge badge-info">Verified</span>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">With Dot</h3>
+      <div class="demo-row">
+        <span class="badge badge-success badge-dot">Open</span>
+        <span class="badge badge-danger badge-dot">Closed</span>
+        <span class="badge badge-warning badge-dot">Temporarily closed</span>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Star Rating</h3>
+      <div class="demo-row" style="gap: 2rem;">
+        <div class="stars" aria-label="4.5 out of 5 stars">
+          <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon stars__icon--empty" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="stars__value">4.5</span>
+          <span class="stars__count">(128)</span>
+        </div>
+
+        <div class="stars" aria-label="2.0 out of 5 stars">
+          <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon stars__icon--empty" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon stars__icon--empty" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="stars__icon stars__icon--empty" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="stars__value">2.0</span>
+          <span class="stars__count">(7)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Price Level</h3>
+      <div class="demo-row" style="gap: 2rem;">
+        <div class="price-level">
+          <span class="price-level__unit is-active">$</span>
+          <span class="price-level__unit">$</span>
+          <span class="price-level__unit">$</span>
+          <span class="price-level__unit">$</span>
+        </div>
+        <div class="price-level">
+          <span class="price-level__unit is-active">$</span>
+          <span class="price-level__unit is-active">$</span>
+          <span class="price-level__unit">$</span>
+          <span class="price-level__unit">$</span>
+        </div>
+        <div class="price-level">
+          <span class="price-level__unit is-active">$</span>
+          <span class="price-level__unit is-active">$</span>
+          <span class="price-level__unit is-active">$</span>
+          <span class="price-level__unit is-active">$</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- DATA TABLE -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Data Table</h2>
+    <p class="section-desc">Airtable-inspired. Sortable headers, alternating rows, row hover, monospace numbers.</p>
+
+    <div class="data-table-wrapper">
+      <div class="data-table-toolbar">
+        <div class="data-table-toolbar__left">
+          <span class="data-table-count">Showing <strong>6</strong> of <strong>618</strong> results</span>
+        </div>
+        <div class="data-table-toolbar__right">
+          <div class="column-toggle">
+            <button class="btn btn-ghost btn-sm" onclick="this.nextElementSibling.classList.toggle('is-open')">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><path d="M12 3v18M3 12h18"/></svg>
+              Columns
+            </button>
+            <div class="column-toggle__menu">
+              <label class="column-toggle__item"><input type="checkbox"> Claimed</label>
+              <label class="column-toggle__item"><input type="checkbox"> Photos</label>
+              <label class="column-toggle__item"><input type="checkbox"> Price level</label>
+              <label class="column-toggle__item"><input type="checkbox"> Lat/Long</label>
+              <label class="column-toggle__item"><input type="checkbox"> Maps link</label>
+              <label class="column-toggle__item"><input type="checkbox"> Status</label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Export CSV
+          </button>
+        </div>
+      </div>
+
+      <div class="data-table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="col-checkbox"><input type="checkbox" aria-label="Select all"></th>
+              <th class="sortable sort-asc">Business name <svg class="sort-arrow icon-svg" viewBox="0 0 24 24" width="12" height="12"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></th>
+              <th class="sortable">Category <svg class="sort-arrow icon-svg" viewBox="0 0 24 24" width="12" height="12"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></th>
+              <th class="sortable">City <svg class="sort-arrow icon-svg" viewBox="0 0 24 24" width="12" height="12"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></th>
+              <th>Phone</th>
+              <th>Website</th>
+              <th>Email</th>
+              <th class="sortable">Rating <svg class="sort-arrow icon-svg" viewBox="0 0 24 24" width="12" height="12"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></th>
+              <th class="sortable">Reviews <svg class="sort-arrow icon-svg" viewBox="0 0 24 24" width="12" height="12"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-checkbox"><input type="checkbox" aria-label="Select row"></td>
+              <td><strong>Zahnarztpraxis Bellevue</strong></td>
+              <td>Dentist</td>
+              <td>Zurich</td>
+              <td class="font-mono">+41 44 251 23 45</td>
+              <td><a href="#">bellevue-dental.ch</a></td>
+              <td><a href="#">info@bellevue-dental.ch</a></td>
+              <td>
+                <div class="stars">
+                  <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span class="stars__value">4.8</span>
+                </div>
+              </td>
+              <td class="col-number">312</td>
+            </tr>
+            <tr>
+              <td class="col-checkbox"><input type="checkbox" aria-label="Select row"></td>
+              <td><strong>Restaurant Kronenhalle</strong></td>
+              <td>Restaurant</td>
+              <td>Zurich</td>
+              <td class="font-mono">+41 44 262 99 00</td>
+              <td><a href="#">kronenhalle.com</a></td>
+              <td>-</td>
+              <td>
+                <div class="stars">
+                  <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span class="stars__value">4.5</span>
+                </div>
+              </td>
+              <td class="col-number">1,247</td>
+            </tr>
+            <tr class="is-selected">
+              <td class="col-checkbox"><input type="checkbox" checked aria-label="Select row"></td>
+              <td><strong>Müller Metallbau GmbH</strong></td>
+              <td>Metal fabricator</td>
+              <td>Winterthur</td>
+              <td class="font-mono">+41 52 213 45 67</td>
+              <td>-</td>
+              <td>-</td>
+              <td>
+                <div class="stars">
+                  <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span class="stars__value">3.2</span>
+                </div>
+              </td>
+              <td class="col-number">8</td>
+            </tr>
+            <tr>
+              <td class="col-checkbox"><input type="checkbox" aria-label="Select row"></td>
+              <td><strong>Physiotherapie am See</strong></td>
+              <td>Physiotherapist</td>
+              <td>Lucerne</td>
+              <td class="font-mono">+41 41 370 12 34</td>
+              <td><a href="#">physio-am-see.ch</a></td>
+              <td><a href="#">praxis@physio-am-see.ch</a></td>
+              <td>
+                <div class="stars">
+                  <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span class="stars__value">4.9</span>
+                </div>
+              </td>
+              <td class="col-number">89</td>
+            </tr>
+            <tr>
+              <td class="col-checkbox"><input type="checkbox" aria-label="Select row"></td>
+              <td><strong>Boulangerie du Pont</strong></td>
+              <td>Bakery</td>
+              <td>Geneva</td>
+              <td class="font-mono">+41 22 310 56 78</td>
+              <td><a href="#">boulangerie-dupont.ch</a></td>
+              <td>-</td>
+              <td>
+                <div class="stars">
+                  <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span class="stars__value">4.1</span>
+                </div>
+              </td>
+              <td class="col-number">56</td>
+            </tr>
+            <tr>
+              <td class="col-checkbox"><input type="checkbox" aria-label="Select row"></td>
+              <td><strong>Garage Schneider AG</strong></td>
+              <td>Auto repair</td>
+              <td>Bern</td>
+              <td class="font-mono">+41 31 382 10 20</td>
+              <td>-</td>
+              <td><a href="#">info@garage-schneider.ch</a></td>
+              <td>
+                <div class="stars">
+                  <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span class="stars__value">3.8</span>
+                </div>
+              </td>
+              <td class="col-number">24</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <nav class="pagination" aria-label="Table pagination">
+        <button class="pagination__btn" disabled aria-label="Previous page">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="pagination__btn is-active" aria-current="page">1</button>
+        <button class="pagination__btn">2</button>
+        <button class="pagination__btn">3</button>
+        <span class="pagination__ellipsis">...</span>
+        <button class="pagination__btn">13</button>
+        <button class="pagination__btn" aria-label="Next page">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <span class="pagination__info">Page <strong>1</strong> of <strong>13</strong></span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SKELETON TABLE -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Loading States</h2>
+    <p class="section-desc">Spinner + skeleton screen for table loading.</p>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Spinners</h3>
+      <div class="demo-row">
+        <span class="spinner spinner--sm"></span>
+        <span class="spinner spinner--md"></span>
+        <span class="spinner spinner--lg"></span>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Loading overlay</h3>
+      <div class="demo-card">
+        <div class="loading-overlay" style="padding: 2rem;">
+          <span class="spinner spinner--lg"></span>
+          <span class="loading-overlay__text">Searching 618 businesses near Zurich...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Skeleton Table</h3>
+      <div class="data-table-wrapper">
+        <table class="skeleton-table">
+          <tbody>
+            <tr>
+              <td style="width:25%"><div class="skeleton skeleton--text" style="width:85%"></div></td>
+              <td style="width:15%"><div class="skeleton skeleton--text" style="width:60%"></div></td>
+              <td style="width:15%"><div class="skeleton skeleton--text" style="width:50%"></div></td>
+              <td style="width:15%"><div class="skeleton skeleton--text" style="width:70%"></div></td>
+              <td style="width:15%"><div class="skeleton skeleton--badge"></div></td>
+              <td style="width:10%"><div class="skeleton skeleton--text-short"></div></td>
+            </tr>
+            <tr>
+              <td><div class="skeleton skeleton--text" style="width:70%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:80%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:45%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:65%"></div></td>
+              <td><div class="skeleton skeleton--badge"></div></td>
+              <td><div class="skeleton skeleton--text-short"></div></td>
+            </tr>
+            <tr>
+              <td><div class="skeleton skeleton--text" style="width:90%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:55%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:60%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:50%"></div></td>
+              <td><div class="skeleton skeleton--badge"></div></td>
+              <td><div class="skeleton skeleton--text-short"></div></td>
+            </tr>
+            <tr>
+              <td><div class="skeleton skeleton--text" style="width:65%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:70%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:55%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:75%"></div></td>
+              <td><div class="skeleton skeleton--badge"></div></td>
+              <td><div class="skeleton skeleton--text-short"></div></td>
+            </tr>
+            <tr>
+              <td><div class="skeleton skeleton--text" style="width:80%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:45%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:70%"></div></td>
+              <td><div class="skeleton skeleton--text" style="width:60%"></div></td>
+              <td><div class="skeleton skeleton--badge"></div></td>
+              <td><div class="skeleton skeleton--text-short"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- NAVIGATION HEADER -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Navigation Header</h2>
+    <p class="section-desc">Logo, language selector, credit wallet, user dropdown. Sticks to top.</p>
+
+    <div class="demo-card" style="padding: 0; overflow: hidden;">
+      <nav class="nav-header" style="position: relative;">
+        <div class="nav-header__left">
+          <a href="#" class="nav-header__logo">
+            <svg class="nav-header__logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="nav-header__logo-text">Map<span>Search</span></span>
+          </a>
+        </div>
+
+        <div class="nav-header__right">
+          <!-- Language selector -->
+          <div class="lang-selector">
+            <button class="lang-selector__trigger" onclick="this.nextElementSibling.classList.toggle('is-open')" aria-label="Select language">
+              <span style="font-size: 1.125rem;">🇬🇧</span>
+              <span>EN</span>
+              <svg class="icon-svg" viewBox="0 0 24 24" width="12" height="12"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="lang-selector__dropdown">
+              <button class="lang-selector__item is-active"><span style="font-size: 1.125rem;">🇬🇧</span> English</button>
+              <button class="lang-selector__item"><span style="font-size: 1.125rem;">🇫🇷</span> Francais</button>
+              <button class="lang-selector__item"><span style="font-size: 1.125rem;">🇪🇸</span> Espanol</button>
+              <button class="lang-selector__item"><span style="font-size: 1.125rem;">🇩🇪</span> Deutsch</button>
+            </div>
+          </div>
+
+          <!-- Credit wallet -->
+          <button class="credit-wallet" aria-label="Credit balance: 847 credits">
+            <svg class="credit-wallet__icon icon-svg" viewBox="0 0 24 24" width="16" height="16"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span class="credit-wallet__amount">847</span>
+            <span class="credit-wallet__label">credits</span>
+          </button>
+
+          <!-- User dropdown -->
+          <div class="user-menu">
+            <button class="user-menu__trigger" onclick="this.nextElementSibling.classList.toggle('is-open')" aria-label="User menu">
+              <div class="user-menu__avatar">PH</div>
+            </button>
+            <div class="user-menu__dropdown">
+              <button class="user-menu__dropdown-item">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Profile
+              </button>
+              <button class="user-menu__dropdown-item">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                Settings
+              </button>
+              <button class="user-menu__dropdown-item">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+                Search history
+              </button>
+              <div class="user-menu__dropdown-divider"></div>
+              <button class="user-menu__dropdown-item user-menu__dropdown-item--danger">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                Sign out
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="subsection" style="margin-top: 1.5rem;">
+      <h3 class="subsection-title">Low Credits Warning State</h3>
+      <div class="demo-row">
+        <button class="credit-wallet credit-wallet--low" aria-label="Credit balance: 3 credits (low)">
+          <svg class="credit-wallet__icon icon-svg" viewBox="0 0 24 24" width="16" height="16"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span class="credit-wallet__amount">3</span>
+          <span class="credit-wallet__label">credits</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FILTER PANEL -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Filter Panel</h2>
+    <p class="section-desc">Collapsible sidebar with stacked filter controls.</p>
+
+    <div style="display: flex; gap: 1rem; align-items: flex-start;">
+      <div class="filter-panel" style="position: relative; height: auto; border: 1px solid var(--border-default); border-radius: var(--radius-xl); overflow: hidden;">
+        <div class="filter-panel__header">
+          <span class="filter-panel__title">Filters</span>
+          <button class="filter-panel__clear">Clear all</button>
+        </div>
+        <div class="filter-panel__body">
+          <!-- Keyword -->
+          <div class="filter-section">
+            <button class="filter-section__toggle">
+              Keyword
+              <svg class="chevron icon-svg" viewBox="0 0 24 24" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-section__content">
+              <input class="form-input" type="text" placeholder="e.g. Dentist" value="Dentist">
+            </div>
+          </div>
+
+          <!-- Has website -->
+          <div class="filter-section">
+            <button class="filter-section__toggle">
+              Has website
+              <svg class="chevron icon-svg" viewBox="0 0 24 24" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-section__content">
+              <div class="toggle-three" role="radiogroup" aria-label="Has website">
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-website" id="fp-hw-yes" data-value="yes">
+                  <label for="fp-hw-yes">Yes</label>
+                </div>
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-website" id="fp-hw-any" data-value="any" checked>
+                  <label for="fp-hw-any">Any</label>
+                </div>
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-website" id="fp-hw-no" data-value="no">
+                  <label for="fp-hw-no">No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Has email -->
+          <div class="filter-section">
+            <button class="filter-section__toggle">
+              Has email
+              <svg class="chevron icon-svg" viewBox="0 0 24 24" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-section__content">
+              <div class="toggle-three" role="radiogroup" aria-label="Has email">
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-email" id="fp-he-yes" data-value="yes" checked>
+                  <label for="fp-he-yes">Yes</label>
+                </div>
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-email" id="fp-he-any" data-value="any">
+                  <label for="fp-he-any">Any</label>
+                </div>
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-email" id="fp-he-no" data-value="no">
+                  <label for="fp-he-no">No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rating -->
+          <div class="filter-section">
+            <button class="filter-section__toggle">
+              Rating
+              <span class="filter-section__count">1</span>
+            </button>
+            <div class="filter-section__content">
+              <div class="range-slider">
+                <div class="range-slider__label-row">
+                  <span class="range-slider__label">Min</span>
+                  <span class="range-slider__value">3.0</span>
+                </div>
+                <input type="range" min="1" max="5" step="0.1" value="3" style="--range-fill: 50%;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Review count -->
+          <div class="filter-section">
+            <button class="filter-section__toggle">
+              Reviews
+              <svg class="chevron icon-svg" viewBox="0 0 24 24" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-section__content">
+              <div class="range-slider">
+                <div class="range-slider__label-row">
+                  <span class="range-slider__label">Min</span>
+                  <span class="range-slider__value">0</span>
+                </div>
+                <input type="range" min="0" max="1000" step="10" value="0" style="--range-fill: 0%;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="filter-section">
+            <button class="filter-section__toggle">
+              Category
+              <svg class="chevron icon-svg" viewBox="0 0 24 24" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-section__content">
+              <select class="form-select">
+                <option value="">All categories</option>
+                <option>Dentist</option>
+                <option>Restaurant</option>
+                <option>Hotel</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Claimed -->
+          <div class="filter-section is-collapsed">
+            <button class="filter-section__toggle" onclick="this.parentElement.classList.toggle('is-collapsed')">
+              Claimed listing
+              <svg class="chevron icon-svg" viewBox="0 0 24 24" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-section__content">
+              <div class="toggle-three" role="radiogroup" aria-label="Claimed listing">
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-claimed" id="fp-cl-yes" data-value="yes">
+                  <label for="fp-cl-yes">Yes</label>
+                </div>
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-claimed" id="fp-cl-any" data-value="any" checked>
+                  <label for="fp-cl-any">Any</label>
+                </div>
+                <div class="toggle-three__option">
+                  <input type="radio" name="fp-claimed" id="fp-cl-no" data-value="no">
+                  <label for="fp-cl-no">No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- MAP PIN POPUP -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Map Pin Popup</h2>
+    <p class="section-desc">Business info popup when clicking a map pin.</p>
+
+    <div class="demo-row">
+      <div class="map-popup" style="border: 1px solid var(--border-default);">
+        <div class="map-popup__name">Zahnarztpraxis Bellevue</div>
+        <div class="map-popup__category">Dentist</div>
+        <div class="map-popup__rating">
+          <div class="stars">
+            <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="stars__icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="stars__icon stars__icon--empty" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span class="stars__value">4.8</span>
+            <span class="stars__count">(312)</span>
+          </div>
+        </div>
+        <div class="map-popup__meta">
+          <div class="map-popup__meta-row">
+            <svg class="map-popup__meta-icon icon-svg" viewBox="0 0 24 24" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Bellevueplatz 1, 8001 Zurich</span>
+          </div>
+          <div class="map-popup__meta-row">
+            <svg class="map-popup__meta-icon icon-svg" viewBox="0 0 24 24" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+            <span>+41 44 251 23 45</span>
+          </div>
+          <div class="map-popup__meta-row">
+            <svg class="map-popup__meta-icon icon-svg" viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>bellevue-dental.ch</span>
+          </div>
+        </div>
+        <div class="map-popup__actions">
+          <button class="btn btn-primary btn-sm" style="flex: 1;">Open on Maps</button>
+          <button class="btn btn-secondary btn-sm" style="flex: 1;">Copy info</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- MODALS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Modals</h2>
+    <p class="section-desc">Signup wall (Google OAuth prominent) and credit purchase.</p>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Signup Modal</h3>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-md" onclick="document.getElementById('signup-modal').classList.add('is-open')">Open Signup Modal</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Credit Purchase Modal</h3>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-md" onclick="document.getElementById('credits-modal').classList.add('is-open')">Open Credits Modal</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TOASTS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Toast Notifications</h2>
+    <p class="section-desc">Success, error, info, warning. Slide in from bottom-right.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 24rem;">
+      <div class="toast toast--success" style="position: relative; animation: none;">
+        <svg class="toast__icon icon-svg" viewBox="0 0 24 24" width="20" height="20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="toast__content">
+          <div class="toast__title">Search complete</div>
+          <div class="toast__message">618 businesses found. 618 credits used.</div>
+        </div>
+        <button class="toast__dismiss" aria-label="Dismiss">&times;</button>
+      </div>
+
+      <div class="toast toast--error" style="position: relative; animation: none;">
+        <svg class="toast__icon icon-svg" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <div class="toast__content">
+          <div class="toast__title">Not enough credits</div>
+          <div class="toast__message">You need 618 credits but only have 47. Buy more credits to continue.</div>
+        </div>
+        <button class="toast__dismiss" aria-label="Dismiss">&times;</button>
+      </div>
+
+      <div class="toast toast--info" style="position: relative; animation: none;">
+        <svg class="toast__icon icon-svg" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div class="toast__content">
+          <div class="toast__title">Cached results</div>
+          <div class="toast__message">These results were cached 2 hours ago. No credits charged.</div>
+        </div>
+        <button class="toast__dismiss" aria-label="Dismiss">&times;</button>
+      </div>
+
+      <div class="toast toast--warning" style="position: relative; animation: none;">
+        <svg class="toast__icon icon-svg" viewBox="0 0 24 24" width="20" height="20"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="toast__content">
+          <div class="toast__title">Large search area</div>
+          <div class="toast__message">This search may return up to 700 results and use 700 credits.</div>
+        </div>
+        <button class="toast__dismiss" aria-label="Dismiss">&times;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TOOLTIPS -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Tooltips</h2>
+    <p class="section-desc">Top (default), bottom, left, right. Appear on hover and focus.</p>
+
+    <div class="demo-row" style="gap: 3rem; padding: 2rem;">
+      <span class="tooltip-wrap">
+        <button class="btn btn-secondary btn-sm">Hover me (top)</button>
+        <span class="tooltip">1 credit = 1 result</span>
+      </span>
+
+      <span class="tooltip-wrap">
+        <button class="btn btn-secondary btn-sm">Hover me (bottom)</button>
+        <span class="tooltip tooltip--bottom">Results cached for 72h</span>
+      </span>
+
+      <span class="tooltip-wrap">
+        <button class="btn btn-secondary btn-sm">Hover me (right)</button>
+        <span class="tooltip tooltip--right">Export as CSV</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- EMPTY STATES -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">Empty States</h2>
+
+    <div class="data-table-wrapper">
+      <div class="data-table-empty">
+        <svg class="data-table-empty__icon icon-svg" viewBox="0 0 24 24" width="48" height="48"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="data-table-empty__title">No results yet</div>
+        <div class="data-table-empty__text">Search for businesses by keyword and location to see results here.</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /showcase -->
+
+
+<!-- ============================================ -->
+<!-- SIGNUP MODAL (overlay) -->
+<!-- ============================================ -->
+<div class="modal-overlay" id="signup-modal" onclick="if(event.target===this) this.classList.remove('is-open')">
+  <div class="modal modal-signup" role="dialog" aria-labelledby="signup-title" aria-modal="true">
+    <div class="modal__header">
+      <h2 class="modal__title" id="signup-title">Create your account</h2>
+      <button class="modal__close" onclick="document.getElementById('signup-modal').classList.remove('is-open')" aria-label="Close">
+        <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal__body">
+      <span class="free-credits-badge">
+        <svg class="icon-svg" viewBox="0 0 24 24" width="12" height="12" style="stroke: var(--color-primary-600);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        99 free credits included
+      </span>
+      <p class="modal__subtitle">Sign up in 10 seconds. Your first search is on us.</p>
+
+      <!-- Google OAuth — PROMINENT -->
+      <button class="btn btn-google btn-lg" style="width: 100%;">
+        <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="divider">or sign up with email</div>
+
+      <form class="signup-form" onsubmit="event.preventDefault()">
+        <div class="form-group">
+          <label class="form-label" for="signup-email">Email</label>
+          <input class="form-input" type="email" id="signup-email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signup-password">Password</label>
+          <div class="form-input-password-wrap">
+            <input class="form-input" type="password" id="signup-password" placeholder="Min. 8 characters" required>
+            <button class="password-toggle" type="button" aria-label="Toggle password visibility">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit" style="width: 100%;">Create account</button>
+      </form>
+
+      <p style="font-size: var(--text-xs); color: var(--text-tertiary); text-align: center; margin-top: var(--space-4);">
+        Already have an account? <a href="#" style="color: var(--color-primary-600); font-weight: var(--font-medium);">Sign in</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CREDITS MODAL (overlay) -->
+<!-- ============================================ -->
+<div class="modal-overlay" id="credits-modal" onclick="if(event.target===this) this.classList.remove('is-open')">
+  <div class="modal" role="dialog" aria-labelledby="credits-title" aria-modal="true" style="max-width: 32rem;">
+    <div class="modal__header">
+      <h2 class="modal__title" id="credits-title">Buy Credits</h2>
+      <button class="modal__close" onclick="document.getElementById('credits-modal').classList.remove('is-open')" aria-label="Close">
+        <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal__body">
+      <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-5);">
+        1 credit = 1 business result. Credits never expire.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+        <div class="credit-pack" onclick="document.querySelectorAll('.credit-pack').forEach(e=>e.classList.remove('is-selected')); this.classList.add('is-selected');">
+          <div class="credit-pack__info">
+            <span class="credit-pack__name">Starter</span>
+            <span class="credit-pack__credits">1,000 credits</span>
+          </div>
+          <div style="text-align: right;">
+            <div class="credit-pack__price">$1.50</div>
+            <div class="credit-pack__rate">$1.50 / 1k</div>
+          </div>
+        </div>
+
+        <div class="credit-pack is-selected is-popular" onclick="document.querySelectorAll('.credit-pack').forEach(e=>e.classList.remove('is-selected')); this.classList.add('is-selected');">
+          <div class="credit-pack__info">
+            <span class="credit-pack__name">Growth</span>
+            <span class="credit-pack__credits">5,000 credits</span>
+          </div>
+          <div style="text-align: right;">
+            <div class="credit-pack__price">$7.00</div>
+            <div class="credit-pack__rate">$1.40 / 1k</div>
+          </div>
+        </div>
+
+        <div class="credit-pack" onclick="document.querySelectorAll('.credit-pack').forEach(e=>e.classList.remove('is-selected')); this.classList.add('is-selected');">
+          <div class="credit-pack__info">
+            <span class="credit-pack__name">Pro</span>
+            <span class="credit-pack__credits">25,000 credits</span>
+          </div>
+          <div style="text-align: right;">
+            <div class="credit-pack__price">$32.00</div>
+            <div class="credit-pack__rate">$1.28 / 1k</div>
+          </div>
+        </div>
+
+        <div class="credit-pack" onclick="document.querySelectorAll('.credit-pack').forEach(e=>e.classList.remove('is-selected')); this.classList.add('is-selected');">
+          <div class="credit-pack__info">
+            <span class="credit-pack__name">Agency</span>
+            <span class="credit-pack__credits">100,000 credits</span>
+          </div>
+          <div style="text-align: right;">
+            <div class="credit-pack__price">$120.00</div>
+            <div class="credit-pack__rate">$1.20 / 1k</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn btn-secondary btn-md" onclick="document.getElementById('credits-modal').classList.remove('is-open')">Cancel</button>
+      <button class="btn btn-primary btn-md">
+        <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Purchase with Stripe
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Escape key to close modals -->
+<script>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.is-open').forEach(function(m) {
+        m.classList.remove('is-open');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
