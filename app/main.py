@@ -28,8 +28,14 @@ app.include_router(auth.router)
 from app.routers import search
 app.include_router(search.router)
 
+from app.routers import credits
+app.include_router(credits.router)
+
 from app.routers import pages
 app.include_router(pages.router)
+
+from app.routers import export
+app.include_router(export.router)
 
 
 @app.get("/health")

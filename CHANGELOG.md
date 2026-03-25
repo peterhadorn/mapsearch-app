@@ -15,6 +15,9 @@
 - i18n module (EN/FR/DE/ES, browser detect, language selector)
 - app.js search flow (auth gate → API → results → table + map)
 - Toast notification system
+- Stripe credit purchase (checkout session, webhook, balance endpoint)
+- Credits UI (purchase modal with 4 packs, Stripe redirect)
+- CSV export (GET /api/export/{search_id} with ownership check)
 
 ## v0.2.0 — 2026-03-25
 
