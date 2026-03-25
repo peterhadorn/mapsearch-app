@@ -8,6 +8,11 @@
 - Theme toggle (light/dark/system) with localStorage persistence
 - Pages router (GET /)
 - App-specific CSS extracted from prototype
+- Auth modal (signup/login with Google OAuth + email/password)
+- Leaflet map module (CartoDB tiles, pins, popup, table interaction)
+- Filter controls (tri-toggles, range sliders, search area, near me, category)
+- Results table (sortable columns, pagination, column toggle, map sync)
+- i18n module (EN/FR/DE/ES, browser detect, language selector)
 
 ## v0.2.0 — 2026-03-25
 
