@@ -4,10 +4,10 @@ const MapModule = {
     markerLayer: null,
 
     init() {
-        // Initialize Leaflet map
+        // Initialize Leaflet map — zoomed in on Manhattan
         this.map = L.map('map', {
-            center: [40.7128, -74.006],  // NYC default
-            zoom: 13,
+            center: [40.7580, -73.9855],  // Midtown Manhattan
+            zoom: 14,
             zoomControl: false,
         });
 
@@ -51,13 +51,27 @@ const MapModule = {
             document.getElementById('location-input').value = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
         });
 
-        // Try to get user's location
+        // Try to get user's location — show pulsing dot + pan to it
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
-                    this.map.setView([pos.coords.latitude, pos.coords.longitude], 13);
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+                    this.map.setView([lat, lng], 14);
+
+                    // Pulsing "you are here" marker
+                    const userIcon = L.divIcon({
+                        className: 'user-location',
+                        html: '<div class="user-location__dot"><div class="user-location__pulse"></div></div>',
+                        iconSize: [16, 16],
+                        iconAnchor: [8, 8],
+                    });
+                    L.marker([lat, lng], { icon: userIcon, interactive: false }).addTo(this.map);
+
+                    // Pre-fill location input with reverse geocoded name
+                    document.getElementById('location-input').placeholder = 'Your location';
                 },
-                () => {} // fail silently, keep NYC default
+                () => {} // fail silently, keep Manhattan default
             );
         }
     },

@@ -1,8 +1,10 @@
 const Filters = {
     init() {
-        // Toggle filter panel visibility
+        // Toggle filter panel visibility — open by default
         const toggle = document.getElementById('filter-toggle');
         const panel = document.getElementById('filters-panel');
+        panel.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
         toggle.addEventListener('click', () => {
             const expanded = toggle.getAttribute('aria-expanded') === 'true';
             toggle.setAttribute('aria-expanded', !expanded);

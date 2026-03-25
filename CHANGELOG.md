@@ -25,6 +25,13 @@
 - Dynamic host detection for Stripe URLs
 - Deploy fixes: Caddy at /root/caddy/, Docker bridge IP 172.18.0.1, uvicorn bind 0.0.0.0
 
+### Fixed
+- Map overlay too dark — boosted colorful radial gradients, removed dark edge vignette
+- Search card rainbow gradient more visible (thicker border, higher opacity, added rose)
+- Filters panel open by default
+- Map zoomed into Manhattan (zoom 14) instead of wide NYC view
+- User location shown as pulsing emerald dot when geolocation allowed
+
 ### Removed
 - Google OAuth2 (unnecessary for B2B data tool — email/password auth only)
 
