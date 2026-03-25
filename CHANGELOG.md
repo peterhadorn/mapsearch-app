@@ -13,6 +13,8 @@
 - Filter controls (tri-toggles, range sliders, search area, near me, category)
 - Results table (sortable columns, pagination, column toggle, map sync)
 - i18n module (EN/FR/DE/ES, browser detect, language selector)
+- app.js search flow (auth gate → API → results → table + map)
+- Toast notification system
 
 ## v0.2.0 — 2026-03-25
 
