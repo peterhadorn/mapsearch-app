@@ -5,14 +5,14 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
+from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
+
+from app.limiter import limiter
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
 logger = logging.getLogger("mapsearch")
 
-limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(title="MapSearch", docs_url=None, redoc_url=None)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -21,6 +21,10 @@ app.add_middleware(CORSMiddleware, allow_origins=["https://mapsearch.app"], allo
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
+
+from app.routers import auth
+app.include_router(auth.router)
+
 
 @app.get("/health")
 async def health():
