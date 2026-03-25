@@ -15,6 +15,9 @@
 - Google OAuth2 (signup/login via Google, state param CSRF protection)
 - Nominatim geocoder service (location → lat/lng + country_code)
 - Credit service (deduct, add, balance with transaction logging)
+- Async DataForSEO Google Maps Live API client
+- Search service (cache check → geocode → API → filter → credit deduction)
+- POST /api/search endpoint with rate limiting (10/min)
 
 ## v0.1.0 — 2026-03-24
 

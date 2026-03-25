@@ -25,6 +25,9 @@ templates = Jinja2Templates(directory="app/templates")
 from app.routers import auth
 app.include_router(auth.router)
 
+from app.routers import search
+app.include_router(search.router)
+
 
 @app.get("/health")
 async def health():

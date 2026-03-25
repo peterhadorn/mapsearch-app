@@ -1,0 +1,208 @@
+{
+  "version": "0.1",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "01234567-8901-2345-6789-012345678901",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "3.1415 sec.",
+      "cost": 0.002,
+      "result_count": 1,
+      "result": [
+        {
+          "keyword": "dentist",
+          "se_domain": "google.com",
+          "check_url": "https://www.google.com/maps/search/dentist/@40.7128,-74.006,13z",
+          "items_count": 5,
+          "items": [
+            {
+              "type": "maps_search",
+              "rank_group": 1,
+              "rank_absolute": 1,
+              "title": "Manhattan Dental Care",
+              "domain": "manhattandental.com",
+              "url": "https://manhattandental.com",
+              "phone": "+1-212-555-0101",
+              "email": "info@manhattandental.com",
+              "address": "123 Broadway, New York, NY 10007",
+              "city": "New York",
+              "state": "New York",
+              "zip": "10007",
+              "country_code": "US",
+              "rating": {
+                "value": 4.5,
+                "votes_count": 120
+              },
+              "place_id": "ChIJabc123def456",
+              "cid": "1234567890",
+              "category": "Dentist",
+              "additional_categories": ["Cosmetic dentist", "Teeth whitening service"],
+              "category_ids": ["dentist", "cosmetic_dentist"],
+              "is_claimed": true,
+              "is_verified": true,
+              "photos_count": 15,
+              "main_image": "https://lh5.googleusercontent.com/p/example1",
+              "latitude": 40.7128,
+              "longitude": -74.006,
+              "price_level": "$$",
+              "work_hours": {
+                "current_status": "open",
+                "timetable": {
+                  "monday": [{"open": {"hour": 8, "minute": 0}, "close": {"hour": 18, "minute": 0}}]
+                }
+              },
+              "business_status": "OPERATIONAL",
+              "rating_distribution": {"1": 5, "2": 3, "3": 10, "4": 25, "5": 77}
+            },
+            {
+              "type": "maps_search",
+              "rank_group": 2,
+              "rank_absolute": 2,
+              "title": "NYC Smile Clinic",
+              "domain": "nycsmileclinic.com",
+              "url": "https://nycsmileclinic.com",
+              "phone": "+1-212-555-0202",
+              "email": null,
+              "address": "456 5th Avenue, New York, NY 10018",
+              "city": "New York",
+              "state": "New York",
+              "zip": "10018",
+              "country_code": "US",
+              "rating": {
+                "value": 3.8,
+                "votes_count": 45
+              },
+              "place_id": "ChIJxyz789ghi012",
+              "cid": "9876543210",
+              "category": "Dentist",
+              "additional_categories": [],
+              "category_ids": ["dentist"],
+              "is_claimed": true,
+              "is_verified": true,
+              "photos_count": 5,
+              "main_image": "https://lh5.googleusercontent.com/p/example2",
+              "latitude": 40.7549,
+              "longitude": -73.9840,
+              "price_level": "$$$",
+              "work_hours": {
+                "current_status": "closed"
+              },
+              "business_status": "OPERATIONAL",
+              "rating_distribution": {"1": 3, "2": 5, "3": 7, "4": 10, "5": 20}
+            },
+            {
+              "type": "maps_search",
+              "rank_group": 3,
+              "rank_absolute": 3,
+              "title": "Budget Dental Express",
+              "domain": null,
+              "url": null,
+              "phone": "+1-212-555-0303",
+              "email": null,
+              "address": "789 Lexington Ave, New York, NY 10065",
+              "city": "New York",
+              "state": "New York",
+              "zip": "10065",
+              "country_code": "US",
+              "rating": {
+                "value": 2.1,
+                "votes_count": 8
+              },
+              "place_id": "ChIJlmn345opq678",
+              "cid": "5555555555",
+              "category": "Dentist",
+              "additional_categories": [],
+              "category_ids": ["dentist"],
+              "is_claimed": false,
+              "is_verified": false,
+              "photos_count": 0,
+              "main_image": null,
+              "latitude": 40.7644,
+              "longitude": -73.9632,
+              "price_level": "$",
+              "work_hours": {},
+              "business_status": "OPERATIONAL",
+              "rating_distribution": {"1": 4, "2": 1, "3": 1, "4": 1, "5": 1}
+            },
+            {
+              "type": "maps_search",
+              "rank_group": 4,
+              "rank_absolute": 4,
+              "title": "Dr. Smith Orthodontics",
+              "domain": "drsmithortho.com",
+              "url": "https://drsmithortho.com",
+              "phone": null,
+              "email": "hello@drsmithortho.com",
+              "address": "321 Park Ave S, New York, NY 10010",
+              "city": "New York",
+              "state": "New York",
+              "zip": "10010",
+              "country_code": "US",
+              "rating": {
+                "value": 4.9,
+                "votes_count": 310
+              },
+              "place_id": "ChIJrst901uvw234",
+              "cid": "1111111111",
+              "category": "Orthodontist",
+              "additional_categories": ["Dentist"],
+              "category_ids": ["orthodontist", "dentist"],
+              "is_claimed": true,
+              "is_verified": true,
+              "photos_count": 42,
+              "main_image": "https://lh5.googleusercontent.com/p/example4",
+              "latitude": 40.7394,
+              "longitude": -73.9870,
+              "price_level": "$$$$",
+              "work_hours": {
+                "current_status": "open"
+              },
+              "business_status": "OPERATIONAL",
+              "rating_distribution": {"1": 2, "2": 1, "3": 5, "4": 20, "5": 282}
+            },
+            {
+              "type": "maps_search",
+              "rank_group": 5,
+              "rank_absolute": 5,
+              "title": "Midtown Family Dentistry",
+              "domain": "midtownfamilydentistry.com",
+              "url": "https://midtownfamilydentistry.com",
+              "phone": "+1-212-555-0505",
+              "email": "appointments@midtownfamily.com",
+              "address": "555 Madison Ave, New York, NY 10022",
+              "city": "New York",
+              "state": "New York",
+              "zip": "10022",
+              "country_code": "US",
+              "rating": {
+                "value": 4.2,
+                "votes_count": 88
+              },
+              "place_id": "ChIJwxy567zab890",
+              "cid": "2222222222",
+              "category": "Dentist",
+              "additional_categories": ["Pediatric dentist", "Emergency dental service"],
+              "category_ids": ["dentist", "pediatric_dentist"],
+              "is_claimed": true,
+              "is_verified": true,
+              "photos_count": 22,
+              "main_image": "https://lh5.googleusercontent.com/p/example5",
+              "latitude": 40.7614,
+              "longitude": -73.9725,
+              "price_level": "$$",
+              "work_hours": {
+                "current_status": "open"
+              },
+              "business_status": "OPERATIONAL",
+              "rating_distribution": {"1": 3, "2": 2, "3": 8, "4": 20, "5": 55}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
