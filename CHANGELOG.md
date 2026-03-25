@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.0 — 2026-03-25
+
+### Added
+- Frontend: state.js pub/sub event bus
+
 ## v0.2.0 — 2026-03-25
 
 ### Added
