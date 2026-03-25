@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}MapSearch — Search any area. Get every business.{% endblock %}</title>
+  <meta name="description" content="The business search engine Google should have built. Search by keyword + location, filter on 40+ fields, export as CSV.">
+
+  <!-- Flash prevention -->
+  <script>
+  (function(){var t;try{t=localStorage.getItem('mapsearch-theme')}catch(e){}
+  if(t&&['light','dark','system'].indexOf(t)!==-1){document.documentElement.setAttribute('data-theme',t)}
+  else{document.documentElement.setAttribute('data-theme','dark')}})();
+  </script>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/static/css/design-system.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  {% block content %}{% endblock %}
+
+  <!-- JS modules -->
+  <script src="/static/js/state.js"></script>
+  <script src="/static/js/i18n.js"></script>
+  <script src="/static/js/theme.js"></script>
+  <script src="/static/js/auth.js"></script>
+  <script src="/static/js/map.js"></script>
+  <script src="/static/js/filters.js"></script>
+  <script src="/static/js/table.js"></script>
+  <script src="/static/js/app.js"></script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

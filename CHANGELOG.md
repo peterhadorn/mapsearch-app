@@ -4,6 +4,10 @@
 
 ### Added
 - Frontend: state.js pub/sub event bus
+- Base template (Jinja2) + app.html ported from design prototype
+- Theme toggle (light/dark/system) with localStorage persistence
+- Pages router (GET /)
+- App-specific CSS extracted from prototype
 
 ## v0.2.0 — 2026-03-25
 

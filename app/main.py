@@ -28,6 +28,9 @@ app.include_router(auth.router)
 from app.routers import search
 app.include_router(search.router)
 
+from app.routers import pages
+app.include_router(pages.router)
+
 
 @app.get("/health")
 async def health():

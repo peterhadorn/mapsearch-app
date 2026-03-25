@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+
+{% block title %}MapSearch — Search any area. Get every business.{% endblock %}
+
+{% block content %}
+
+  <!-- ================================================================
+       HEADER — Frosted glass, floating over map
+       ================================================================ -->
+  <header class="header--glass">
+    <a href="/" class="header__logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      MapSearch
+    </a>
+
+    <div class="header__actions">
+      <select class="lang-select hide-mobile" id="lang-select" aria-label="Language">
+        <option value="en" selected>EN</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="es">ES</option>
+      </select>
+
+      <div class="credits-pill hide-mobile" id="credits-pill" title="99 credits remaining">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span id="credits-count">99</span> <span data-i18n="credits">credits</span>
+      </div>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="theme-icon--system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </button>
+
+      <button class="btn--signin" id="signin-btn" data-i18n="sign_in">Sign In</button>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       FULL-SCREEN MAP
+       ================================================================ -->
+  <div id="map"></div>
+  <div class="map-overlay"></div>
+
+  <!-- ================================================================
+       SEARCH CARD — Floating over map
+       ================================================================ -->
+  <div class="search-float" id="search-float">
+    <div class="search-card">
+      <div class="search-card__row">
+        <div class="search-card__input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" class="search-input" id="keyword-input" placeholder="Search businesses..." data-i18n-placeholder="search_placeholder" autocomplete="off">
+        </div>
+        <div class="search-card__input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <input type="text" class="search-input" id="location-input" placeholder="City or click on map..." data-i18n-placeholder="location_placeholder" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="search-card__actions">
+        <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters-panel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+          <span data-i18n="filters">Filters</span>
+        </button>
+        <button class="btn--search" id="search-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span data-i18n="search">Search</span>
+        </button>
+      </div>
+
+      <!-- Filter panel -->
+      <div class="filters-panel" id="filters-panel">
+        <div class="filters-grid">
+          <!-- Has website -->
+          <div class="filter-item">
+            <label data-i18n="filter_website">Has website</label>
+            <div class="tri-toggle" data-filter="website">
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+            </div>
+          </div>
+
+          <!-- Has email -->
+          <div class="filter-item">
+            <label data-i18n="filter_email">Has email</label>
+            <div class="tri-toggle" data-filter="email">
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+            </div>
+          </div>
+
+          <!-- Has phone -->
+          <div class="filter-item">
+            <label data-i18n="filter_phone">Has phone</label>
+            <div class="tri-toggle" data-filter="phone">
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+            </div>
+          </div>
+
+          <!-- Min rating -->
+          <div class="filter-item">
+            <label data-i18n="filter_min_rating">Min rating</label>
+            <div class="range-slider">
+              <input type="range" min="1" max="5" step="0.5" value="1" id="rating-slider">
+              <span class="range-value" id="rating-value">1.0</span>
+            </div>
+          </div>
+
+          <!-- Min reviews -->
+          <div class="filter-item">
+            <label data-i18n="filter_min_reviews">Min reviews</label>
+            <div class="range-slider">
+              <input type="range" min="0" max="500" step="10" value="0" id="reviews-slider">
+              <span class="range-value" id="reviews-value">0</span>
+            </div>
+          </div>
+
+          <!-- Claimed -->
+          <div class="filter-item">
+            <label data-i18n="filter_claimed">Claimed</label>
+            <div class="tri-toggle" data-filter="claimed">
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+            </div>
+          </div>
+
+          <!-- Search area -->
+          <div class="filter-item" style="grid-column: 1 / -1;">
+            <label data-i18n="filter_search_area">Search area</label>
+            <div class="tri-toggle tri-toggle--wide" data-filter="zoom">
+              <button class="tri-toggle__btn" data-value="14" data-i18n="area_neighborhood">Neighborhood <span style="opacity:0.5">~3 mi</span></button>
+              <button class="tri-toggle__btn is-active" data-value="13" data-i18n="area_district">District <span style="opacity:0.5">~6 mi</span></button>
+              <button class="tri-toggle__btn" data-value="12" data-i18n="area_city">City <span style="opacity:0.5">~12 mi</span></button>
+              <button class="tri-toggle__btn" data-value="11" data-i18n="area_metro">Metro <span style="opacity:0.5">~25 mi</span></button>
+            </div>
+          </div>
+
+          <!-- Near me mode -->
+          <div class="filter-item" style="grid-column: 1 / -1;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <label style="margin:0;" data-i18n="filter_near_me">Near me mode</label>
+              <label class="switch">
+                <input type="checkbox" id="nearme-toggle">
+                <span class="switch__track"></span>
+              </label>
+              <span style="font-size:var(--text-xs); color:var(--text-tertiary);" data-i18n="near_me_desc">Simulates "near me" searches as Google shows them locally</span>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="filter-item">
+            <label data-i18n="filter_category">Category</label>
+            <select class="filter-select" id="category-select">
+              <option value="" data-i18n="all_categories">All categories</option>
+            </select>
+          </div>
+
+          <!-- Price level -->
+          <div class="filter-item">
+            <label data-i18n="filter_price">Price level</label>
+            <div class="tri-toggle tri-toggle--wide" data-filter="price">
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+              <button class="tri-toggle__btn" data-value="1">$</button>
+              <button class="tri-toggle__btn" data-value="2">$$</button>
+              <button class="tri-toggle__btn" data-value="3">$$$</button>
+            </div>
+          </div>
+
+          <!-- Has photos -->
+          <div class="filter-item">
+            <label data-i18n="filter_photos">Has photos</label>
+            <div class="tri-toggle" data-filter="photos">
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       RESULTS PANEL — Slides in from left after search
+       ================================================================ -->
+  <div class="results-panel" id="results-panel">
+    <!-- Toolbar -->
+    <div class="results-toolbar">
+      <div class="results-toolbar__left">
+        <button class="btn--back" id="back-btn" type="button" title="Back to search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <span class="results-count" id="results-count" aria-live="polite"></span>
+      </div>
+      <div class="results-toolbar__right">
+        <button class="btn--export" id="export-btn" type="button" title="Export as CSV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span data-i18n="export_csv">Export CSV</span>
+        </button>
+        <div class="columns-dropdown">
+          <button class="columns-dropdown__trigger" id="columns-toggle" type="button" title="Toggle columns">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="results-table-wrap">
+      <table class="data-table" id="results-table">
+        <thead>
+          <tr>
+            <th data-sortable data-i18n="col_business">Business</th>
+            <th data-sortable data-i18n="col_category">Category</th>
+            <th data-sortable data-i18n="col_city">City</th>
+            <th data-sortable data-i18n="col_phone">Phone</th>
+            <th data-sortable data-i18n="col_website">Website</th>
+            <th data-sortable data-i18n="col_email">Email</th>
+            <th data-sortable style="text-align:right" data-i18n="col_rating">Rating</th>
+            <th data-sortable style="text-align:right" data-i18n="col_reviews">Reviews</th>
+          </tr>
+        </thead>
+        <tbody id="results-table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="results-footer" id="results-footer">
+      <span class="results-footer__info" id="results-footer-info"></span>
+      <div class="pagination" id="pagination">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       SIGNUP MODAL
+       ================================================================ -->
+  <div class="modal-overlay" id="signup-modal">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <h2 class="modal-title" data-i18n="create_account">Create free account</h2>
+      <p class="modal-subtitle"><strong data-i18n="free_credits">99 free credits</strong> &mdash; <span data-i18n="enough_first_search">enough for your first search</span></p>
+
+      <!-- Google OAuth -->
+      <button class="btn--google" id="google-auth-btn" type="button">
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <span data-i18n="continue_google">Continue with Google</span>
+      </button>
+
+      <div class="modal-divider"><span data-i18n="or">or</span></div>
+
+      <!-- Email/password form -->
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="signup-email" data-i18n="email">Email</label>
+          <input type="email" class="form-input" id="signup-email" placeholder="you@company.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="signup-password" data-i18n="password">Password</label>
+          <input type="password" class="form-input" id="signup-password" placeholder="At least 8 characters" data-i18n-placeholder="password_placeholder" autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn--submit" data-i18n="sign_up">Sign up</button>
+      </form>
+
+      <p class="modal-footer-text">
+        <span data-i18n="have_account">Already have an account?</span> <a id="login-link" data-i18n="log_in">Log in</a>
+      </p>
+    </div>
+  </div>
+
+{% endblock %}
