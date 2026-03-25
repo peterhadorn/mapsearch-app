@@ -15,8 +15,6 @@ os.environ.setdefault("DATAFORSEO_PASSWORD", "test")
 os.environ.setdefault("MAPSEARCH_DATABASE_URL", "postgresql://test:test@localhost/test")
 os.environ.setdefault("STRIPE_SECRET_KEY", "sk_test_fake")
 os.environ.setdefault("STRIPE_WEBHOOK_SECRET", "whsec_test_fake")
-os.environ.setdefault("GOOGLE_CLIENT_ID", "test-client-id")
-os.environ.setdefault("GOOGLE_CLIENT_SECRET", "test-client-secret")
 os.environ.setdefault("MAPSEARCH_SECRET_KEY", "test-secret-key-for-jwt-signing-minimum-length")
 os.environ["MAPSEARCH_ENV"] = "test"
 

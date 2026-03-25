@@ -10,11 +10,6 @@ const Auth = {
         document.getElementById('modal-close').addEventListener('click', () => this.hideModal());
         document.getElementById('modal-backdrop').addEventListener('click', () => this.hideModal());
 
-        // Google OAuth
-        document.getElementById('google-auth-btn').addEventListener('click', () => {
-            window.location.href = '/api/auth/google';
-        });
-
         // Email/password form
         document.getElementById('signup-form').addEventListener('submit', (e) => this.handleSubmit(e));
 

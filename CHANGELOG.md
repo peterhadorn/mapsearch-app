@@ -22,7 +22,10 @@
 - Systemd service config (port 8200)
 - Caddy reverse proxy for mapsearch.allwk.com
 - .env.example with all required variables
-- Dynamic host detection for OAuth redirect URIs and Stripe URLs
+- Dynamic host detection for Stripe URLs
+
+### Removed
+- Google OAuth2 (unnecessary for B2B data tool — email/password auth only)
 
 ## v0.2.0 — 2026-03-25
 
