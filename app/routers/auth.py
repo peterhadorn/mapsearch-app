@@ -5,7 +5,7 @@ import os
 from datetime import datetime, timedelta, timezone
 from uuid import UUID
 
-from fastapi import APIRouter, HTTPException, Request, Response
+from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
@@ -55,12 +55,17 @@ async def get_current_user(request: Request):
     return dict(user)
 
 
+async def require_current_user(request: Request):
+    """FastAPI dependency — returns current user or raises 401."""
+    user = await get_current_user(request)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    return user
+
+
 @router.post("/signup", status_code=201)
 @limiter.limit("5/minute")
 async def signup(request: Request, body: SignupRequest, response: Response):
-    if len(body.password) < 8:
-        raise HTTPException(status_code=422, detail="Password must be at least 8 characters")
-
     existing = await queries.get_user_by_email(body.email)
     if existing:
         raise HTTPException(status_code=409, detail="Email already registered")
@@ -107,10 +112,7 @@ async def logout(response: Response):
 
 
 @router.get("/me")
-async def me(request: Request):
-    user = await get_current_user(request)
-    if not user:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+async def me(user: dict = Depends(require_current_user)):
     return {
         "id": str(user["id"]),
         "email": user["email"],
