@@ -12,6 +12,9 @@
 - Rate limiting (5 signups/min, 10 logins/min)
 - DataForSEO location resolver (country → location_code mapping)
 - `require_current_user` FastAPI dependency for protected endpoints
+- Google OAuth2 (signup/login via Google, state param CSRF protection)
+- Nominatim geocoder service (location → lat/lng + country_code)
+- Credit service (deduct, add, balance with transaction logging)
 
 ## v0.1.0 — 2026-03-24
 

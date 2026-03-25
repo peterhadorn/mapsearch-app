@@ -21,3 +21,7 @@ async def get_user_by_id(user_id):
 
 async def get_user_by_google_id(google_id):
     return await fetchrow("SELECT * FROM users WHERE google_id = $1", google_id)
+
+
+async def link_google_id(user_id, google_id):
+    return await execute("UPDATE users SET google_id = $1 WHERE id = $2", google_id, user_id)

@@ -1,0 +1,22 @@
+[
+  {
+    "place_id": 298085,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 8398124,
+    "boundingbox": ["40.6795890", "40.8820560", "-74.0476590", "-73.9070140"],
+    "lat": "40.7830603",
+    "lon": "-73.9712488",
+    "display_name": "Manhattan, New York County, New York, United States",
+    "class": "place",
+    "type": "borough",
+    "importance": 0.8,
+    "address": {
+      "borough": "Manhattan",
+      "county": "New York County",
+      "state": "New York",
+      "country": "United States",
+      "country_code": "us"
+    }
+  }
+]
