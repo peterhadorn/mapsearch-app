@@ -23,6 +23,7 @@
 - Caddy reverse proxy for mapsearch.allwk.com
 - .env.example with all required variables
 - Dynamic host detection for Stripe URLs
+- Deploy fixes: Caddy at /root/caddy/, Docker bridge IP 172.18.0.1, uvicorn bind 0.0.0.0
 
 ### Removed
 - Google OAuth2 (unnecessary for B2B data tool — email/password auth only)

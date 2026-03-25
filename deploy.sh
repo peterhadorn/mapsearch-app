@@ -60,7 +60,7 @@ After=network.target postgresql.service
 [Service]
 User=www-data
 WorkingDirectory=/var/www/mapsearch
-ExecStart=/var/www/mapsearch/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8200
+ExecStart=/var/www/mapsearch/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8200
 Restart=always
 RestartSec=5
 EnvironmentFile=/var/www/mapsearch/.env
@@ -73,14 +73,14 @@ SERVICE
     ;;
   caddy-add)
     echo "Adding Caddy reverse proxy block..."
-    cat <<'CADDY' | ssh "root@$VPS_HOST" "cat >> /root/n8n/Caddyfile"
+    cat <<'CADDY' | ssh "root@$VPS_HOST" "cat >> /root/caddy/Caddyfile"
 
 mapsearch.allwk.com {
-    reverse_proxy 127.0.0.1:8200
+    reverse_proxy 172.18.0.1:8200
     encode gzip
 }
 CADDY
-    ssh "root@$VPS_HOST" "cd /root/n8n && docker compose restart caddy"
+    ssh "root@$VPS_HOST" "ufw allow from 172.18.0.0/16 to any port 8200 2>/dev/null; cd /root/caddy && docker compose restart caddy"
     echo "Caddy updated. Make sure DNS A record points mapsearch.allwk.com → $VPS_HOST"
     ;;
   status)
