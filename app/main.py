@@ -17,7 +17,7 @@ app = FastAPI(title="MapSearch", docs_url=None, redoc_url=None)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-app.add_middleware(CORSMiddleware, allow_origins=["https://mapsearch.app"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=["https://mapsearch.app", "https://mapsearch.allwk.com"], allow_methods=["*"], allow_headers=["*"])
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")

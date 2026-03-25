@@ -34,11 +34,12 @@ async def list_packs():
 
 
 @router.post("/checkout")
-async def create_checkout(body: CheckoutRequest, user: dict = Depends(require_current_user)):
+async def create_checkout(request: Request, body: CheckoutRequest, user: dict = Depends(require_current_user)):
     pack = next((p for p in CREDIT_PACKS if p["id"] == body.pack_id), None)
     if not pack:
         raise HTTPException(status_code=400, detail="Invalid pack_id")
 
+    base_url = f"https://{request.headers.get('host', 'mapsearch.app')}"
     session = stripe.checkout.Session.create(
         payment_method_types=["card"],
         line_items=[{
@@ -50,8 +51,8 @@ async def create_checkout(body: CheckoutRequest, user: dict = Depends(require_cu
             "quantity": 1,
         }],
         mode="payment",
-        success_url="https://mapsearch.app/?payment=success",
-        cancel_url="https://mapsearch.app/?payment=cancelled",
+        success_url=f"{base_url}/?payment=success",
+        cancel_url=f"{base_url}/?payment=cancelled",
         metadata={
             "user_id": str(user["id"]),
             "pack_id": pack["id"],

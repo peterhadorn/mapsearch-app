@@ -138,7 +138,7 @@ async def google_login(request: Request):
     state = secrets.token_urlsafe(32)
     params = {
         "client_id": GOOGLE_CLIENT_ID,
-        "redirect_uri": "https://mapsearch.app/api/auth/google/callback",
+        "redirect_uri": f"https://{request.headers.get('host', 'mapsearch.app')}/api/auth/google/callback",
         "response_type": "code",
         "scope": "openid email profile",
         "state": state,
@@ -166,7 +166,7 @@ async def google_callback(request: Request, code: str, state: str):
             "code": code,
             "client_id": GOOGLE_CLIENT_ID,
             "client_secret": GOOGLE_CLIENT_SECRET,
-            "redirect_uri": "https://mapsearch.app/api/auth/google/callback",
+            "redirect_uri": f"https://{request.headers.get('host', 'mapsearch.app')}/api/auth/google/callback",
             "grant_type": "authorization_code",
         })
         if token_resp.status_code != 200:

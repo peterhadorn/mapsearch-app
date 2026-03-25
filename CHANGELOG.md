@@ -18,6 +18,11 @@
 - Stripe credit purchase (checkout session, webhook, balance endpoint)
 - Credits UI (purchase modal with 4 packs, Stripe redirect)
 - CSV export (GET /api/export/{search_id} with ownership check)
+- Deploy script (setup, app, db-setup, service-install, caddy-add, status, logs)
+- Systemd service config (port 8200)
+- Caddy reverse proxy for mapsearch.allwk.com
+- .env.example with all required variables
+- Dynamic host detection for OAuth redirect URIs and Stripe URLs
 
 ## v0.2.0 — 2026-03-25
 
