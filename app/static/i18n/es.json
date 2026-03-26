@@ -1,12 +1,10 @@
 {
   "brand": "MapSearch",
-
   "nav": {
     "signIn": "Iniciar sesion",
     "credits": "creditos",
     "buyCredits": "Comprar creditos"
   },
-
   "hero": {
     "headline": "Busca en cualquier zona. Encuentra cada negocio.",
     "subheadline": "Busca, filtra y exporta datos de negocios de Google Maps. Al instante.",
@@ -20,7 +18,6 @@
       "freeExport": "Exportacion CSV gratis"
     }
   },
-
   "filters": {
     "hasWebsite": "Con sitio web",
     "noWebsite": "Sin sitio web",
@@ -53,7 +50,6 @@
     "radius": "Radio",
     "radiusKm": "{value} km"
   },
-
   "howItWorks": {
     "label": "Como funciona",
     "title": "Tres pasos. Nada mas.",
@@ -71,7 +67,6 @@
       "desc": "Descarga tus datos en un CSV limpio. Exportacion gratuita, sin cargos adicionales. Tus datos, a tu manera."
     }
   },
-
   "trust": {
     "businesses": "200M+",
     "businessesLabel": "negocios indexados",
@@ -86,11 +81,10 @@
     "freeCredits": "99",
     "freeCreditsLabel": "creditos gratis al registrarte"
   },
-
   "pricing": {
     "label": "Precios",
     "title": "Paga por uso. Sin suscripciones.",
-    "subtitle": "1 credito = 1 resultado de negocio. Compra lo que necesites, usalo cuando quieras.",
+    "subtitle": "1 crédito = 1 resultado filtrado. Los filtros te ahorran dinero.",
     "creditsUnit": "creditos",
     "popularBadge": "Popular",
     "free": {
@@ -123,9 +117,19 @@
       "feat2": "Menor coste por resultado",
       "cta": "Comprar creditos"
     },
-    "agency": "Necesitas mas? <strong>Pack Agencia: 100.000 creditos por $120</strong> ($1,20 por 1.000 resultados)"
+    "agency": "Necesitas mas? <strong>Pack Agencia: 100.000 creditos por $120</strong> ($1,20 por 1.000 resultados)",
+    "credits_label": "créditos",
+    "free_name": "Gratis",
+    "free_price": "$0",
+    "free_per": "Al registrarte",
+    "starter_name": "Starter",
+    "growth_name": "Growth",
+    "pro_name": "Pro",
+    "agency_name": "Agency",
+    "popular": "Popular",
+    "get_started": "Empezar",
+    "buy": "Comprar"
   },
-
   "compare": {
     "label": "Por que MapSearch",
     "title": "Mismos datos. Mitad de precio. Mejor experiencia.",
@@ -153,13 +157,11 @@
     "no": "No",
     "quote": "\"Mitad de precio. El doble de producto.\""
   },
-
   "cta": {
-    "title": "Listo para encontrar cada negocio en tu zona?",
-    "desc": "Crea tu cuenta gratuita y recibe 99 creditos. Sin tarjeta de credito.",
-    "button": "Empezar a buscar gratis"
+    "title": "¿Listo para encontrar cada negocio en tu zona?",
+    "desc": "99 créditos gratis. Sin tarjeta de crédito.",
+    "button": "Registrarse gratis"
   },
-
   "signup": {
     "title": "Crea tu cuenta gratuita",
     "desc": "Recibe 99 creditos gratis, suficientes para tu primera busqueda. Sin tarjeta de credito.",
@@ -178,7 +180,6 @@
     "errorPasswordShort": "La contrasena debe tener al menos 8 caracteres.",
     "errorGeneric": "Algo salio mal. Intentalo de nuevo."
   },
-
   "login": {
     "title": "Bienvenido de nuevo",
     "desc": "Inicia sesion en tu cuenta de MapSearch.",
@@ -188,7 +189,6 @@
     "errorGeneric": "Algo salio mal. Intentalo de nuevo.",
     "forgotPassword": "Olvidaste tu contrasena?"
   },
-
   "results": {
     "showing": "Mostrando {filtered} de {total} resultados",
     "noResults": "Sin resultados",
@@ -227,7 +227,6 @@
       "page": "Pagina {current} de {total}"
     }
   },
-
   "credits": {
     "balance": "Saldo de creditos",
     "remaining": "{count} creditos restantes",
@@ -246,7 +245,6 @@
     "purchaseSuccess": "Creditos anadidos a tu cuenta!",
     "purchaseError": "El pago ha fallado. Intentalo de nuevo."
   },
-
   "errors": {
     "networkError": "Error de conexion. Comprueba tu conexion a internet e intentalo de nuevo.",
     "serverError": "Algo salio mal de nuestro lado. Intentalo mas tarde.",
@@ -259,7 +257,6 @@
     "invalidLocation": "Selecciona una ubicacion.",
     "tooManyResults": "Esta busqueda devolveria demasiados resultados. Reduce la zona o anade filtros."
   },
-
   "tooltips": {
     "creditBalance": "Tus creditos de busqueda disponibles. 1 credito = 1 resultado de negocio.",
     "hasWebsite": "Filtra negocios que tienen (o no) sitio web.",
@@ -271,18 +268,56 @@
     "radius": "Ajusta el area de busqueda alrededor de la ubicacion seleccionada.",
     "csvExport": "Descarga todos los resultados visibles como CSV. Sin cargos adicionales."
   },
-
   "empty": {
     "noSearches": "Aun no has buscado",
     "noSearchesDesc": "Empieza buscando negocios en cualquier zona.",
     "noHistory": "Sin historial de creditos",
     "noHistoryDesc": "Tus transacciones de creditos apareceran aqui."
   },
-
   "footer": {
-    "copy": "\u00a9 2026 MapSearch. Todos los derechos reservados.",
+    "copy": "© 2026 MapSearch. Todos los derechos reservados.",
     "privacy": "Privacidad",
     "terms": "Condiciones",
     "contact": "Contacto"
+  },
+  "nav_features": "Características",
+  "nav_pricing": "Precios",
+  "nav_how": "Cómo funciona",
+  "features": {
+    "label": "Características",
+    "title": "Todo lo que necesitas para encontrar negocios a escala",
+    "realtime_title": "Resultados en tiempo real",
+    "realtime_desc": "Resultados en segundos. Sin colas de espera.",
+    "filters_title": "10+ filtros",
+    "filters_desc": "Sitio web, email, teléfono, calificación, reseñas, reclamado, fotos, precio, categoría. Solo pagas lo que pasa.",
+    "export_title": "Exportar CSV",
+    "export_desc": "Descarga tus resultados en CSV. Gratis con cada búsqueda.",
+    "map_title": "Mapa interactivo",
+    "map_desc": "Ve cada resultado en un mapa en vivo. Haz clic en los marcadores.",
+    "langs_title": "4 idiomas",
+    "langs_desc": "EN, FR, DE, ES. Detecta automáticamente el idioma de tu navegador.",
+    "cache_title": "Caché inteligente",
+    "cache_desc": "Misma búsqueda en 72h = cero créditos adicionales.",
+    "data_title": "40+ datos por negocio",
+    "why_title": "Mismos datos. Mitad de precio. Mejor experiencia.",
+    "why_cheaper": "2x más barato",
+    "why_cheaper_desc": "$1.50/1,000 vs $3/1,000 de Outscraper",
+    "why_instant": "Resultados instantáneos",
+    "why_instant_desc": "API en tiempo real, sin colas",
+    "why_noapi": "Sin claves API",
+    "why_noapi_desc": "Regístrate y busca. Sin configuración técnica.",
+    "why_filters": "Los filtros ahorran dinero",
+    "why_filters_desc": "618 resultados brutos → 234 con email → pagas 234"
+  },
+  "how": {
+    "label": "Cómo funciona",
+    "title": "Tres pasos. Eso es todo.",
+    "subtitle": "Sin claves API. Sin colas. Sin esperas.",
+    "step1_title": "Buscar",
+    "step1_desc": "Ingresa una palabra clave y ubicación. Buscamos en Google Maps en tiempo real.",
+    "step2_title": "Filtrar",
+    "step2_desc": "Reduce resultados con 10+ filtros. Solo pagas lo que pasa.",
+    "step3_title": "Exportar",
+    "step3_desc": "Descarga CSV o explora la tabla interactiva + mapa."
   }
 }

@@ -1,12 +1,10 @@
 {
   "brand": "MapSearch",
-
   "nav": {
     "signIn": "Sign in",
     "credits": "credits",
     "buyCredits": "Buy credits"
   },
-
   "hero": {
     "headline": "Search any area. Get every business.",
     "subheadline": "Find, filter, and export business data from Google Maps. Instantly.",
@@ -20,7 +18,6 @@
       "freeExport": "Free CSV export"
     }
   },
-
   "filters": {
     "hasWebsite": "Has website",
     "noWebsite": "No website",
@@ -53,7 +50,6 @@
     "radius": "Radius",
     "radiusKm": "{value} km"
   },
-
   "howItWorks": {
     "label": "How it works",
     "title": "Three steps. That's it.",
@@ -71,7 +67,6 @@
       "desc": "Download your data as a clean CSV. Free export, no extra charge. Your data, your way."
     }
   },
-
   "trust": {
     "businesses": "200M+",
     "businessesLabel": "businesses indexed",
@@ -86,11 +81,10 @@
     "freeCredits": "99",
     "freeCreditsLabel": "free credits on signup"
   },
-
   "pricing": {
     "label": "Pricing",
     "title": "Pay as you go. No subscriptions.",
-    "subtitle": "1 credit = 1 business result. Buy what you need, use it whenever.",
+    "subtitle": "1 credit = 1 filtered result. Filters save you money.",
     "creditsUnit": "credits",
     "popularBadge": "Popular",
     "free": {
@@ -123,9 +117,19 @@
       "feat2": "Lowest per-result cost",
       "cta": "Buy credits"
     },
-    "agency": "Need more? <strong>Agency pack: 100,000 credits for $120</strong> ($1.20 per 1,000 results)"
+    "agency": "Need more? <strong>Agency pack: 100,000 credits for $120</strong> ($1.20 per 1,000 results)",
+    "credits_label": "credits",
+    "free_name": "Free",
+    "free_price": "$0",
+    "free_per": "On signup",
+    "starter_name": "Starter",
+    "growth_name": "Growth",
+    "pro_name": "Pro",
+    "agency_name": "Agency",
+    "popular": "Popular",
+    "get_started": "Get started",
+    "buy": "Buy"
   },
-
   "compare": {
     "label": "Why MapSearch",
     "title": "Same data. Half the price. Better experience.",
@@ -153,13 +157,11 @@
     "no": "No",
     "quote": "\"Half the price. Twice the product.\""
   },
-
   "cta": {
     "title": "Ready to find every business in your area?",
-    "desc": "Create your free account and get 99 credits. No credit card required.",
-    "button": "Start searching free"
+    "desc": "99 free credits. No credit card required.",
+    "button": "Sign up for free"
   },
-
   "signup": {
     "title": "Create your free account",
     "desc": "Get 99 free credits — enough for your first search. No credit card needed.",
@@ -178,7 +180,6 @@
     "errorPasswordShort": "Password must be at least 8 characters.",
     "errorGeneric": "Something went wrong. Please try again."
   },
-
   "login": {
     "title": "Welcome back",
     "desc": "Sign in to your MapSearch account.",
@@ -188,7 +189,6 @@
     "errorGeneric": "Something went wrong. Please try again.",
     "forgotPassword": "Forgot your password?"
   },
-
   "results": {
     "showing": "Showing {filtered} of {total} results",
     "noResults": "No results found",
@@ -227,7 +227,6 @@
       "page": "Page {current} of {total}"
     }
   },
-
   "credits": {
     "balance": "Credit balance",
     "remaining": "{count} credits remaining",
@@ -246,7 +245,6 @@
     "purchaseSuccess": "Credits added to your account!",
     "purchaseError": "Payment failed. Please try again."
   },
-
   "errors": {
     "networkError": "Connection error. Please check your internet and try again.",
     "serverError": "Something went wrong on our end. Please try again later.",
@@ -259,7 +257,6 @@
     "invalidLocation": "Please select a location.",
     "tooManyResults": "This search would return too many results. Try narrowing your area or adding filters."
   },
-
   "tooltips": {
     "creditBalance": "Your available search credits. 1 credit = 1 business result.",
     "hasWebsite": "Filter businesses that have (or don't have) a website.",
@@ -271,18 +268,56 @@
     "radius": "Adjust the search area around your selected location.",
     "csvExport": "Download all visible results as a CSV file. No extra charge."
   },
-
   "empty": {
     "noSearches": "No searches yet",
     "noSearchesDesc": "Start by searching for businesses in any area.",
     "noHistory": "No credit history",
     "noHistoryDesc": "Your credit transactions will appear here."
   },
-
   "footer": {
-    "copy": "\u00a9 2026 MapSearch. All rights reserved.",
+    "copy": "© 2026 MapSearch. All rights reserved.",
     "privacy": "Privacy",
     "terms": "Terms",
     "contact": "Contact"
+  },
+  "nav_features": "Features",
+  "nav_pricing": "Pricing",
+  "nav_how": "How it works",
+  "features": {
+    "label": "Features",
+    "title": "Everything you need to find businesses at scale",
+    "realtime_title": "Real-time results",
+    "realtime_desc": "Results in seconds, not hours. No task queues, no waiting.",
+    "filters_title": "10+ filters",
+    "filters_desc": "Website, email, phone, rating, reviews, claimed, photos, price, category. Pay only for what passes.",
+    "export_title": "CSV export",
+    "export_desc": "Download your results as CSV. Free with every search.",
+    "map_title": "Interactive map",
+    "map_desc": "See every result on a live map. Click pins, hover rows.",
+    "langs_title": "4 languages",
+    "langs_desc": "EN, FR, DE, ES. Auto-detects your browser language.",
+    "cache_title": "Smart cache",
+    "cache_desc": "Same search within 72h costs zero extra credits.",
+    "data_title": "40+ data points per business",
+    "why_title": "Same data. Half the price. Better experience.",
+    "why_cheaper": "2x cheaper",
+    "why_cheaper_desc": "$1.50/1,000 vs Outscraper's $3/1,000",
+    "why_instant": "Instant results",
+    "why_instant_desc": "Real-time API, not async task queues",
+    "why_noapi": "No API keys",
+    "why_noapi_desc": "Just sign up and search. No developer setup.",
+    "why_filters": "Filters save money",
+    "why_filters_desc": "618 raw results → 234 with email → pay for 234"
+  },
+  "how": {
+    "label": "How it works",
+    "title": "Three steps. That's it.",
+    "subtitle": "No API keys. No task queues. No waiting.",
+    "step1_title": "Search",
+    "step1_desc": "Enter a keyword and location. We search Google Maps in real time.",
+    "step2_title": "Filter",
+    "step2_desc": "Narrow results with 10+ filters. Only pay for what passes.",
+    "step3_title": "Export",
+    "step3_desc": "Download CSV or browse the interactive table + map."
   }
 }
