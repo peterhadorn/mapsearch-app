@@ -16,6 +16,12 @@
       MapSearch
     </a>
 
+    <nav class="header__nav hide-mobile">
+      <a href="#features" class="header__nav-link" data-i18n="nav_features">Features</a>
+      <a href="#pricing" class="header__nav-link" data-i18n="nav_pricing">Pricing</a>
+      <a href="#how-it-works" class="header__nav-link" data-i18n="nav_how">How it works</a>
+    </nav>
+
     <div class="header__actions">
       <select class="lang-select hide-mobile" id="lang-select" aria-label="Language">
         <option value="en" selected>EN</option>
@@ -57,6 +63,8 @@
       <button class="btn--signin" id="signin-btn" data-i18n="sign_in">Sign In</button>
     </div>
   </header>
+
+  <div class="hero-viewport" id="hero">
 
   <!-- ================================================================
        FULL-SCREEN MAP
@@ -284,6 +292,194 @@
       </div>
     </div>
   </div>
+
+  </div><!-- /.hero-viewport -->
+
+  <!-- ================================================================
+       FEATURES
+       ================================================================ -->
+  <section class="page-section" id="features">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="features.label">Features</p>
+      <h2 class="section-title" data-i18n="features.title">Everything you need to find businesses at scale</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="feature-card__title" data-i18n="features.realtime_title">Real-time results</h3>
+          <p class="feature-card__desc" data-i18n="features.realtime_desc">Results in seconds, not hours. No task queues, no waiting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          </div>
+          <h3 class="feature-card__title" data-i18n="features.filters_title">10+ filters</h3>
+          <p class="feature-card__desc" data-i18n="features.filters_desc">Website, email, phone, rating, reviews, claimed, photos, price, category. Pay only for what passes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h3 class="feature-card__title" data-i18n="features.export_title">CSV export</h3>
+          <p class="feature-card__desc" data-i18n="features.export_desc">Download your results as CSV. Free with every search.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="feature-card__title" data-i18n="features.map_title">Interactive map</h3>
+          <p class="feature-card__desc" data-i18n="features.map_desc">See every result on a live map. Click pins, hover rows.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="feature-card__title" data-i18n="features.langs_title">4 languages</h3>
+          <p class="feature-card__desc" data-i18n="features.langs_desc">EN, FR, DE, ES. Auto-detects your browser language.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          </div>
+          <h3 class="feature-card__title" data-i18n="features.cache_title">Smart cache</h3>
+          <p class="feature-card__desc" data-i18n="features.cache_desc">Same search within 72h costs zero extra credits.</p>
+        </div>
+      </div>
+
+      <!-- Data fields pills -->
+      <h3 class="section-subtitle" data-i18n="features.data_title">40+ data points per business</h3>
+      <div class="data-pills">
+        <span class="data-pill">Business name</span><span class="data-pill">Category</span><span class="data-pill">Address</span><span class="data-pill">City</span><span class="data-pill">State</span><span class="data-pill">ZIP</span><span class="data-pill">Country</span><span class="data-pill">Phone</span><span class="data-pill">Email</span><span class="data-pill">Domain</span><span class="data-pill">URL</span><span class="data-pill">Rating</span><span class="data-pill">Reviews</span><span class="data-pill">Claimed</span><span class="data-pill">Verified</span><span class="data-pill">Photos</span><span class="data-pill">Main image</span><span class="data-pill">Latitude</span><span class="data-pill">Longitude</span><span class="data-pill">Google Maps URL</span><span class="data-pill">Price level</span><span class="data-pill">Work hours</span><span class="data-pill">Business status</span><span class="data-pill">Rating distribution</span><span class="data-pill">Additional categories</span><span class="data-pill">Place ID</span><span class="data-pill">CID</span>
+      </div>
+
+      <!-- Why MapSearch -->
+      <h3 class="section-subtitle" data-i18n="features.why_title">Same data. Half the price. Better experience.</h3>
+      <div class="why-grid">
+        <div class="why-card">
+          <strong data-i18n="features.why_cheaper">2x cheaper</strong>
+          <span data-i18n="features.why_cheaper_desc">$1.50/1,000 vs Outscraper's $3/1,000</span>
+        </div>
+        <div class="why-card">
+          <strong data-i18n="features.why_instant">Instant results</strong>
+          <span data-i18n="features.why_instant_desc">Real-time API, not async task queues</span>
+        </div>
+        <div class="why-card">
+          <strong data-i18n="features.why_noapi">No API keys</strong>
+          <span data-i18n="features.why_noapi_desc">Just sign up and search. No developer setup.</span>
+        </div>
+        <div class="why-card">
+          <strong data-i18n="features.why_filters">Filters save money</strong>
+          <span data-i18n="features.why_filters_desc">618 raw results → 234 with email → pay for 234</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PRICING
+       ================================================================ -->
+  <section class="page-section" id="pricing">
+    <div class="section-inner section-center">
+      <p class="section-label" data-i18n="pricing.label">Pricing</p>
+      <h2 class="section-title" data-i18n="pricing.title">Pay as you go. No subscriptions.</h2>
+      <p class="section-desc" data-i18n="pricing.subtitle">1 credit = 1 filtered result. Filters save you money.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name" data-i18n="pricing.free_name">Free</div>
+          <div class="pricing-credits">99 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price pricing-price--free" data-i18n="pricing.free_price">$0</div>
+          <div class="pricing-per" data-i18n="pricing.free_per">On signup</div>
+          <button class="btn--pricing" onclick="Auth.showModal()" data-i18n="pricing.get_started">Get started</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name" data-i18n="pricing.starter_name">Starter</div>
+          <div class="pricing-credits">1,000 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$1.50</div>
+          <div class="pricing-per">$1.50 / 1,000</div>
+          <button class="btn--pricing" onclick="Credits.buyPack('starter')" data-i18n="pricing.buy">Buy</button>
+        </div>
+        <div class="pricing-card popular">
+          <div class="popular-badge" data-i18n="pricing.popular">Popular</div>
+          <div class="pricing-name" data-i18n="pricing.growth_name">Growth</div>
+          <div class="pricing-credits">5,000 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$7.00</div>
+          <div class="pricing-per">$1.40 / 1,000</div>
+          <button class="btn--pricing" onclick="Credits.buyPack('growth')" data-i18n="pricing.buy">Buy</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name" data-i18n="pricing.pro_name">Pro</div>
+          <div class="pricing-credits">25,000 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$32</div>
+          <div class="pricing-per">$1.28 / 1,000</div>
+          <button class="btn--pricing" onclick="Credits.buyPack('pro')" data-i18n="pricing.buy">Buy</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name" data-i18n="pricing.agency_name">Agency</div>
+          <div class="pricing-credits">100,000 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$120</div>
+          <div class="pricing-per">$1.20 / 1,000</div>
+          <button class="btn--pricing" onclick="Credits.buyPack('agency')" data-i18n="pricing.buy">Buy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       HOW IT WORKS
+       ================================================================ -->
+  <section class="page-section" id="how-it-works">
+    <div class="section-inner section-center">
+      <p class="section-label" data-i18n="how.label">How it works</p>
+      <h2 class="section-title" data-i18n="how.title">Three steps. That's it.</h2>
+      <p class="section-desc" data-i18n="how.subtitle">No API keys. No task queues. No waiting.</p>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3 class="step-title" data-i18n="how.step1_title">Search</h3>
+          <p class="step-desc" data-i18n="how.step1_desc">Enter a keyword and location. We search Google Maps in real time.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          </div>
+          <h3 class="step-title" data-i18n="how.step2_title">Filter</h3>
+          <p class="step-desc" data-i18n="how.step2_desc">Narrow results with 10+ filters. Only pay for what passes.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h3 class="step-title" data-i18n="how.step3_title">Export</h3>
+          <p class="step-desc" data-i18n="how.step3_desc">Download CSV or browse the interactive table + map.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CTA
+       ================================================================ -->
+  <section class="cta-section">
+    <h2 class="cta-title" data-i18n="cta.title">Ready to find every business in your area?</h2>
+    <p class="cta-desc" data-i18n="cta.desc">99 free credits. No credit card required.</p>
+    <button class="btn--cta" onclick="Auth.showModal()" data-i18n="cta.button">Sign up for free</button>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="site-footer">
+    <span>&copy; 2026 MapSearch</span>
+  </footer>
 
   <!-- ================================================================
        SIGNUP MODAL

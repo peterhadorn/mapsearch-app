@@ -1,6 +1,15 @@
 const Credits = {
     _packs: [],
 
+    buyPack(packId) {
+        const user = State.get('user');
+        if (!user) {
+            Auth.showModal(() => Credits.buyPack(packId));
+            return;
+        }
+        this.purchase(packId);
+    },
+
     init() {
         // Click credits pill → open purchase modal
         document.getElementById('credits-pill').addEventListener('click', () => this.showModal());
