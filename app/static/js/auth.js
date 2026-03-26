@@ -41,12 +41,12 @@ const Auth = {
 
     showModal(pendingSearch = null) {
         this._pendingSearch = pendingSearch;
-        document.getElementById('signup-modal').classList.add('is-visible');
+        document.getElementById('signup-modal').classList.add('is-open');
         document.getElementById('signup-email').focus();
     },
 
     hideModal() {
-        document.getElementById('signup-modal').classList.remove('is-visible');
+        document.getElementById('signup-modal').classList.remove('is-open');
     },
 
     toggleMode() {
