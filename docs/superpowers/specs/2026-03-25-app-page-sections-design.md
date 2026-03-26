@@ -7,13 +7,27 @@
 
 Add Features, Pricing, How it works, CTA, and Footer sections below the existing map/search area in `app.html`. Add navigation items to the header that smooth-scroll to each section. Everything lives in the single-page app — no new routes.
 
+## Page Structure
+
+The current app is entirely `position: fixed` layers (header, map, overlay, search card). To add scrollable sections below, the page needs restructuring:
+
+1. **Hero wrapper** (`<div class="hero-viewport">`) — wraps the existing map + overlay + search card. Set to `height: 100vh; position: relative; overflow: hidden`. The map, overlay, and search card move INSIDE this wrapper and change from `position: fixed` to `position: absolute` (relative to the wrapper).
+2. **Header stays `position: fixed`** — it floats over everything, z-index above all sections.
+3. **Sections flow naturally** below the hero wrapper as normal document flow. User scrolls past the 100vh hero into Features, Pricing, etc.
+
+This means:
+- Remove `position: fixed` from `.map-container`, `.map-overlay`, `.search-float`
+- Add `.hero-viewport { height: 100vh; position: relative; overflow: hidden; }`
+- Map, overlay, search card become `position: absolute` inside `.hero-viewport`
+- All new sections are standard `position: static` block elements below
+
 ## Header Navigation
 
 Current header: `MapSearch [logo]` ... `EN | 99 credits | theme | Sign In`
 
 Add nav links after logo: **Features | Pricing | How it works**
 
-These are anchor links (`#features`, `#pricing`, `#how-it-works`) with smooth scroll behavior.
+These are anchor links (`#features`, `#pricing`, `#how-it-works`) with smooth scroll behavior. Header remains `position: fixed` so nav links are always accessible.
 
 ## Section 1: Features (`#features`)
 
@@ -61,14 +75,29 @@ Subtitle: "1 credit = 1 filtered result. Filters save you money."
 | Pack | Credits | Price | Per 1,000 | CTA |
 |------|---------|-------|-----------|-----|
 | Free | 99 | $0 | — | "Get started" → signup modal |
-| Starter | 1,000 | $1.50 | $1.50 | "Buy" → Stripe checkout |
-| Growth | 5,000 | $7.00 | $1.40 | "Buy" → Stripe checkout |
-| Pro | 25,000 | $32.00 | $1.28 | "Buy" → Stripe checkout |
-| Agency | 100,000 | $120.00 | $1.20 | "Buy" → Stripe checkout |
+| Starter | 1,000 | $1.50 | $1.50 | "Buy" → auth gate then Stripe |
+| Growth | 5,000 | $7.00 | $1.40 | "Buy" → auth gate then Stripe |
+| Pro | 25,000 | $32.00 | $1.28 | "Buy" → auth gate then Stripe |
+| Agency | 100,000 | $120.00 | $1.20 | "Buy" → auth gate then Stripe |
 
 Growth card gets a "Popular" badge.
 
-Buy buttons: if logged in → Stripe checkout. If not logged in → signup modal, then redirect to Stripe after signup.
+### Pricing auth gate
+
+Buy buttons use the same `Auth.showModal(callback)` pattern as the search flow:
+
+```javascript
+function buyPack(packId) {
+    const user = State.get('user');
+    if (!user) {
+        Auth.showModal(() => buyPack(packId));
+        return;
+    }
+    Credits.purchase(packId);
+}
+```
+
+This is a new inline function in the pricing section's `<script>` block or added to `credits.js`. It wraps `Credits.purchase()` with the auth check, reusing the existing modal callback pattern.
 
 ## Section 3: How It Works (`#how-it-works`)
 
@@ -87,25 +116,24 @@ Full-width section with accent background gradient.
 
 Headline: "Ready to find every business in your area?"
 Subtitle: "99 free credits. No credit card required."
-Button: "Sign up for free" → opens signup modal
+Button: "Sign up for free" → opens signup modal via `Auth.showModal()`
 
 ## Section 5: Footer
 
 Minimal footer:
 - Left: "© 2026 MapSearch"
-- Right: language selector (duplicated from header for convenience)
+- No language selector in footer (it's already in the fixed header, visible at all times)
 
 ## Technical Notes
 
 ### Files to modify
-- `app/templates/app.html` — add all sections after the signup modal, before `{% endblock %}`
-- `app/static/css/app.css` — section styles (port relevant CSS from `design/html/landing.html`)
-- `app/templates/base.html` — no changes needed (sections are in app.html)
+- `app/templates/app.html` — restructure into hero-viewport wrapper + add all sections
+- `app/static/css/app.css` — hero-viewport styles, section styles (port from `design/html/landing.html`), update map/overlay/search-float from fixed to absolute
+- `app/static/js/credits.js` — add `buyPack(packId)` auth-gate wrapper
+- `app/static/i18n/en.json`, `fr.json`, `de.json`, `es.json` — add translation keys for all new section text
 
 ### Files NOT to create
-- No new routes. No new JS files. Everything is HTML + CSS in the existing template.
-- Pricing "Buy" buttons reuse the existing `Credits.purchase(packId)` function from `credits.js`
-- CTA button reuses `Auth.showModal()` from `auth.js`
+- No new routes. No new JS files (credits.js gets the auth-gate wrapper).
 
 ### Smooth scroll
 Add `scroll-behavior: smooth` to `html` element. Nav links use standard `<a href="#features">`.
@@ -114,10 +142,10 @@ Add `scroll-behavior: smooth` to `html` element. Nav links use standard `<a href
 - Feature cards: 1 column on mobile, 2 on tablet, 3 on desktop
 - Pricing cards: 1 column on mobile, scrollable horizontal on tablet, 5 across on desktop
 - How it works: stack vertically on mobile
-- Header nav items: collapse into hamburger on mobile (or hide — the sections are scrollable anyway)
+- Header nav items: hide on mobile (sections are scrollable, and the fixed header is narrow on mobile)
 
 ### i18n
-All text uses `data-i18n` attributes. Translation keys need to be added to the 4 JSON files. Can be done in a follow-up task.
+All new text uses `data-i18n` attributes. Translation keys MUST be added to all 4 JSON files (en, fr, de, es) as part of this implementation — not deferred. The fallback text in HTML serves as the English default; the JSON files provide the actual translations.
 
 ### Design reference
-Port styles from `design/html/landing.html` where applicable (section spacing, pricing cards, step cards). Adapt to match the existing app.css design system (accent colors, glass effects, etc.).
+Port styles from `design/html/landing.html` where applicable (section spacing, pricing cards, step cards). Adapt to match the existing app.css design system (accent colors, glass effects, dark theme).
