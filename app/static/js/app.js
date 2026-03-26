@@ -22,18 +22,18 @@ const App = {
     },
 
     async doSearch() {
+        // Check if logged in first — don't make them fill in fields before signing up
+        const user = State.get('user');
+        if (!user) {
+            Auth.showModal(() => this.doSearch());
+            return;
+        }
+
         const keyword = document.getElementById('keyword-input').value.trim();
         const location = document.getElementById('location-input').value.trim();
 
         if (!keyword || !location) {
             this.showToast('Please enter both a keyword and location.', 'warning');
-            return;
-        }
-
-        // Check if logged in
-        const user = State.get('user');
-        if (!user) {
-            Auth.showModal(() => this.doSearch());
             return;
         }
 
