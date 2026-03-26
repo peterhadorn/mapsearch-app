@@ -6,8 +6,8 @@ const MapModule = {
     init() {
         // Initialize Leaflet map — zoomed in on Manhattan
         this.map = L.map('map', {
-            center: [40.7580, -73.9855],  // Midtown Manhattan
-            zoom: 14,
+            center: [40.7480, -73.9860],  // Manhattan
+            zoom: 13,
             zoomControl: false,
         });
 
