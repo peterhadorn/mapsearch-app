@@ -1,10 +1,13 @@
 const Filters = {
     init() {
-        // Toggle filter panel visibility — open by default
+        // Toggle filter panel visibility — open on desktop, closed on mobile
         const toggle = document.getElementById('filter-toggle');
         const panel = document.getElementById('filters-panel');
-        panel.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
+        const isMobile = window.innerWidth < 768;
+        if (!isMobile) {
+            panel.classList.add('is-open');
+            toggle.setAttribute('aria-expanded', 'true');
+        }
         toggle.addEventListener('click', () => {
             const expanded = toggle.getAttribute('aria-expanded') === 'true';
             toggle.setAttribute('aria-expanded', !expanded);
