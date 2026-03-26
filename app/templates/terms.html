@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Service — MapSearch{% endblock %}
+
+{% block content %}
+
+  <header class="header--glass">
+    <a href="/" class="header__logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      MapSearch
+    </a>
+    <div class="header__actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="legal-page">
+    <h1>Terms of Service</h1>
+    <p class="legal-updated">Last updated: March 25, 2026</p>
+
+    <h2>1. Service Description</h2>
+    <p>MapSearch provides access to publicly available Google Maps business data through a web interface. You can search by keyword and location, apply filters, and export results as CSV.</p>
+
+    <h2>2. Accounts</h2>
+    <p>You must create an account to use MapSearch. You are responsible for keeping your login credentials secure. One account per person.</p>
+
+    <h2>3. Credits and Payments</h2>
+    <ul>
+      <li>New accounts receive 99 free credits.</li>
+      <li>1 credit = 1 filtered result delivered to you.</li>
+      <li>Credits are purchased in packs via Stripe. All sales are final — credits do not expire and are non-refundable.</li>
+      <li>Filters reduce the number of credits charged. You only pay for results that match your filters.</li>
+    </ul>
+
+    <h2>4. Acceptable Use</h2>
+    <p>You may use MapSearch data for legitimate business purposes including lead generation, market research, and competitive analysis. You may not:</p>
+    <ul>
+      <li>Resell raw data exports without adding value</li>
+      <li>Use the service to spam, harass, or send unsolicited bulk communications</li>
+      <li>Create multiple accounts to exploit the free credit offer</li>
+      <li>Attempt to bypass rate limits or security measures</li>
+    </ul>
+
+    <h2>5. Data Accuracy</h2>
+    <p>Business data is sourced from Google Maps via third-party APIs. We do not guarantee the accuracy, completeness, or timeliness of the data. Data is cached for up to 72 hours.</p>
+
+    <h2>6. Limitation of Liability</h2>
+    <p>MapSearch is provided "as is" without warranties of any kind. We are not liable for any damages arising from your use of the service or the data obtained through it.</p>
+
+    <h2>7. Termination</h2>
+    <p>We may suspend or terminate accounts that violate these terms. You may delete your account at any time by contacting <a href="mailto:hello@mapsearch.app">hello@mapsearch.app</a>.</p>
+
+    <h2>8. Changes</h2>
+    <p>We may update these terms from time to time. Continued use of the service after changes constitutes acceptance of the new terms.</p>
+
+    <h2>9. Contact</h2>
+    <p>Questions about these terms? Email <a href="mailto:hello@mapsearch.app">hello@mapsearch.app</a>.</p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 MapSearch. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="mailto:hello@mapsearch.app">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+{% endblock %}

@@ -10,3 +10,13 @@ templates = Jinja2Templates(directory="app/templates")
 @router.get("/")
 async def landing(request: Request):
     return templates.TemplateResponse("app.html", {"request": request})
+
+
+@router.get("/privacy")
+async def privacy(request: Request):
+    return templates.TemplateResponse("privacy.html", {"request": request})
+
+
+@router.get("/terms")
+async def terms(request: Request):
+    return templates.TemplateResponse("terms.html", {"request": request})
