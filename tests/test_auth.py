@@ -2,7 +2,33 @@
 
 from unittest.mock import AsyncMock, patch
 
+from fastapi import Response
+from jose import jwt
+
+from app.config import JWT_ALGORITHM, JWT_COOKIE_NAME, SECRET_KEY
+from app.routers.auth import _create_token, _set_session_cookie
 from tests.conftest import make_mock_user
+
+
+class TestAuthHelpers:
+    def test_create_token_encodes_user_id(self):
+        token = _create_token("user-123")
+
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[JWT_ALGORITHM])
+
+        assert payload["sub"] == "user-123"
+        assert "exp" in payload
+
+    def test_set_session_cookie_uses_expected_flags(self):
+        response = Response()
+
+        _set_session_cookie(response, "token-abc")
+
+        cookie_header = response.headers.get("set-cookie", "")
+        assert JWT_COOKIE_NAME in cookie_header
+        assert "token-abc" in cookie_header
+        assert "HttpOnly" in cookie_header
+        assert "SameSite=lax" in cookie_header
 
 
 class TestSignup:

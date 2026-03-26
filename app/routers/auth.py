@@ -23,11 +23,28 @@ _secure = os.environ.get("MAPSEARCH_ENV", "production") != "test"
 
 
 def _create_token(user_id: str) -> str:
+    """Create a signed JWT for the authenticated user.
+
+    Args:
+        user_id: Authenticated user identifier.
+
+    Returns:
+        str: Encoded JWT session token.
+    """
     expire = datetime.now(timezone.utc) + timedelta(hours=JWT_EXPIRE_HOURS)
     return jwt.encode({"sub": user_id, "exp": expire}, SECRET_KEY, algorithm=JWT_ALGORITHM)
 
 
 def _set_session_cookie(response: Response, token: str):
+    """Attach the session cookie to an HTTP response.
+
+    Args:
+        response: Response object to mutate.
+        token: Encoded JWT session token.
+
+    Returns:
+        None
+    """
     response.set_cookie(
         key=JWT_COOKIE_NAME,
         value=token,
