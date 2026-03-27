@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.3.1 — 2026-03-27
+
+### Added
+- Hamburger menu for mobile (nav links, language selector, theme toggle, sign in/logout)
+- Logout button in desktop header and mobile menu
+- Compact credits pill on mobile (number only, always visible)
+
+### Fixed
+- Credits pill hidden on mobile — now always visible across all viewports
+- Pricing grid orphaned 5th card on tablet — changed to 3-col layout
+- Mobile menu stacking context — moved outside header to avoid backdrop-filter z-index trap
+
+### Changed
+- Cache bust v6 → v8
+- Theme toggle and Sign In button hidden on mobile (accessible via hamburger menu)
+
 ## v0.3.0 — 2026-03-25
 
 ### Added

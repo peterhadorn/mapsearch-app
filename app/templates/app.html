@@ -30,15 +30,15 @@
         <option value="es">ES</option>
       </select>
 
-      <div class="credits-pill hide-mobile" id="credits-pill" title="99 credits remaining">
+      <div class="credits-pill" id="credits-pill" title="99 credits remaining">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <polyline points="12 6 12 12 16 14"/>
         </svg>
-        <span id="credits-count">99</span> <span data-i18n="credits">credits</span>
+        <span id="credits-count">99</span> <span class="credits-pill__label hide-mobile" data-i18n="credits">credits</span>
       </div>
 
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+      <button class="theme-toggle hide-mobile" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
         <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
@@ -60,9 +60,68 @@
         </svg>
       </button>
 
-      <button class="btn--signin" id="signin-btn" data-i18n="sign_in">Sign In</button>
+      <button class="btn--signin hide-mobile" id="signin-btn" data-i18n="sign_in">Sign In</button>
+      <button class="btn--logout hide-mobile" id="logout-btn" data-i18n="log_out" style="display:none;">Log out</button>
+
+      <!-- Hamburger menu (mobile only) -->
+      <button class="hamburger show-mobile-only" id="hamburger-btn" type="button" aria-label="Menu" aria-expanded="false">
+        <svg class="hamburger__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg class="hamburger__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
     </div>
+
   </header>
+
+  <!-- Mobile menu drawer (outside header to avoid stacking context issues) -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-menu__nav">
+      <a href="#features" class="mobile-menu__link" data-i18n="nav_features">Features</a>
+      <a href="#pricing" class="mobile-menu__link" data-i18n="nav_pricing">Pricing</a>
+      <a href="#how-it-works" class="mobile-menu__link" data-i18n="nav_how">How it works</a>
+    </nav>
+    <div class="mobile-menu__divider"></div>
+    <div class="mobile-menu__controls">
+      <div class="mobile-menu__row">
+        <span class="mobile-menu__label" data-i18n="language">Language</span>
+        <select class="lang-select" id="lang-select-mobile" aria-label="Language">
+          <option value="en" selected>EN</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
+      <div class="mobile-menu__row">
+        <span class="mobile-menu__label" data-i18n="theme">Theme</span>
+        <button class="theme-toggle" id="theme-toggle-mobile" type="button" aria-label="Toggle theme">
+          <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="theme-icon--system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu__divider"></div>
+    <div class="mobile-menu__auth">
+      <button class="btn--signin mobile-menu__signin" id="signin-btn-mobile" data-i18n="sign_in">Sign In</button>
+      <button class="btn--logout mobile-menu__logout" id="logout-btn-mobile" data-i18n="log_out" style="display:none;">Log out</button>
+    </div>
+  </div>
 
   <div class="hero-viewport" id="hero">
 

@@ -3,8 +3,21 @@ const Auth = {
     _pendingSearch: null,  // callback to execute after auth
 
     init() {
-        // Sign in button opens modal
+        // Sign in buttons (desktop + mobile)
         document.getElementById('signin-btn').addEventListener('click', () => this.showModal());
+        const signinMobile = document.getElementById('signin-btn-mobile');
+        if (signinMobile) signinMobile.addEventListener('click', () => {
+            this._closeMobileMenu();
+            this.showModal();
+        });
+
+        // Logout buttons (desktop + mobile)
+        document.getElementById('logout-btn').addEventListener('click', () => this.logout());
+        const logoutMobile = document.getElementById('logout-btn-mobile');
+        if (logoutMobile) logoutMobile.addEventListener('click', () => {
+            this._closeMobileMenu();
+            this.logout();
+        });
 
         // Close modal
         document.getElementById('modal-close').addEventListener('click', () => this.hideModal());
@@ -24,8 +37,53 @@ const Auth = {
             if (e.key === 'Escape') this.hideModal();
         });
 
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !expanded);
+                mobileMenu.classList.toggle('is-open');
+            });
+            // Close menu when clicking nav links
+            mobileMenu.querySelectorAll('.mobile-menu__link').forEach(link => {
+                link.addEventListener('click', () => this._closeMobileMenu());
+            });
+            // Sync mobile language selector with desktop
+            const langMobile = document.getElementById('lang-select-mobile');
+            const langDesktop = document.getElementById('lang-select');
+            if (langMobile && langDesktop) {
+                langMobile.addEventListener('change', () => {
+                    langDesktop.value = langMobile.value;
+                    langDesktop.dispatchEvent(new Event('change'));
+                });
+            }
+            // Mobile theme toggle syncs with desktop
+            const themeMobile = document.getElementById('theme-toggle-mobile');
+            const themeDesktop = document.getElementById('theme-toggle');
+            if (themeMobile && themeDesktop) {
+                themeMobile.addEventListener('click', () => themeDesktop.click());
+            }
+        }
+
         // Check if already logged in
         this.checkSession();
+    },
+
+    _closeMobileMenu() {
+        const hamburger = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+        if (mobileMenu) mobileMenu.classList.remove('is-open');
+    },
+
+    async logout() {
+        try {
+            await fetch('/api/auth/logout', { method: 'POST' });
+        } catch (e) { /* ignore */ }
+        State.set('user', null);
+        this.updateUI(null);
     },
 
     async checkSession() {
@@ -119,13 +177,25 @@ const Auth = {
     },
 
     updateUI(user) {
+        const signinBtn = document.getElementById('signin-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const signinMobile = document.getElementById('signin-btn-mobile');
+        const logoutMobile = document.getElementById('logout-btn-mobile');
+        const creditsPill = document.getElementById('credits-pill');
+
         if (user) {
-            document.getElementById('signin-btn').style.display = 'none';
-            document.getElementById('credits-pill').style.display = 'flex';
+            signinBtn.style.display = 'none';
+            logoutBtn.style.display = '';
+            creditsPill.style.display = 'flex';
             document.getElementById('credits-count').textContent = user.credits_remaining;
+            if (signinMobile) signinMobile.style.display = 'none';
+            if (logoutMobile) logoutMobile.style.display = '';
         } else {
-            document.getElementById('signin-btn').style.display = '';
-            document.getElementById('credits-pill').style.display = 'none';
+            signinBtn.style.display = '';
+            logoutBtn.style.display = 'none';
+            creditsPill.style.display = 'none';
+            if (signinMobile) signinMobile.style.display = '';
+            if (logoutMobile) logoutMobile.style.display = 'none';
         }
     },
 };
