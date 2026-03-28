@@ -175,7 +175,8 @@ async def test_search_calls_geocoder(mock_geocode):
          patch("app.services.search_service.get_cached_results", new_callable=AsyncMock) as mock_results, \
          patch("app.services.search_service.get_balance", new_callable=AsyncMock) as mock_bal, \
          patch("app.services.search_service.deduct_credits", new_callable=AsyncMock) as mock_deduct, \
-         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow:
+         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow, \
+         patch("app.services.search_service.execute", new_callable=AsyncMock):
 
         mock_cache.return_value = {"id": SCRAPE_CACHE_ID, "raw_result_count": 5}
         mock_results.return_value = DB_ROWS
@@ -198,7 +199,8 @@ async def test_search_cache_hit_skips_api():
          patch("app.services.search_service.dataforseo_client") as mock_dfs, \
          patch("app.services.search_service.get_balance", new_callable=AsyncMock) as mock_bal, \
          patch("app.services.search_service.deduct_credits", new_callable=AsyncMock) as mock_deduct, \
-         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow:
+         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow, \
+         patch("app.services.search_service.execute", new_callable=AsyncMock):
 
         mock_geocode.return_value = GEO_RESULT
         mock_cache.return_value = {"id": SCRAPE_CACHE_ID, "raw_result_count": 5}
@@ -224,7 +226,8 @@ async def test_search_cache_miss_calls_api():
          patch("app.services.search_service.store_scrape", new_callable=AsyncMock) as mock_store, \
          patch("app.services.search_service.get_balance", new_callable=AsyncMock) as mock_bal, \
          patch("app.services.search_service.deduct_credits", new_callable=AsyncMock) as mock_deduct, \
-         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow:
+         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow, \
+         patch("app.services.search_service.execute", new_callable=AsyncMock):
 
         mock_geocode.return_value = GEO_RESULT
         mock_cache.return_value = None  # No cache
@@ -250,7 +253,8 @@ async def test_search_applies_filters():
          patch("app.services.search_service.get_cached_results", new_callable=AsyncMock) as mock_results, \
          patch("app.services.search_service.get_balance", new_callable=AsyncMock) as mock_bal, \
          patch("app.services.search_service.deduct_credits", new_callable=AsyncMock) as mock_deduct, \
-         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow:
+         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow, \
+         patch("app.services.search_service.execute", new_callable=AsyncMock):
 
         mock_geocode.return_value = GEO_RESULT
         mock_cache.return_value = {"id": SCRAPE_CACHE_ID, "raw_result_count": 5}
@@ -275,7 +279,8 @@ async def test_search_deducts_credits():
          patch("app.services.search_service.get_cached_results", new_callable=AsyncMock) as mock_results, \
          patch("app.services.search_service.get_balance", new_callable=AsyncMock) as mock_bal, \
          patch("app.services.search_service.deduct_credits", new_callable=AsyncMock) as mock_deduct, \
-         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow:
+         patch("app.services.search_service.fetchrow", new_callable=AsyncMock) as mock_fetchrow, \
+         patch("app.services.search_service.execute", new_callable=AsyncMock):
 
         mock_geocode.return_value = GEO_RESULT
         mock_cache.return_value = {"id": SCRAPE_CACHE_ID, "raw_result_count": 5}
