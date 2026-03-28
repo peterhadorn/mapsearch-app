@@ -118,7 +118,7 @@ def build_cache_key(keyword, location, zoom, near_me, country=""):
     return f"{keyword.strip().lower()}|{location.strip().lower()}|{zoom}|{str(near_me).lower()}|{(country or '').lower()}"
 
 
-async def search(user_id, keyword, location, zoom_level=13, near_me=False, filters=None):
+async def search(user_id, keyword, location, zoom_level=13, near_me=False, filters=None, force_refresh=False):
     """Main search function. Returns results dict or raises InsufficientCreditsError."""
     filters = filters or {}
 
@@ -135,7 +135,7 @@ async def search(user_id, keyword, location, zoom_level=13, near_me=False, filte
 
     # 3. Check cache
     cache_key = build_cache_key(keyword, location, zoom_level, near_me, country_code)
-    cached = await find_cached_scrape(cache_key, CACHE_DURATION_HOURS)
+    cached = None if force_refresh else await find_cached_scrape(cache_key, CACHE_DURATION_HOURS)
 
     if cached:
         scrape_cache_id = cached["id"]
@@ -179,6 +179,13 @@ async def search(user_id, keyword, location, zoom_level=13, near_me=False, filte
         VALUES ($1, $2, $3, $4, $5)
         RETURNING id
     """, user_id, scrape_cache_id, json.dumps(filters), filtered_count, filtered_count)
+
+    # 9. Store filtered result IDs for history
+    for r in filtered_results:
+        await execute("""
+            INSERT INTO search_result_ids (search_id, search_result_id)
+            VALUES ($1, $2)
+        """, search_row["id"], r["id"])
 
     return {
         "search_id": str(search_row["id"]),

@@ -23,6 +23,7 @@ async def search_endpoint(request: Request, body: SearchRequest, user: dict = De
             zoom_level=body.zoom_level,
             near_me=body.near_me,
             filters=body.filters,
+            force_refresh=body.force_refresh,
         )
         return result
     except InsufficientCreditsError as e:
