@@ -35,7 +35,7 @@
           <circle cx="12" cy="12" r="10"/>
           <polyline points="12 6 12 12 16 14"/>
         </svg>
-        <span id="credits-count">99</span> <span class="credits-pill__label hide-mobile" data-i18n="credits">credits</span>
+        <span id="credits-count">99</span> <span class="credits-pill__label hide-mobile" data-i18n="nav.credits">credits</span>
       </div>
 
       <button class="theme-toggle hide-mobile" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
@@ -60,8 +60,8 @@
         </svg>
       </button>
 
-      <button class="btn--signin hide-mobile" id="signin-btn" data-i18n="sign_in">Sign In</button>
-      <button class="btn--logout hide-mobile" id="logout-btn" data-i18n="log_out" style="display:none;">Log out</button>
+      <button class="btn--signin hide-mobile" id="signin-btn" data-i18n="ui.signIn">Sign In</button>
+      <button class="btn--logout hide-mobile" id="logout-btn" data-i18n="ui.logOut" style="display:none;">Log out</button>
 
       <div id="user-menu" class="user-dropdown hide-mobile" style="display:none;">
         <button id="user-menu-trigger" class="user-menu-btn">
@@ -102,7 +102,7 @@
     <div class="mobile-menu__divider"></div>
     <div class="mobile-menu__controls">
       <div class="mobile-menu__row">
-        <span class="mobile-menu__label" data-i18n="language">Language</span>
+        <span class="mobile-menu__label" data-i18n="ui.language">Language</span>
         <select class="lang-select" id="lang-select-mobile" aria-label="Language">
           <option value="en" selected>EN</option>
           <option value="fr">FR</option>
@@ -111,7 +111,7 @@
         </select>
       </div>
       <div class="mobile-menu__row">
-        <span class="mobile-menu__label" data-i18n="theme">Theme</span>
+        <span class="mobile-menu__label" data-i18n="ui.theme">Theme</span>
         <button class="theme-toggle" id="theme-toggle-mobile" type="button" aria-label="Toggle theme">
           <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/>
@@ -136,8 +136,8 @@
       <a href="/history" class="mobile-menu__link" data-i18n="userMenu.history">Search History</a>
     </div>
     <div class="mobile-menu__auth">
-      <button class="btn--signin mobile-menu__signin" id="signin-btn-mobile" data-i18n="sign_in">Sign In</button>
-      <button class="btn--logout mobile-menu__logout" id="logout-btn-mobile" data-i18n="log_out" style="display:none;">Log out</button>
+      <button class="btn--signin mobile-menu__signin" id="signin-btn-mobile" data-i18n="ui.signIn">Sign In</button>
+      <button class="btn--logout mobile-menu__logout" id="logout-btn-mobile" data-i18n="ui.logOut" style="display:none;">Log out</button>
     </div>
   </div>
 
@@ -160,14 +160,14 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <input type="text" class="search-input" id="keyword-input" placeholder="Search businesses..." data-i18n-placeholder="search_placeholder" autocomplete="off">
+          <input type="text" class="search-input" id="keyword-input" placeholder="Search businesses..." data-i18n-placeholder="hero.keywordPlaceholder" autocomplete="off">
         </div>
         <div class="search-card__input-group">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
-          <input type="text" class="search-input" id="location-input" placeholder="City or click on map..." data-i18n-placeholder="location_placeholder" autocomplete="off">
+          <input type="text" class="search-input" id="location-input" placeholder="City or click on map..." data-i18n-placeholder="hero.locationPlaceholder" autocomplete="off">
         </div>
       </div>
 
@@ -176,14 +176,14 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
-          <span data-i18n="filters">Filters</span>
+          <span data-i18n="filters.label">Filters</span>
         </button>
         <button class="btn--search" id="search-btn" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <span data-i18n="search">Search</span>
+          <span data-i18n="hero.searchBtn">Search</span>
         </button>
       </div>
 
@@ -192,37 +192,37 @@
         <div class="filters-grid">
           <!-- Has website -->
           <div class="filter-item">
-            <label data-i18n="filter_website">Has website</label>
+            <label data-i18n="filters.hasWebsite">Has website</label>
             <div class="tri-toggle" data-filter="website">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
             </div>
           </div>
 
           <!-- Has email -->
           <div class="filter-item">
-            <label data-i18n="filter_email">Has email</label>
+            <label data-i18n="filters.hasEmail">Has email</label>
             <div class="tri-toggle" data-filter="email">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
             </div>
           </div>
 
           <!-- Has phone -->
           <div class="filter-item">
-            <label data-i18n="filter_phone">Has phone</label>
+            <label data-i18n="filters.hasPhone">Has phone</label>
             <div class="tri-toggle" data-filter="phone">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
             </div>
           </div>
 
           <!-- Min rating -->
           <div class="filter-item">
-            <label data-i18n="filter_min_rating">Min rating</label>
+            <label data-i18n="filters.ratingMin">Min rating</label>
             <div class="range-slider">
               <input type="range" min="1" max="5" step="0.5" value="1" id="rating-slider">
               <span class="range-value" id="rating-value">1.0</span>
@@ -231,7 +231,7 @@
 
           <!-- Min reviews -->
           <div class="filter-item">
-            <label data-i18n="filter_min_reviews">Min reviews</label>
+            <label data-i18n="filters.reviewsMin">Min reviews</label>
             <div class="range-slider">
               <input type="range" min="0" max="500" step="10" value="0" id="reviews-slider">
               <span class="range-value" id="reviews-value">0</span>
@@ -240,50 +240,50 @@
 
           <!-- Claimed -->
           <div class="filter-item">
-            <label data-i18n="filter_claimed">Claimed</label>
+            <label data-i18n="filters.claimed">Claimed</label>
             <div class="tri-toggle" data-filter="claimed">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
             </div>
           </div>
 
           <!-- Search area -->
           <div class="filter-item" style="grid-column: 1 / -1;">
-            <label data-i18n="filter_search_area">Search area</label>
+            <label data-i18n="filters.radius">Search area</label>
             <div class="tri-toggle tri-toggle--wide" data-filter="zoom">
-              <button class="tri-toggle__btn" data-value="14" data-i18n="area_neighborhood">Neighborhood <span style="opacity:0.5">~3 mi</span></button>
-              <button class="tri-toggle__btn is-active" data-value="13" data-i18n="area_district">District <span style="opacity:0.5">~6 mi</span></button>
-              <button class="tri-toggle__btn" data-value="12" data-i18n="area_city">City <span style="opacity:0.5">~12 mi</span></button>
-              <button class="tri-toggle__btn" data-value="11" data-i18n="area_metro">Metro <span style="opacity:0.5">~25 mi</span></button>
+              <button class="tri-toggle__btn" data-value="14" data-i18n="filters.areaNeighborhood">Neighborhood <span style="opacity:0.5">~3 mi</span></button>
+              <button class="tri-toggle__btn is-active" data-value="13" data-i18n="filters.areaDistrict">District <span style="opacity:0.5">~6 mi</span></button>
+              <button class="tri-toggle__btn" data-value="12" data-i18n="filters.areaCity">City <span style="opacity:0.5">~12 mi</span></button>
+              <button class="tri-toggle__btn" data-value="11" data-i18n="filters.areaMetro">Metro <span style="opacity:0.5">~25 mi</span></button>
             </div>
           </div>
 
           <!-- Near me mode -->
           <div class="filter-item" style="grid-column: 1 / -1;">
             <div style="display:flex; align-items:center; gap:10px;">
-              <label style="margin:0;" data-i18n="filter_near_me">Near me mode</label>
+              <label style="margin:0;" data-i18n="filters.nearMe">Near me mode</label>
               <label class="switch">
                 <input type="checkbox" id="nearme-toggle">
                 <span class="switch__track"></span>
               </label>
-              <span style="font-size:var(--text-xs); color:var(--text-tertiary);" data-i18n="near_me_desc">Simulates "near me" searches as Google shows them locally</span>
+              <span style="font-size:var(--text-xs); color:var(--text-tertiary);" data-i18n="filters.nearMeDesc">Simulates "near me" searches as Google shows them locally</span>
             </div>
           </div>
 
           <!-- Category -->
           <div class="filter-item">
-            <label data-i18n="filter_category">Category</label>
+            <label data-i18n="filters.category">Category</label>
             <select class="filter-select" id="category-select">
-              <option value="" data-i18n="all_categories">All categories</option>
+              <option value="" data-i18n="filters.categoryPlaceholder">All categories</option>
             </select>
           </div>
 
           <!-- Price level -->
           <div class="filter-item">
-            <label data-i18n="filter_price">Price level</label>
+            <label data-i18n="filters.priceLevel">Price level</label>
             <div class="tri-toggle tri-toggle--wide" data-filter="price">
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
               <button class="tri-toggle__btn" data-value="1">$</button>
               <button class="tri-toggle__btn" data-value="2">$$</button>
               <button class="tri-toggle__btn" data-value="3">$$$</button>
@@ -292,11 +292,11 @@
 
           <!-- Has photos -->
           <div class="filter-item">
-            <label data-i18n="filter_photos">Has photos</label>
+            <label data-i18n="filters.hasPhotos">Has photos</label>
             <div class="tri-toggle" data-filter="photos">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="any">Any</button>
+              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
+              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
+              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
             </div>
           </div>
         </div>
@@ -325,7 +325,7 @@
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          <span data-i18n="export_csv">Export CSV</span>
+          <span data-i18n="results.exportCsv">Export CSV</span>
         </button>
         <div class="columns-dropdown">
           <button class="columns-dropdown__trigger" id="columns-toggle" type="button" title="Toggle columns">
@@ -345,14 +345,14 @@
       <table class="data-table" id="results-table">
         <thead>
           <tr>
-            <th data-sortable data-i18n="col_business">Business</th>
-            <th data-sortable data-i18n="col_category">Category</th>
-            <th data-sortable data-i18n="col_city">City</th>
-            <th data-sortable data-i18n="col_phone">Phone</th>
-            <th data-sortable data-i18n="col_website">Website</th>
-            <th data-sortable data-i18n="col_email">Email</th>
-            <th data-sortable style="text-align:right" data-i18n="col_rating">Rating</th>
-            <th data-sortable style="text-align:right" data-i18n="col_reviews">Reviews</th>
+            <th data-sortable data-i18n="results.columns.businessName">Business</th>
+            <th data-sortable data-i18n="results.columns.category">Category</th>
+            <th data-sortable data-i18n="results.columns.city">City</th>
+            <th data-sortable data-i18n="results.columns.phone">Phone</th>
+            <th data-sortable data-i18n="results.columns.website">Website</th>
+            <th data-sortable data-i18n="results.columns.email">Email</th>
+            <th data-sortable style="text-align:right" data-i18n="results.columns.rating">Rating</th>
+            <th data-sortable style="text-align:right" data-i18n="results.columns.reviews">Reviews</th>
           </tr>
         </thead>
         <tbody id="results-table-body">
@@ -556,11 +556,11 @@
        ================================================================ -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-copy">&copy; 2026 MapSearch. All rights reserved.</span>
+      <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 MapSearch. All rights reserved.</span>
       <div class="footer-links">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="mailto:hello@mapsearch.app">Contact</a>
+        <a href="/privacy" data-i18n="footer.privacy">Privacy</a>
+        <a href="/terms" data-i18n="footer.terms">Terms</a>
+        <a href="mailto:hello@mapsearch.app" data-i18n="footer.contact">Contact</a>
       </div>
     </div>
   </footer>
@@ -578,21 +578,21 @@
         </svg>
       </button>
 
-      <h2 class="modal-title" data-i18n="create_account">Create free account</h2>
-      <p class="modal-subtitle"><strong data-i18n="free_credits">99 free credits</strong> &mdash; <span data-i18n="enough_first_search">enough for your first search</span></p>
+      <h2 class="modal-title" data-i18n="ui.createAccount">Create free account</h2>
+      <p class="modal-subtitle"><strong data-i18n="ui.freeCreditsModal">99 free credits</strong> &mdash; <span data-i18n="ui.enoughFirstSearch">enough for your first search</span></p>
 
       <!-- Email/password form -->
       <form id="signup-form">
         <div class="form-group">
-          <label for="signup-email" data-i18n="email">Email</label>
+          <label for="signup-email" data-i18n="signup.emailLabel">Email</label>
           <input type="email" class="form-input" id="signup-email" placeholder="you@company.com" autocomplete="email">
         </div>
         <div class="form-group">
-          <label for="signup-password" data-i18n="password">Password</label>
-          <input type="password" class="form-input" id="signup-password" placeholder="At least 8 characters" data-i18n-placeholder="password_placeholder" autocomplete="new-password">
+          <label for="signup-password" data-i18n="signup.passwordLabel">Password</label>
+          <input type="password" class="form-input" id="signup-password" placeholder="At least 8 characters" data-i18n-placeholder="signup.passwordPlaceholder" autocomplete="new-password">
         </div>
         <a href="#" id="forgot-password-link" style="font-size: var(--text-sm); color: var(--accent); display: none; margin-top: var(--space-2);" data-i18n="login.forgotPassword">Forgot password?</a>
-        <button type="submit" class="btn--submit" data-i18n="sign_up">Sign up</button>
+        <button type="submit" class="btn--submit" data-i18n="signup.submit">Sign up</button>
       </form>
 
       <!-- Forgot password view -->
@@ -608,7 +608,7 @@
       </div>
 
       <p class="modal-footer-text">
-        <span data-i18n="have_account">Already have an account?</span> <a id="login-link" data-i18n="log_in">Log in</a>
+        <span data-i18n="ui.haveAccount">Already have an account?</span> <a id="login-link" data-i18n="ui.logIn">Log in</a>
       </p>
     </div>
   </div>

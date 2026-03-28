@@ -31,6 +31,7 @@
     }
   },
   "filters": {
+    "label": "Filters",
     "hasWebsite": "Has website",
     "noWebsite": "No website",
     "anyWebsite": "Any",
@@ -40,6 +41,9 @@
     "hasPhone": "Has phone",
     "noPhone": "No phone",
     "anyPhone": "Any",
+    "yes": "Yes",
+    "no": "No",
+    "any": "Any",
     "rating": "Rating",
     "ratingMin": "Min rating",
     "ratingMax": "Max rating",
@@ -59,8 +63,14 @@
     "more": "+ More filters",
     "clearAll": "Clear all filters",
     "apply": "Apply filters",
-    "radius": "Radius",
-    "radiusKm": "{value} km"
+    "radius": "Search area",
+    "radiusKm": "{value} km",
+    "nearMe": "Near me mode",
+    "nearMeDesc": "Simulates \"near me\" searches as Google shows them locally",
+    "areaNeighborhood": "Neighborhood",
+    "areaDistrict": "District",
+    "areaCity": "City",
+    "areaMetro": "Metro"
   },
   "howItWorks": {
     "label": "How it works",
@@ -436,5 +446,17 @@
   "pagination": {
     "prev": "Prev",
     "next": "Next"
+  },
+  "ui": {
+    "language": "Language",
+    "theme": "Theme",
+    "logOut": "Log out",
+    "signIn": "Sign In",
+    "signUp": "Sign up",
+    "haveAccount": "Already have an account?",
+    "logIn": "Log in",
+    "enoughFirstSearch": "enough for your first search",
+    "createAccount": "Create free account",
+    "freeCreditsModal": "99 free credits"
   }
 }
