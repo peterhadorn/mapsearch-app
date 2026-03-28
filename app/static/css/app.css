@@ -2073,3 +2073,27 @@ html {
     0%   { transform: scale(0.5); opacity: 1; }
     100% { transform: scale(2.5); opacity: 0; }
 }
+
+/* ================================================================
+   User Dropdown Menu
+   ================================================================ */
+.user-dropdown { position: relative; }
+.user-menu-btn {
+    display: flex; align-items: center; gap: var(--space-1);
+    background: transparent; border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: var(--space-1) var(--space-3);
+    color: var(--text-primary); cursor: pointer; font-size: var(--text-sm);
+}
+.user-menu-btn:hover { border-color: var(--accent-500); }
+.user-menu-items {
+    position: absolute; top: 100%; right: 0; margin-top: var(--space-1);
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: var(--radius-md); min-width: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 100;
+}
+.user-menu-items a, .user-menu-items button {
+    display: block; width: 100%; padding: var(--space-2) var(--space-3);
+    color: var(--text-primary); text-decoration: none; font-size: var(--text-sm);
+    text-align: left; background: transparent; border: none; cursor: pointer;
+}
+.user-menu-items a:hover, .user-menu-items button:hover { background: var(--bg-hover); }

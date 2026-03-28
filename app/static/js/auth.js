@@ -19,6 +19,23 @@ const Auth = {
             this.logout();
         });
 
+        // Nav dropdown logout
+        const navLogout = document.getElementById('nav-logout-btn');
+        if (navLogout) navLogout.addEventListener('click', () => this.logout());
+
+        // User dropdown toggle
+        const menuTrigger = document.getElementById('user-menu-trigger');
+        if (menuTrigger) {
+            menuTrigger.addEventListener('click', () => this._toggleDropdown());
+        }
+        // Close dropdown on outside click
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('user-menu');
+            if (dropdown && !dropdown.contains(e.target)) {
+                this._closeDropdown();
+            }
+        });
+
         // Close modal
         document.getElementById('modal-close').addEventListener('click', () => this.hideModal());
         document.getElementById('modal-backdrop').addEventListener('click', () => this.hideModal());
@@ -31,6 +48,30 @@ const Auth = {
             e.preventDefault();
             this.toggleMode();
         });
+
+        // Forgot password link
+        const forgotLink = document.getElementById('forgot-password-link');
+        if (forgotLink) {
+            forgotLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this._showForgotPassword();
+            });
+        }
+
+        // Forgot password submit
+        const forgotSubmit = document.getElementById('forgot-submit-btn');
+        if (forgotSubmit) {
+            forgotSubmit.addEventListener('click', () => this._handleForgotPassword());
+        }
+
+        // Back to login link
+        const backToLogin = document.getElementById('back-to-login-link');
+        if (backToLogin) {
+            backToLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                this._hideForgotPassword();
+            });
+        }
 
         // Escape key closes modal
         document.addEventListener('keydown', (e) => {
@@ -78,6 +119,71 @@ const Auth = {
         if (mobileMenu) mobileMenu.classList.remove('is-open');
     },
 
+    _toggleDropdown() {
+        const items = document.getElementById('user-menu-items');
+        if (items) {
+            items.style.display = items.style.display === 'none' ? 'block' : 'none';
+        }
+    },
+
+    _closeDropdown() {
+        const items = document.getElementById('user-menu-items');
+        if (items) items.style.display = 'none';
+    },
+
+    _showForgotPassword() {
+        document.getElementById('signup-form').style.display = 'none';
+        document.querySelector('.modal-footer-text').style.display = 'none';
+        const subtitle = document.querySelector('.modal-subtitle');
+        if (subtitle) subtitle.style.display = 'none';
+        document.querySelector('.modal-title').style.display = 'none';
+        document.getElementById('forgot-password-view').style.display = 'block';
+        document.getElementById('forgot-message').textContent = '';
+        const forgotEmail = document.getElementById('forgot-email');
+        if (forgotEmail) forgotEmail.focus();
+    },
+
+    _hideForgotPassword() {
+        document.getElementById('forgot-password-view').style.display = 'none';
+        document.getElementById('signup-form').style.display = '';
+        document.querySelector('.modal-footer-text').style.display = '';
+        const subtitle = document.querySelector('.modal-subtitle');
+        if (subtitle) subtitle.style.display = '';
+        document.querySelector('.modal-title').style.display = '';
+    },
+
+    async _handleForgotPassword() {
+        const email = document.getElementById('forgot-email').value.trim();
+        const msgEl = document.getElementById('forgot-message');
+        if (!email) {
+            msgEl.textContent = 'Please enter your email address.';
+            msgEl.style.color = 'var(--rose-400)';
+            return;
+        }
+        const btn = document.getElementById('forgot-submit-btn');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        try {
+            const resp = await fetch('/api/auth/forgot-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+            if (resp.ok) {
+                msgEl.textContent = 'If that email exists, a reset link has been sent.';
+                msgEl.style.color = 'var(--accent-500)';
+            } else {
+                msgEl.textContent = 'If that email exists, a reset link has been sent.';
+                msgEl.style.color = 'var(--accent-500)';
+            }
+        } catch (err) {
+            msgEl.textContent = 'Network error. Please try again.';
+            msgEl.style.color = 'var(--rose-400)';
+        }
+        btn.disabled = false;
+        btn.textContent = 'Send Reset Link';
+    },
+
     async logout() {
         try {
             await fetch('/api/auth/logout', { method: 'POST' });
@@ -99,6 +205,8 @@ const Auth = {
 
     showModal(pendingSearch = null) {
         this._pendingSearch = pendingSearch;
+        // Reset to signup form view (hide forgot password if showing)
+        this._hideForgotPassword();
         document.getElementById('signup-modal').classList.add('is-open');
         document.getElementById('signup-email').focus();
     },
@@ -112,15 +220,18 @@ const Auth = {
         const title = document.querySelector('.modal-title');
         const submit = document.querySelector('.btn--submit');
         const footer = document.querySelector('.modal-footer-text');
+        const forgotLink = document.getElementById('forgot-password-link');
 
         if (this._isLogin) {
             title.textContent = 'Welcome back';
             submit.textContent = 'Log in';
             footer.innerHTML = 'Don\'t have an account? <a id="login-link">Sign up</a>';
+            if (forgotLink) forgotLink.style.display = 'block';
         } else {
             title.textContent = 'Create free account';
             submit.textContent = 'Sign up';
             footer.innerHTML = 'Already have an account? <a id="login-link">Log in</a>';
+            if (forgotLink) forgotLink.style.display = 'none';
         }
         // Re-bind toggle link
         document.getElementById('login-link').addEventListener('click', (e) => {
@@ -182,20 +293,44 @@ const Auth = {
         const signinMobile = document.getElementById('signin-btn-mobile');
         const logoutMobile = document.getElementById('logout-btn-mobile');
         const creditsPill = document.getElementById('credits-pill');
+        const userMenu = document.getElementById('user-menu');
+        const mobileAuthLinks = document.getElementById('mobile-auth-links');
 
         if (user) {
             signinBtn.style.display = 'none';
-            logoutBtn.style.display = '';
+            logoutBtn.style.display = 'none'; // hide old logout, dropdown has Sign Out
             creditsPill.style.display = 'flex';
             document.getElementById('credits-count').textContent = user.credits_remaining;
+
+            // Show user dropdown with truncated email
+            if (userMenu) {
+                userMenu.style.display = '';
+                const emailDisplay = document.getElementById('user-email-display');
+                if (emailDisplay && user.email) {
+                    const truncated = user.email.length > 20 ? user.email.substring(0, 18) + '...' : user.email;
+                    emailDisplay.textContent = truncated;
+                }
+            }
+
+            // Mobile: show auth links, hide sign in
             if (signinMobile) signinMobile.style.display = 'none';
             if (logoutMobile) logoutMobile.style.display = '';
+            if (mobileAuthLinks) mobileAuthLinks.style.display = '';
         } else {
             signinBtn.style.display = '';
             logoutBtn.style.display = 'none';
             creditsPill.style.display = 'none';
+
+            // Hide user dropdown
+            if (userMenu) {
+                userMenu.style.display = 'none';
+                this._closeDropdown();
+            }
+
+            // Mobile: hide auth links, show sign in
             if (signinMobile) signinMobile.style.display = '';
             if (logoutMobile) logoutMobile.style.display = 'none';
+            if (mobileAuthLinks) mobileAuthLinks.style.display = 'none';
         }
     },
 };

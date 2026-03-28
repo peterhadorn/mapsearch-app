@@ -63,6 +63,19 @@
       <button class="btn--signin hide-mobile" id="signin-btn" data-i18n="sign_in">Sign In</button>
       <button class="btn--logout hide-mobile" id="logout-btn" data-i18n="log_out" style="display:none;">Log out</button>
 
+      <div id="user-menu" class="user-dropdown hide-mobile" style="display:none;">
+        <button id="user-menu-trigger" class="user-menu-btn">
+          <span id="user-email-display">Account</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div id="user-menu-items" class="user-menu-items" style="display:none;">
+          <a href="/account">Account</a>
+          <a href="/billing">Billing &amp; Credits</a>
+          <a href="/history">Search History</a>
+          <button id="nav-logout-btn">Sign Out</button>
+        </div>
+      </div>
+
       <!-- Hamburger menu (mobile only) -->
       <button class="hamburger show-mobile-only" id="hamburger-btn" type="button" aria-label="Menu" aria-expanded="false">
         <svg class="hamburger__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -117,6 +130,11 @@
       </div>
     </div>
     <div class="mobile-menu__divider"></div>
+    <div class="mobile-menu__auth-links" id="mobile-auth-links" style="display:none;">
+      <a href="/account" class="mobile-menu__link">Account</a>
+      <a href="/billing" class="mobile-menu__link">Billing &amp; Credits</a>
+      <a href="/history" class="mobile-menu__link">Search History</a>
+    </div>
     <div class="mobile-menu__auth">
       <button class="btn--signin mobile-menu__signin" id="signin-btn-mobile" data-i18n="sign_in">Sign In</button>
       <button class="btn--logout mobile-menu__logout" id="logout-btn-mobile" data-i18n="log_out" style="display:none;">Log out</button>
@@ -573,8 +591,21 @@
           <label for="signup-password" data-i18n="password">Password</label>
           <input type="password" class="form-input" id="signup-password" placeholder="At least 8 characters" data-i18n-placeholder="password_placeholder" autocomplete="new-password">
         </div>
+        <a href="#" id="forgot-password-link" style="font-size: var(--text-sm); color: var(--accent); display: none; margin-top: var(--space-2);">Forgot password?</a>
         <button type="submit" class="btn--submit" data-i18n="sign_up">Sign up</button>
       </form>
+
+      <!-- Forgot password view -->
+      <div id="forgot-password-view" style="display:none;">
+        <h3 style="margin-bottom: var(--space-4);">Reset Password</h3>
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-size: var(--text-sm);">Enter your email and we'll send you a reset link.</p>
+        <div class="form-group">
+          <input type="email" class="form-input" id="forgot-email" placeholder="Email" required>
+        </div>
+        <button id="forgot-submit-btn" class="btn--submit" style="width:100%;">Send Reset Link</button>
+        <p id="forgot-message" style="margin-top: var(--space-3); font-size: var(--text-sm);"></p>
+        <a href="#" id="back-to-login-link" style="font-size: var(--text-sm); color: var(--accent); display: block; margin-top: var(--space-3);">Back to login</a>
+      </div>
 
       <p class="modal-footer-text">
         <span data-i18n="have_account">Already have an account?</span> <a id="login-link" data-i18n="log_in">Log in</a>
