@@ -29,3 +29,56 @@ class TestSoftDeleteGuard:
         mock_fetchrow.return_value = None
         response = client.get("/api/auth/me")
         assert response.status_code == 401
+
+
+class TestChangePassword:
+    @patch("app.database.queries.execute", new_callable=AsyncMock)
+    @patch("app.routers.auth.queries.get_user_by_id", new_callable=AsyncMock)
+    def test_change_password_success(self, mock_get_user, mock_execute, client):
+        mock_get_user.return_value = make_mock_user()
+
+        from jose import jwt
+        from app.config import SECRET_KEY, JWT_ALGORITHM
+        token = jwt.encode({"sub": str(MOCK_USER_ID), "exp": 9999999999}, SECRET_KEY, algorithm=JWT_ALGORITHM)
+
+        response = client.put("/api/auth/password",
+            json={"current_password": "securepassword123", "new_password": "newpassword456"},
+            cookies={"mapsearch_session": token}
+        )
+        assert response.status_code == 200
+        assert response.json()["message"] == "Password changed"
+
+    @patch("app.routers.auth.queries.get_user_by_id", new_callable=AsyncMock)
+    def test_change_password_wrong_current(self, mock_get_user, client):
+        mock_get_user.return_value = make_mock_user()
+
+        from jose import jwt
+        from app.config import SECRET_KEY, JWT_ALGORITHM
+        token = jwt.encode({"sub": str(MOCK_USER_ID), "exp": 9999999999}, SECRET_KEY, algorithm=JWT_ALGORITHM)
+
+        response = client.put("/api/auth/password",
+            json={"current_password": "wrongpassword", "new_password": "newpassword456"},
+            cookies={"mapsearch_session": token}
+        )
+        assert response.status_code == 400
+
+
+class TestDeleteAccount:
+    @patch("app.database.queries.execute", new_callable=AsyncMock)
+    @patch("app.routers.auth.queries.get_user_by_id", new_callable=AsyncMock)
+    def test_delete_account_success(self, mock_get_user, mock_execute, client):
+        mock_get_user.return_value = make_mock_user()
+
+        from jose import jwt
+        from app.config import SECRET_KEY, JWT_ALGORITHM
+        token = jwt.encode({"sub": str(MOCK_USER_ID), "exp": 9999999999}, SECRET_KEY, algorithm=JWT_ALGORITHM)
+
+        response = client.post("/api/auth/delete-account",
+            cookies={"mapsearch_session": token}
+        )
+        assert response.status_code == 200
+        assert response.json()["message"] == "Account scheduled for deletion in 30 days"
+
+    def test_delete_account_unauthenticated(self, client):
+        response = client.post("/api/auth/delete-account")
+        assert response.status_code == 401
