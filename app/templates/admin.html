@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}Admin — MapSearch{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/pages.css?v=11">
+<style>
+  .admin-tabs { display: flex; gap: var(--space-2); margin-bottom: var(--space-6); }
+  .admin-tab {
+    padding: var(--space-2) var(--space-4); border-radius: var(--radius-md);
+    text-decoration: none; color: var(--text-secondary); font-size: var(--text-sm); font-weight: 500;
+    border: 1px solid var(--border); background: transparent;
+  }
+  .admin-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .admin-tab:hover:not(.active) { background: var(--bg-hover); }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6); }
+  .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; }
+  .stat-value { font-size: var(--text-2xl); font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: var(--text-sm); color: var(--text-secondary); margin-top: var(--space-1); }
+  .admin-actions { display: flex; gap: var(--space-2); align-items: center; }
+  .admin-actions input[type="number"] {
+    width: 80px; padding: var(--space-1) var(--space-2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); background: var(--bg-primary); color: var(--text-primary);
+    font-size: var(--text-sm);
+  }
+  .admin-actions button {
+    padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm);
+    font-size: var(--text-xs); cursor: pointer; border: none; font-weight: 600;
+  }
+  .btn-sm-primary { background: var(--accent); color: white; }
+  .btn-sm-danger { background: var(--red); color: white; }
+  .pagination-nav { display: flex; justify-content: center; gap: var(--space-2); margin-top: var(--space-4); }
+  .pagination-nav a, .pagination-nav span {
+    padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm);
+    font-size: var(--text-sm); text-decoration: none; border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .pagination-nav .active { background: var(--accent); color: white; border-color: var(--accent); }
+  .pagination-nav a:hover:not(.active) { background: var(--bg-hover); }
+  .badge-deleted { color: var(--red); font-size: var(--text-xs); }
+  .badge-active { color: var(--green); font-size: var(--text-xs); }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<header class="header--glass">
+  <a href="/" class="header__logo">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    MapSearch Admin
+  </a>
+  <div class="header__actions">
+    <a href="/" style="color: var(--text-secondary); font-size: var(--text-sm); text-decoration: none;">← Back to app</a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+      <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="page-container" style="max-width: 1100px;">
+
+  <!-- Stats -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-value">{{ stats.total_users }}</div>
+      <div class="stat-label">Users</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ stats.total_searches }}</div>
+      <div class="stat-label">Searches</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ "{:,}".format(stats.total_credits_sold) }}</div>
+      <div class="stat-label">Credits Sold</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">${{ "%.2f"|format(stats.estimated_revenue) }}</div>
+      <div class="stat-label">Est. Revenue</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="admin-tabs">
+    <a href="/admin?tab=users" class="admin-tab {% if tab == 'users' %}active{% endif %}">Users</a>
+    <a href="/admin?tab=searches" class="admin-tab {% if tab == 'searches' %}active{% endif %}">Searches</a>
+    <a href="/admin?tab=revenue" class="admin-tab {% if tab == 'revenue' %}active{% endif %}">Revenue</a>
+  </div>
+
+  <!-- Users Tab -->
+  {% if tab == "users" %}
+  <div class="card" style="overflow-x: auto;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Credits</th>
+          <th>Searches</th>
+          <th>Signed up</th>
+          <th>Last login</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+        <tr>
+          <td>{{ u.email }}</td>
+          <td>{{ u.credits_remaining }}</td>
+          <td>{{ u.search_count }}</td>
+          <td>{{ u.created_at.strftime('%Y-%m-%d') if u.created_at else '—' }}</td>
+          <td>{{ u.last_login_at.strftime('%Y-%m-%d') if u.last_login_at else '—' }}</td>
+          <td>
+            {% if u.deleted_at %}<span class="badge-deleted">Deleted</span>
+            {% else %}<span class="badge-active">Active</span>{% endif %}
+          </td>
+          <td>
+            <div class="admin-actions">
+              <form method="POST" action="/admin/api/adjust-credits" style="display:flex;gap:4px;align-items:center;">
+                <input type="hidden" name="user_id" value="{{ u.id }}">
+                <input type="number" name="amount" value="100" step="1">
+                <button type="submit" class="btn-sm-primary">Adjust</button>
+              </form>
+              <form method="POST" action="/admin/api/delete-user" onsubmit="return confirm('Delete {{ u.email }}? This cannot be undone.')">
+                <input type="hidden" name="user_id" value="{{ u.id }}">
+                <button type="submit" class="btn-sm-danger">Delete</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+        {% if not users %}
+        <tr><td colspan="7" style="text-align:center;color:var(--text-secondary);">No users</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <!-- Searches Tab -->
+  {% if tab == "searches" %}
+  <div class="card" style="overflow-x: auto;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Keyword</th>
+          <th>Location</th>
+          <th>Results</th>
+          <th>Credits</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in searches %}
+        <tr>
+          <td>{{ s.user_email }}</td>
+          <td>{{ s.keyword }}</td>
+          <td>{{ s.location }}</td>
+          <td>{{ s.filtered_result_count }}</td>
+          <td>{{ s.credits_used }}</td>
+          <td>{{ s.created_at.strftime('%Y-%m-%d %H:%M') if s.created_at else '—' }}</td>
+        </tr>
+        {% endfor %}
+        {% if not searches %}
+        <tr><td colspan="6" style="text-align:center;color:var(--text-secondary);">No searches yet</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <!-- Revenue Tab -->
+  {% if tab == "revenue" %}
+  <div class="card" style="overflow-x: auto;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Credits</th>
+          <th>Stripe ID</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in revenue %}
+        <tr>
+          <td>{{ r.user_email }}</td>
+          <td style="color: var(--green);">+{{ r.amount }}</td>
+          <td style="font-size: var(--text-xs);">{{ r.stripe_payment_id or '—' }}</td>
+          <td>{{ r.created_at.strftime('%Y-%m-%d %H:%M') if r.created_at else '—' }}</td>
+        </tr>
+        {% endfor %}
+        {% if not revenue %}
+        <tr><td colspan="4" style="text-align:center;color:var(--text-secondary);">No purchases yet</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <!-- Pagination -->
+  {% if total_pages > 1 %}
+  <div class="pagination-nav">
+    {% if page > 1 %}
+    <a href="/admin?tab={{ tab }}&page={{ page - 1 }}">← Prev</a>
+    {% endif %}
+    {% for p in range(1, total_pages + 1) %}
+      {% if p == page %}
+      <span class="active">{{ p }}</span>
+      {% else %}
+      <a href="/admin?tab={{ tab }}&page={{ p }}">{{ p }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if page < total_pages %}
+    <a href="/admin?tab={{ tab }}&page={{ page + 1 }}">Next →</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

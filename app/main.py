@@ -43,6 +43,9 @@ app.include_router(search_history.router)
 from app.routers import account
 app.include_router(account.router)
 
+from app.routers import admin
+app.include_router(admin.router)
+
 
 @app.on_event("startup")
 async def startup_purge():

@@ -17,6 +17,7 @@ os.environ.setdefault("STRIPE_SECRET_KEY", "sk_test_fake")
 os.environ.setdefault("STRIPE_WEBHOOK_SECRET", "whsec_test_fake")
 os.environ.setdefault("MAPSEARCH_SECRET_KEY", "test-secret-key-for-jwt-signing-minimum-length")
 os.environ["MAPSEARCH_ENV"] = "test"
+os.environ.setdefault("ADMIN_EMAIL", "admin@test.com")
 
 # Mock asyncpg before any app imports — it may not be installable on this Python version
 if "asyncpg" not in sys.modules:
