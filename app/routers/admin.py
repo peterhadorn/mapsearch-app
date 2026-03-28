@@ -65,8 +65,7 @@ async def admin_dashboard(
     if total_items > 0:
         total_pages = (total_items + limit - 1) // limit
 
-    return templates.TemplateResponse("admin.html", {
-        "request": request,
+    return templates.TemplateResponse(request, "admin.html", {
         "user": user,
         "stats": stats,
         "tab": tab,
