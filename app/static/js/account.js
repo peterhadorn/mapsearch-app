@@ -46,17 +46,17 @@
       const confirmPassword = document.getElementById('confirm-password').value.trim();
 
       if (!currentPassword || !newPassword || !confirmPassword) {
-        showAlert('Please fill in all password fields.', 'error');
+        showAlert(I18n.get('account.fillAllFields') || 'Please fill in all password fields.', 'error');
         return;
       }
 
       if (newPassword !== confirmPassword) {
-        showAlert('New passwords do not match.', 'error');
+        showAlert(I18n.get('account.passwordMismatch') || 'New passwords do not match.', 'error');
         return;
       }
 
       if (newPassword.length < 8) {
-        showAlert('New password must be at least 8 characters.', 'error');
+        showAlert(I18n.get('account.passwordTooShort') || 'New password must be at least 8 characters.', 'error');
         return;
       }
 
@@ -76,13 +76,13 @@
         const data = await res.json().catch(function () { return {}; });
 
         if (res.ok) {
-          showAlert('Password updated successfully.', 'success');
+          showAlert(I18n.get('account.passwordChanged') || 'Password updated successfully.', 'success');
           passwordForm.reset();
         } else {
-          showAlert(data.detail || 'Failed to update password. Please check your current password and try again.', 'error');
+          showAlert(data.detail || I18n.get('account.wrongPassword') || 'Failed to update password. Please check your current password and try again.', 'error');
         }
       } catch (err) {
-        showAlert('Network error. Please try again.', 'error');
+        showAlert(I18n.get('account.networkError') || 'Network error. Please try again.', 'error');
       } finally {
         submitBtn.disabled = false;
       }
@@ -140,11 +140,11 @@
         } else {
           const data = await res.json().catch(function () { return {}; });
           hideModal();
-          showAlert(data.detail || 'Failed to delete account. Please try again.', 'error');
+          showAlert(data.detail || I18n.get('account.deleteFailed') || 'Failed to delete account. Please try again.', 'error');
         }
       } catch (err) {
         hideModal();
-        showAlert('Network error. Please try again.', 'error');
+        showAlert(I18n.get('account.networkError') || 'Network error. Please try again.', 'error');
       } finally {
         deleteModalConfirm.disabled = false;
       }

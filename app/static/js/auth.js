@@ -156,13 +156,13 @@ const Auth = {
         const email = document.getElementById('forgot-email').value.trim();
         const msgEl = document.getElementById('forgot-message');
         if (!email) {
-            msgEl.textContent = 'Please enter your email address.';
+            msgEl.textContent = I18n.get('forgotPassword.enterEmail') || 'Please enter your email address.';
             msgEl.style.color = 'var(--rose-400)';
             return;
         }
         const btn = document.getElementById('forgot-submit-btn');
         btn.disabled = true;
-        btn.textContent = 'Sending...';
+        btn.textContent = I18n.get('forgotPassword.sending') || 'Sending...';
         try {
             const resp = await fetch('/api/auth/forgot-password', {
                 method: 'POST',
@@ -170,18 +170,18 @@ const Auth = {
                 body: JSON.stringify({ email }),
             });
             if (resp.ok) {
-                msgEl.textContent = 'If that email exists, a reset link has been sent.';
+                msgEl.textContent = I18n.get('forgotPassword.success') || 'If that email exists, a reset link has been sent.';
                 msgEl.style.color = 'var(--accent-500)';
             } else {
-                msgEl.textContent = 'If that email exists, a reset link has been sent.';
+                msgEl.textContent = I18n.get('forgotPassword.success') || 'If that email exists, a reset link has been sent.';
                 msgEl.style.color = 'var(--accent-500)';
             }
         } catch (err) {
-            msgEl.textContent = 'Network error. Please try again.';
+            msgEl.textContent = I18n.get('forgotPassword.networkError') || 'Network error. Please try again.';
             msgEl.style.color = 'var(--rose-400)';
         }
         btn.disabled = false;
-        btn.textContent = 'Send Reset Link';
+        btn.textContent = I18n.get('forgotPassword.submitBtn') || 'Send Reset Link';
     },
 
     async logout() {
@@ -223,14 +223,14 @@ const Auth = {
         const forgotLink = document.getElementById('forgot-password-link');
 
         if (this._isLogin) {
-            title.textContent = 'Welcome back';
-            submit.textContent = 'Log in';
-            footer.innerHTML = 'Don\'t have an account? <a id="login-link">Sign up</a>';
+            title.textContent = I18n.get('login.title') || 'Welcome back';
+            submit.textContent = I18n.get('login.submit') || 'Log in';
+            footer.innerHTML = (I18n.get('login.signupLink') || 'Don\'t have an account? <a id="login-link">Sign up</a>');
             if (forgotLink) forgotLink.style.display = 'block';
         } else {
-            title.textContent = 'Create free account';
-            submit.textContent = 'Sign up';
-            footer.innerHTML = 'Already have an account? <a id="login-link">Log in</a>';
+            title.textContent = I18n.get('signup.title') || 'Create free account';
+            submit.textContent = I18n.get('signup.submit') || 'Sign up';
+            footer.innerHTML = (I18n.get('signup.loginLink') || 'Already have an account? <a id="login-link">Log in</a>');
             if (forgotLink) forgotLink.style.display = 'none';
         }
         // Re-bind toggle link
@@ -255,7 +255,7 @@ const Auth = {
 
             if (!resp.ok) {
                 const data = await resp.json();
-                this.showError(data.detail || 'Something went wrong');
+                this.showError(data.detail || I18n.get('errors.serverError') || 'Something went wrong');
                 return;
             }
 
@@ -270,7 +270,7 @@ const Auth = {
                 this._pendingSearch = null;
             }
         } catch (err) {
-            this.showError('Network error. Please try again.');
+            this.showError(I18n.get('forgotPassword.networkError') || 'Network error. Please try again.');
         }
     },
 
