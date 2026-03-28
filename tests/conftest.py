@@ -58,6 +58,7 @@ def make_mock_user(
         "stripe_customer_id": None,
         "created_at": datetime(2026, 1, 1),
         "last_login_at": None,
+        "deleted_at": None,
     })
 
 

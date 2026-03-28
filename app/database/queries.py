@@ -12,8 +12,12 @@ async def create_user(email, password_hash, name=None, locale='en'):
 
 
 async def get_user_by_email(email):
-    return await fetchrow("SELECT * FROM users WHERE email = $1", email)
+    return await fetchrow(
+        "SELECT * FROM users WHERE email = $1 AND deleted_at IS NULL", email
+    )
 
 
 async def get_user_by_id(user_id):
-    return await fetchrow("SELECT * FROM users WHERE id = $1", user_id)
+    return await fetchrow(
+        "SELECT * FROM users WHERE id = $1 AND deleted_at IS NULL", user_id
+    )
