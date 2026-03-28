@@ -319,5 +319,77 @@
     "step2_desc": "Narrow results with 10+ filters. Only pay for what passes.",
     "step3_title": "Export",
     "step3_desc": "Download CSV or browse the interactive table + map."
+  },
+  "userMenu": {
+    "account": "Account",
+    "billing": "Billing & Credits",
+    "history": "Search History",
+    "signOut": "Sign Out"
+  },
+  "account": {
+    "title": "Account Settings",
+    "subtitle": "Manage your account and security",
+    "email": "Email",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "changePasswordBtn": "Change Password",
+    "passwordChanged": "Password changed successfully",
+    "passwordMismatch": "Passwords do not match",
+    "deleteAccount": "Delete Account",
+    "deleteWarning": "Your account will be deactivated immediately and permanently deleted after 30 days.",
+    "deleteConfirmTitle": "Are you sure?",
+    "deleteConfirmBtn": "Yes, Delete My Account",
+    "deleteScheduled": "Account scheduled for deletion in 30 days",
+    "cancel": "Cancel",
+    "backToSearch": "Back to MapSearch"
+  },
+  "billing": {
+    "title": "Billing & Credits",
+    "subtitle": "Your credit balance and purchase history",
+    "balance": "Credit Balance",
+    "creditsRemaining": "credits remaining",
+    "buyCredits": "Buy Credits",
+    "transactionHistory": "Transaction History",
+    "date": "Date",
+    "type": "Type",
+    "amount": "Credits",
+    "purchase": "Purchase",
+    "searchType": "Search",
+    "noTransactions": "No transactions yet"
+  },
+  "historyPage": {
+    "title": "Search History",
+    "subtitle": "Your past searches and results",
+    "date": "Date",
+    "keyword": "Keyword",
+    "location": "Location",
+    "results": "Results",
+    "credits": "Credits",
+    "view": "View",
+    "noSearches": "No searches yet",
+    "rerun": "Re-run Search (Fresh Data)",
+    "exportCsv": "Export CSV",
+    "backToHistory": "Back to History",
+    "searchNotFound": "Search not found"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "subtitle": "Enter your new password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "submitBtn": "Reset Password",
+    "success": "Password reset successfully! You can now log in.",
+    "invalidLink": "Invalid reset link. No token found.",
+    "expired": "Reset failed. The link may have expired.",
+    "backToHome": "Back to MapSearch"
+  },
+  "forgotPassword": {
+    "title": "Reset Password",
+    "description": "Enter your email and we'll send you a reset link.",
+    "submitBtn": "Send Reset Link",
+    "success": "If that email exists, a reset link has been sent.",
+    "backToLogin": "Back to login"
   }
 }

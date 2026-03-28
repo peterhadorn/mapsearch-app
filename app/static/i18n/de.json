@@ -319,5 +319,77 @@
     "step2_desc": "Eingrenzen mit 10+ Filtern. Zahlen Sie nur, was durchkommt.",
     "step3_title": "Exportieren",
     "step3_desc": "CSV herunterladen oder die interaktive Tabelle + Karte nutzen."
+  },
+  "userMenu": {
+    "account": "Konto",
+    "billing": "Abrechnung & Credits",
+    "history": "Suchverlauf",
+    "signOut": "Abmelden"
+  },
+  "account": {
+    "title": "Kontoeinstellungen",
+    "subtitle": "Verwalte dein Konto und deine Sicherheit",
+    "email": "E-Mail",
+    "changePassword": "Passwort aendern",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Neues Passwort bestaetigen",
+    "changePasswordBtn": "Passwort aendern",
+    "passwordChanged": "Passwort erfolgreich geaendert",
+    "passwordMismatch": "Passwoerter stimmen nicht ueberein",
+    "deleteAccount": "Konto loeschen",
+    "deleteWarning": "Dein Konto wird sofort deaktiviert und nach 30 Tagen dauerhaft geloescht.",
+    "deleteConfirmTitle": "Bist du sicher?",
+    "deleteConfirmBtn": "Ja, mein Konto loeschen",
+    "deleteScheduled": "Kontoloesch­ung in 30 Tagen geplant",
+    "cancel": "Abbrechen",
+    "backToSearch": "Zurueck zu MapSearch"
+  },
+  "billing": {
+    "title": "Abrechnung & Credits",
+    "subtitle": "Dein Credit-Guthaben und Kaufhistorie",
+    "balance": "Credit-Guthaben",
+    "creditsRemaining": "Credits verbleibend",
+    "buyCredits": "Credits kaufen",
+    "transactionHistory": "Transaktionshistorie",
+    "date": "Datum",
+    "type": "Typ",
+    "amount": "Credits",
+    "purchase": "Kauf",
+    "searchType": "Suche",
+    "noTransactions": "Noch keine Transaktionen"
+  },
+  "historyPage": {
+    "title": "Suchverlauf",
+    "subtitle": "Deine bisherigen Suchen und Ergebnisse",
+    "date": "Datum",
+    "keyword": "Suchbegriff",
+    "location": "Standort",
+    "results": "Ergebnisse",
+    "credits": "Credits",
+    "view": "Ansehen",
+    "noSearches": "Noch keine Suchen",
+    "rerun": "Suche wiederholen (neue Daten)",
+    "exportCsv": "CSV exportieren",
+    "backToHistory": "Zurueck zum Verlauf",
+    "searchNotFound": "Suche nicht gefunden"
+  },
+  "resetPassword": {
+    "title": "Passwort zuruecksetzen",
+    "subtitle": "Gib dein neues Passwort ein",
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Passwort bestaetigen",
+    "submitBtn": "Passwort zuruecksetzen",
+    "success": "Passwort erfolgreich zurueckgesetzt! Du kannst dich jetzt anmelden.",
+    "invalidLink": "Ungültiger Zuruecksetz-Link. Kein Token gefunden.",
+    "expired": "Zuruecksetzen fehlgeschlagen. Der Link ist moeglicherweise abgelaufen.",
+    "backToHome": "Zurueck zu MapSearch"
+  },
+  "forgotPassword": {
+    "title": "Passwort zuruecksetzen",
+    "description": "Gib deine E-Mail ein und wir senden dir einen Zuruecksetz-Link.",
+    "submitBtn": "Zuruecksetz-Link senden",
+    "success": "Falls diese E-Mail existiert, wurde ein Zuruecksetz-Link gesendet.",
+    "backToLogin": "Zurueck zum Login"
   }
 }

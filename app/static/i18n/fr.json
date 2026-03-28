@@ -319,5 +319,77 @@
     "step2_desc": "Affinez avec 10+ filtres. Ne payez que ce qui passe.",
     "step3_title": "Exporter",
     "step3_desc": "Téléchargez en CSV ou explorez le tableau interactif + carte."
+  },
+  "userMenu": {
+    "account": "Compte",
+    "billing": "Facturation et credits",
+    "history": "Historique des recherches",
+    "signOut": "Se deconnecter"
+  },
+  "account": {
+    "title": "Parametres du compte",
+    "subtitle": "Gerez votre compte et votre securite",
+    "email": "Email",
+    "changePassword": "Changer le mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le nouveau mot de passe",
+    "changePasswordBtn": "Changer le mot de passe",
+    "passwordChanged": "Mot de passe modifie avec succes",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "deleteAccount": "Supprimer le compte",
+    "deleteWarning": "Votre compte sera desactive immediatement et supprime definitivement apres 30 jours.",
+    "deleteConfirmTitle": "Etes-vous sur ?",
+    "deleteConfirmBtn": "Oui, supprimer mon compte",
+    "deleteScheduled": "Suppression du compte planifiee dans 30 jours",
+    "cancel": "Annuler",
+    "backToSearch": "Retour a MapSearch"
+  },
+  "billing": {
+    "title": "Facturation et credits",
+    "subtitle": "Votre solde de credits et historique d'achats",
+    "balance": "Solde de credits",
+    "creditsRemaining": "credits restants",
+    "buyCredits": "Acheter des credits",
+    "transactionHistory": "Historique des transactions",
+    "date": "Date",
+    "type": "Type",
+    "amount": "Credits",
+    "purchase": "Achat",
+    "searchType": "Recherche",
+    "noTransactions": "Aucune transaction pour le moment"
+  },
+  "historyPage": {
+    "title": "Historique des recherches",
+    "subtitle": "Vos recherches passees et resultats",
+    "date": "Date",
+    "keyword": "Mot-cle",
+    "location": "Lieu",
+    "results": "Resultats",
+    "credits": "Credits",
+    "view": "Voir",
+    "noSearches": "Aucune recherche pour le moment",
+    "rerun": "Relancer la recherche (donnees recentes)",
+    "exportCsv": "Exporter en CSV",
+    "backToHistory": "Retour a l'historique",
+    "searchNotFound": "Recherche introuvable"
+  },
+  "resetPassword": {
+    "title": "Reinitialiser le mot de passe",
+    "subtitle": "Entrez votre nouveau mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "submitBtn": "Reinitialiser le mot de passe",
+    "success": "Mot de passe reinitialise avec succes ! Vous pouvez maintenant vous connecter.",
+    "invalidLink": "Lien de reinitialisation invalide. Aucun token trouve.",
+    "expired": "La reinitialisation a echoue. Le lien a peut-etre expire.",
+    "backToHome": "Retour a MapSearch"
+  },
+  "forgotPassword": {
+    "title": "Reinitialiser le mot de passe",
+    "description": "Entrez votre email et nous vous enverrons un lien de reinitialisation.",
+    "submitBtn": "Envoyer le lien de reinitialisation",
+    "success": "Si cet email existe, un lien de reinitialisation a ete envoye.",
+    "backToLogin": "Retour a la connexion"
   }
 }
