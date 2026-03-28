@@ -1,5 +1,16 @@
 {
   "brand": "MapSearch",
+  "yes": "Oui",
+  "no": "Non",
+  "any": "Tous",
+  "credits": "crédits",
+  "search_btn": "Rechercher",
+  "filters_btn": "Filtres",
+  "near_me_desc": "Simule les recherches « près de moi » comme Google les affiche localement",
+  "zoom_neighborhood": "Quartier ~5 km",
+  "zoom_district": "Arrondissement ~10 km",
+  "zoom_city": "Ville ~20 km",
+  "zoom_metro": "Métropole ~40 km",
   "nav": {
     "signIn": "Se connecter",
     "credits": "credits",

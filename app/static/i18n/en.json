@@ -1,5 +1,16 @@
 {
   "brand": "MapSearch",
+  "yes": "Yes",
+  "no": "No",
+  "any": "Any",
+  "credits": "credits",
+  "search_btn": "Search",
+  "filters_btn": "Filters",
+  "near_me_desc": "Simulates \"near me\" searches as Google shows them locally",
+  "zoom_neighborhood": "Neighborhood ~3 mi",
+  "zoom_district": "District ~6 mi",
+  "zoom_city": "City ~12 mi",
+  "zoom_metro": "Metro ~25 mi",
   "nav": {
     "signIn": "Sign in",
     "credits": "credits",
