@@ -67,3 +67,61 @@ async def purge_deleted_users():
         WHERE deleted_at IS NOT NULL
         AND deleted_at < NOW() - INTERVAL '30 days'
     """)
+
+
+async def get_credit_transactions(user_id, limit=50, offset=0):
+    return await fetch("""
+        SELECT id, amount, type, reference_id, stripe_payment_id, created_at
+        FROM credit_transactions
+        WHERE user_id = $1
+        ORDER BY created_at DESC
+        LIMIT $2 OFFSET $3
+    """, user_id, limit, offset)
+
+
+async def count_credit_transactions(user_id):
+    row = await fetchrow(
+        "SELECT COUNT(*) as total FROM credit_transactions WHERE user_id = $1",
+        user_id
+    )
+    return row["total"]
+
+
+async def get_user_searches(user_id, limit=50, offset=0):
+    return await fetch("""
+        SELECT s.id, s.filters_applied, s.filtered_result_count, s.credits_used, s.created_at,
+               sc.keyword, sc.location
+        FROM searches s
+        JOIN scrape_cache sc ON s.scrape_cache_id = sc.id
+        WHERE s.user_id = $1
+        ORDER BY s.created_at DESC
+        LIMIT $2 OFFSET $3
+    """, user_id, limit, offset)
+
+
+async def count_user_searches(user_id):
+    row = await fetchrow(
+        "SELECT COUNT(*) as total FROM searches WHERE user_id = $1",
+        user_id
+    )
+    return row["total"]
+
+
+async def get_search_with_results(search_id, user_id):
+    """Get a single search and its filtered results via the junction table."""
+    search = await fetchrow("""
+        SELECT s.id, s.filters_applied, s.filtered_result_count, s.credits_used, s.created_at,
+               sc.keyword, sc.location, sc.latitude, sc.longitude, sc.zoom_level
+        FROM searches s
+        JOIN scrape_cache sc ON s.scrape_cache_id = sc.id
+        WHERE s.id = $1 AND s.user_id = $2
+    """, search_id, user_id)
+    if not search:
+        return None, None
+
+    results = await fetch("""
+        SELECT sr.* FROM search_results sr
+        JOIN search_result_ids sri ON sr.id = sri.search_result_id
+        WHERE sri.search_id = $1
+    """, search_id)
+    return search, results

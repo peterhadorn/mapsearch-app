@@ -92,3 +92,30 @@ async def stripe_webhook(request: Request):
 async def credit_balance(user: dict = Depends(require_current_user)):
     balance = await get_balance(user["id"])
     return {"credits": balance}
+
+
+@router.get("/transactions")
+async def credit_transactions(
+    page: int = 1,
+    user: dict = Depends(require_current_user),
+):
+    from app.database import queries as q
+    limit = 50
+    offset = (page - 1) * limit
+    txns = await q.get_credit_transactions(user["id"], limit=limit, offset=offset)
+    total = await q.count_credit_transactions(user["id"])
+    return {
+        "transactions": [
+            {
+                "id": str(t["id"]),
+                "amount": t["amount"],
+                "type": t["type"],
+                "stripe_payment_id": t["stripe_payment_id"],
+                "created_at": t["created_at"].isoformat() if t["created_at"] else None,
+            }
+            for t in txns
+        ],
+        "page": page,
+        "total": total,
+        "has_next": offset + limit < total,
+    }
