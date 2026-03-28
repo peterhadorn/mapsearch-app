@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.4.0 — 2026-03-28
+
+### Added
+- Logged-in user dropdown nav (Account, Billing, History, Sign Out)
+- Account page (`/account`) — email display, change password, soft-delete account (30-day grace + auto-purge)
+- Billing page (`/billing`) — credit balance, transaction history with pagination, buy credit packs
+- Search history page (`/history`) — paginated list with keyword, location, results count
+- History detail page (`/history/{id}`) — view exact filtered results on map + table, re-run with fresh API data
+- Password reset flow — forgot password in modal, SMTP email with reset token (SHA-256, 1hr), reset page
+- Credit transactions API endpoint with pagination (total, has_next)
+- Search history API endpoints with pagination
+- `search_result_ids` junction table — stores exact filtered result IDs per search
+- `force_refresh` flag on search — bypass cache for fresh DataForSEO data
+- i18n translations for all new pages (EN/FR/DE/ES)
+- `APP_BASE_URL` config for canonical URLs in emails
+- Startup purge of soft-deleted users older than 30 days
+- Shared `pages.css` for account page styles
+
+### Changed
+- `base.html` now loads only shared scripts (state, i18n, theme); page-specific scripts via `{% block scripts %}`
+- User queries now exclude soft-deleted accounts (`deleted_at IS NULL`)
+- Export uses junction table for exact filtered results instead of raw cache
+- Reset URLs use `APP_BASE_URL` config instead of Host header
+
+### Security
+- Password reset tokens: SHA-256 hashed, 1hr expiry, single-use
+- Generic response on forgot-password (no email enumeration)
+- Soft-deleted users cannot authenticate (query guard + cookie clear)
+- Reset URLs from config, not Host header (prevents host-header poisoning)
+
 ## v0.3.1 — 2026-03-27
 
 ### Added
