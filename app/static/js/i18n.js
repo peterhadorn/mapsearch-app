@@ -1,8 +1,12 @@
 const I18n = {
     _translations: {},
     _locale: 'en',
+    _readyResolve: null,
+    _readyPromise: null,
 
     async init() {
+        this._readyPromise = new Promise(resolve => { this._readyResolve = resolve; });
+
         // Detect browser language, check localStorage override
         const saved = localStorage.getItem('mapsearch-lang');
         const browser = (navigator.language || 'en').split('-')[0];
@@ -20,6 +24,11 @@ const I18n = {
         }
 
         await this.loadAndApply();
+        this._readyResolve();
+    },
+
+    async ready() {
+        if (this._readyPromise) await this._readyPromise;
     },
 
     async loadAndApply() {

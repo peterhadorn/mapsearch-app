@@ -228,6 +228,6 @@
   });
 
   // ── Init ───────────────────────────────────────────────────────────────────
-  loadTransactions(1);
+  I18n.ready().then(() => loadTransactions(1));
 </script>
 {% endblock %}

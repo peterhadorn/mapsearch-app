@@ -152,6 +152,6 @@
   }
 
   // ── Init ───────────────────────────────────────────────────────────────────
-  loadHistory(1);
+  I18n.ready().then(() => loadHistory(1));
 </script>
 {% endblock %}

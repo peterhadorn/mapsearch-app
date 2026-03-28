@@ -224,7 +224,7 @@
       .replace(/'/g, '&#39;');
   }
 
-  loadSearch();
+  I18n.ready().then(() => loadSearch());
 })();
 </script>
 {% endblock %}

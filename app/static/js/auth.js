@@ -208,6 +208,7 @@ const Auth = {
         // Reset to signup form view (hide forgot password if showing)
         this._hideForgotPassword();
         document.getElementById('signup-modal').classList.add('is-open');
+        I18n.applyAll();
         document.getElementById('signup-email').focus();
     },
 
