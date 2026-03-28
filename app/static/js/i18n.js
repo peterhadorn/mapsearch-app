@@ -4,8 +4,14 @@ const I18n = {
     _readyResolve: null,
     _readyPromise: null,
 
+    _ensurePromise() {
+        if (!this._readyPromise) {
+            this._readyPromise = new Promise(resolve => { this._readyResolve = resolve; });
+        }
+    },
+
     async init() {
-        this._readyPromise = new Promise(resolve => { this._readyResolve = resolve; });
+        this._ensurePromise();
 
         // Detect browser language, check localStorage override
         const saved = localStorage.getItem('mapsearch-lang');
@@ -28,7 +34,8 @@ const I18n = {
     },
 
     async ready() {
-        if (this._readyPromise) await this._readyPromise;
+        this._ensurePromise();
+        await this._readyPromise;
     },
 
     async loadAndApply() {
