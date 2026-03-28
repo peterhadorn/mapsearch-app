@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}Billing & Credits — MapSearch{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/static/css/pages.css?v=9">
+{% endblock %}
+
+{% block content %}
+
+  <header class="header--glass">
+    <a href="/" class="header__logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      MapSearch
+    </a>
+    <div class="header__actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-container">
+
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to app
+    </a>
+
+    <div class="page-header">
+      <h1>Billing &amp; Credits</h1>
+      <p>Your credit balance and purchase history</p>
+    </div>
+
+    <!-- Credit Balance -->
+    <div class="card">
+      <div class="credit-balance">
+        <span class="credit-balance__amount">{{ user.credits_remaining }}</span>
+        <span class="credit-balance__label">credits remaining</span>
+      </div>
+    </div>
+
+    <!-- Buy Credits -->
+    <div class="card">
+      <h2>Buy Credits</h2>
+      <div class="credit-packs">
+
+        <div class="pack-card">
+          <div class="pack-credits">1,000</div>
+          <div class="pack-name">Starter</div>
+          <div class="pack-price">$1.50</div>
+          <div class="pack-rate">$1.50 / 1k credits</div>
+          <button class="btn-primary" data-pack="starter">Buy</button>
+        </div>
+
+        <div class="pack-card">
+          <div class="pack-credits">5,000</div>
+          <div class="pack-name">Growth</div>
+          <div class="pack-price">$7.00</div>
+          <div class="pack-rate">$1.40 / 1k credits</div>
+          <button class="btn-primary" data-pack="growth">Buy</button>
+        </div>
+
+        <div class="pack-card">
+          <div class="pack-credits">25,000</div>
+          <div class="pack-name">Pro</div>
+          <div class="pack-price">$32.00</div>
+          <div class="pack-rate">$1.28 / 1k credits</div>
+          <button class="btn-primary" data-pack="pro">Buy</button>
+        </div>
+
+        <div class="pack-card">
+          <div class="pack-credits">100,000</div>
+          <div class="pack-name">Agency</div>
+          <div class="pack-price">$120.00</div>
+          <div class="pack-rate">$1.20 / 1k credits</div>
+          <button class="btn-primary" data-pack="agency">Buy</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="card">
+      <h2>Transaction History</h2>
+      <div id="transactions-container">
+        <p class="loading-state">Loading transactions&hellip;</p>
+      </div>
+      <div id="transactions-pagination" class="pagination"></div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 MapSearch. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="mailto:hello@mapsearch.app">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // ── Pagination helper ──────────────────────────────────────────────────────
+  function renderPagination(containerId, currentPage, total, perPage, loadFn) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const totalPages = Math.ceil(total / perPage);
+    if (totalPages <= 1) { container.innerHTML = ''; return; }
+
+    let html = '';
+    if (currentPage > 1) {
+      html += `<button class="pagination__btn" data-page="${currentPage - 1}">&laquo; Prev</button>`;
+    }
+    for (let p = 1; p <= totalPages; p++) {
+      if (
+        p === 1 || p === totalPages ||
+        (p >= currentPage - 2 && p <= currentPage + 2)
+      ) {
+        html += `<button class="pagination__btn${p === currentPage ? ' pagination__btn--active' : ''}" data-page="${p}">${p}</button>`;
+      } else if (p === currentPage - 3 || p === currentPage + 3) {
+        html += `<span class="pagination__ellipsis">&hellip;</span>`;
+      }
+    }
+    if (currentPage < totalPages) {
+      html += `<button class="pagination__btn" data-page="${currentPage + 1}">Next &raquo;</button>`;
+    }
+
+    container.innerHTML = html;
+    container.querySelectorAll('.pagination__btn').forEach(btn => {
+      btn.addEventListener('click', () => loadFn(parseInt(btn.dataset.page, 10)));
+    });
+  }
+
+  // ── Transaction loader ─────────────────────────────────────────────────────
+  async function loadTransactions(page) {
+    const container = document.getElementById('transactions-container');
+    container.innerHTML = '<p class="loading-state">Loading transactions&hellip;</p>';
+
+    try {
+      const res = await fetch(`/api/credits/transactions?page=${page}`);
+      if (!res.ok) throw new Error('Failed to load transactions');
+      const data = await res.json();
+
+      const { transactions, total, per_page } = data;
+
+      if (!transactions || transactions.length === 0) {
+        container.innerHTML = '<p class="empty-state">No transactions yet.</p>';
+        document.getElementById('transactions-pagination').innerHTML = '';
+        return;
+      }
+
+      let rows = transactions.map(tx => {
+        const amount = tx.credits;
+        const isPositive = amount > 0;
+        const amountClass = isPositive ? 'credits--positive' : 'credits--negative';
+        const amountStr = isPositive ? `+${amount.toLocaleString()}` : amount.toLocaleString();
+        const date = new Date(tx.created_at).toLocaleDateString(undefined, {
+          year: 'numeric', month: 'short', day: 'numeric'
+        });
+        return `<tr>
+          <td>${date}</td>
+          <td>${tx.type || '—'}</td>
+          <td class="${amountClass}">${amountStr}</td>
+        </tr>`;
+      }).join('');
+
+      container.innerHTML = `
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Credits</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+
+      renderPagination('transactions-pagination', page, total, per_page, loadTransactions);
+    } catch (err) {
+      container.innerHTML = `<p class="error-state">Could not load transactions. Please try again.</p>`;
+    }
+  }
+
+  // ── Buy pack click handlers ────────────────────────────────────────────────
+  document.querySelectorAll('.pack-card .btn-primary[data-pack]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const pack = btn.dataset.pack;
+      btn.disabled = true;
+      btn.textContent = 'Redirecting…';
+      try {
+        const res = await fetch('/api/credits/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pack })
+        });
+        if (!res.ok) throw new Error('Checkout failed');
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('No checkout URL returned');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Buy';
+        alert('Could not start checkout. Please try again.');
+      }
+    });
+  });
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  loadTransactions(1);
+</script>
+{% endblock %}
