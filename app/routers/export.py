@@ -35,11 +35,12 @@ async def export_csv(search_id: str, user: dict = Depends(require_current_user))
     if not search:
         raise HTTPException(status_code=404, detail="Search not found")
 
-    # Fetch results
-    results = await fetch(
-        "SELECT * FROM search_results WHERE scrape_cache_id = $1",
-        search["scrape_cache_id"]
-    )
+    # Fetch exact filtered results via junction table
+    results = await fetch("""
+        SELECT sr.* FROM search_results sr
+        JOIN search_result_ids sri ON sr.id = sri.search_result_id
+        WHERE sri.search_id = $1
+    """, search["id"])
 
     # Generate CSV
     output = io.StringIO()
