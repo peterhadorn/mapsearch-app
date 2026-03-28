@@ -3,7 +3,8 @@
   "nav": {
     "signIn": "Se connecter",
     "credits": "credits",
-    "buyCredits": "Acheter des credits"
+    "buyCredits": "Acheter des credits",
+    "backToApp": "Retour a MapSearch"
   },
   "hero": {
     "headline": "Explorez n'importe quelle zone. Trouvez chaque entreprise.",
@@ -343,7 +344,17 @@
     "deleteConfirmBtn": "Oui, supprimer mon compte",
     "deleteScheduled": "Suppression du compte planifiee dans 30 jours",
     "cancel": "Annuler",
-    "backToSearch": "Retour a MapSearch"
+    "backToSearch": "Retour a MapSearch",
+    "emailTitle": "Adresse email",
+    "emailSubtitle": "Votre adresse email de connexion",
+    "changePasswordSubtitle": "Mettez a jour votre mot de passe pour securiser votre compte",
+    "passwordHint": "Au moins 8 caracteres",
+    "deleteSubtitle": "Supprimer definitivement votre compte et toutes les donnees associees",
+    "deleteConfirmMessage": "Etes-vous sur ? Toutes vos donnees, recherches et credits restants seront perdus. Cette action est irreversible.",
+    "networkError": "Erreur reseau. Veuillez reessayer.",
+    "fillAllFields": "Veuillez remplir tous les champs du mot de passe.",
+    "passwordTooShort": "Le nouveau mot de passe doit contenir au moins 8 caracteres.",
+    "deleteFailed": "Echec de la suppression du compte. Veuillez reessayer."
   },
   "billing": {
     "title": "Facturation et credits",
@@ -357,7 +368,12 @@
     "amount": "Credits",
     "purchase": "Achat",
     "searchType": "Recherche",
-    "noTransactions": "Aucune transaction pour le moment"
+    "noTransactions": "Aucune transaction pour le moment",
+    "loading": "Chargement des transactions...",
+    "error": "Impossible de charger les transactions. Veuillez reessayer.",
+    "redirecting": "Redirection...",
+    "checkoutError": "Impossible de demarrer le paiement. Veuillez reessayer.",
+    "buy": "Acheter"
   },
   "historyPage": {
     "title": "Historique des recherches",
@@ -372,7 +388,14 @@
     "rerun": "Relancer la recherche (donnees recentes)",
     "exportCsv": "Exporter en CSV",
     "backToHistory": "Retour a l'historique",
-    "searchNotFound": "Recherche introuvable"
+    "searchNotFound": "Recherche introuvable",
+    "loading": "Chargement des recherches...",
+    "error": "Impossible de charger l'historique des recherches. Veuillez reessayer.",
+    "loadingSearch": "Chargement de la recherche...",
+    "loadingResults": "Chargement des resultats...",
+    "running": "En cours...",
+    "rerunFailed": "Echec de la repetition",
+    "resultsLabel": "resultats"
   },
   "resetPassword": {
     "title": "Reinitialiser le mot de passe",
@@ -383,13 +406,24 @@
     "success": "Mot de passe reinitialise avec succes ! Vous pouvez maintenant vous connecter.",
     "invalidLink": "Lien de reinitialisation invalide. Aucun token trouve.",
     "expired": "La reinitialisation a echoue. Le lien a peut-etre expire.",
-    "backToHome": "Retour a MapSearch"
+    "backToHome": "Retour a MapSearch",
+    "passwordMismatch": "Les mots de passe ne correspondent pas.",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 8 caracteres.",
+    "networkError": "Une erreur est survenue. Veuillez reessayer.",
+    "successWithLink": "Votre mot de passe a ete reinitialise. Vous pouvez maintenant vous connecter."
   },
   "forgotPassword": {
     "title": "Reinitialiser le mot de passe",
     "description": "Entrez votre email et nous vous enverrons un lien de reinitialisation.",
     "submitBtn": "Envoyer le lien de reinitialisation",
     "success": "Si cet email existe, un lien de reinitialisation a ete envoye.",
-    "backToLogin": "Retour a la connexion"
+    "backToLogin": "Retour a la connexion",
+    "enterEmail": "Veuillez entrer votre adresse email.",
+    "sending": "Envoi en cours...",
+    "networkError": "Erreur reseau. Veuillez reessayer."
+  },
+  "pagination": {
+    "prev": "Prec",
+    "next": "Suiv"
   }
 }

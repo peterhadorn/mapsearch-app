@@ -3,7 +3,8 @@
   "nav": {
     "signIn": "Iniciar sesion",
     "credits": "creditos",
-    "buyCredits": "Comprar creditos"
+    "buyCredits": "Comprar creditos",
+    "backToApp": "Volver a MapSearch"
   },
   "hero": {
     "headline": "Busca en cualquier zona. Encuentra cada negocio.",
@@ -343,7 +344,17 @@
     "deleteConfirmBtn": "Si, eliminar mi cuenta",
     "deleteScheduled": "Eliminacion de cuenta programada en 30 dias",
     "cancel": "Cancelar",
-    "backToSearch": "Volver a MapSearch"
+    "backToSearch": "Volver a MapSearch",
+    "emailTitle": "Direccion de email",
+    "emailSubtitle": "Tu direccion de email de inicio de sesion",
+    "changePasswordSubtitle": "Actualiza tu contrasena para mantener tu cuenta segura",
+    "passwordHint": "Al menos 8 caracteres",
+    "deleteSubtitle": "Eliminar permanentemente tu cuenta y todos los datos asociados",
+    "deleteConfirmMessage": "Estas seguro? Todos tus datos, busquedas y creditos restantes se perderan. Esta accion no se puede deshacer.",
+    "networkError": "Error de red. Por favor intentalo de nuevo.",
+    "fillAllFields": "Por favor rellena todos los campos de contrasena.",
+    "passwordTooShort": "La nueva contrasena debe tener al menos 8 caracteres.",
+    "deleteFailed": "No se pudo eliminar la cuenta. Por favor intentalo de nuevo."
   },
   "billing": {
     "title": "Facturacion y creditos",
@@ -357,7 +368,12 @@
     "amount": "Creditos",
     "purchase": "Compra",
     "searchType": "Busqueda",
-    "noTransactions": "Aun no hay transacciones"
+    "noTransactions": "Aun no hay transacciones",
+    "loading": "Cargando transacciones...",
+    "error": "No se pudieron cargar las transacciones. Por favor intentalo de nuevo.",
+    "redirecting": "Redirigiendo...",
+    "checkoutError": "No se pudo iniciar el pago. Por favor intentalo de nuevo.",
+    "buy": "Comprar"
   },
   "historyPage": {
     "title": "Historial de busquedas",
@@ -372,7 +388,14 @@
     "rerun": "Repetir busqueda (datos recientes)",
     "exportCsv": "Exportar CSV",
     "backToHistory": "Volver al historial",
-    "searchNotFound": "Busqueda no encontrada"
+    "searchNotFound": "Busqueda no encontrada",
+    "loading": "Cargando busquedas...",
+    "error": "No se pudo cargar el historial de busquedas. Por favor intentalo de nuevo.",
+    "loadingSearch": "Cargando busqueda...",
+    "loadingResults": "Cargando resultados...",
+    "running": "En curso...",
+    "rerunFailed": "La repeticion ha fallado",
+    "resultsLabel": "resultados"
   },
   "resetPassword": {
     "title": "Restablecer contrasena",
@@ -383,13 +406,24 @@
     "success": "Contrasena restablecida con exito! Ahora puedes iniciar sesion.",
     "invalidLink": "Enlace de restablecimiento invalido. No se encontro el token.",
     "expired": "El restablecimiento fallo. El enlace puede haber caducado.",
-    "backToHome": "Volver a MapSearch"
+    "backToHome": "Volver a MapSearch",
+    "passwordMismatch": "Las contrasenas no coinciden.",
+    "passwordTooShort": "La contrasena debe tener al menos 8 caracteres.",
+    "networkError": "Algo salio mal. Por favor intentalo de nuevo.",
+    "successWithLink": "Tu contrasena ha sido restablecida. Ahora puedes iniciar sesion."
   },
   "forgotPassword": {
     "title": "Restablecer contrasena",
     "description": "Ingresa tu email y te enviaremos un enlace de restablecimiento.",
     "submitBtn": "Enviar enlace de restablecimiento",
     "success": "Si ese email existe, se ha enviado un enlace de restablecimiento.",
-    "backToLogin": "Volver al inicio de sesion"
+    "backToLogin": "Volver al inicio de sesion",
+    "enterEmail": "Por favor introduce tu direccion de email.",
+    "sending": "Enviando...",
+    "networkError": "Error de red. Por favor intentalo de nuevo."
+  },
+  "pagination": {
+    "prev": "Ant",
+    "next": "Sig"
   }
 }

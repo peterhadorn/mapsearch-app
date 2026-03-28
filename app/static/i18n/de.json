@@ -3,7 +3,8 @@
   "nav": {
     "signIn": "Anmelden",
     "credits": "Credits",
-    "buyCredits": "Credits kaufen"
+    "buyCredits": "Credits kaufen",
+    "backToApp": "Zurueck zu MapSearch"
   },
   "hero": {
     "headline": "Durchsuche jedes Gebiet. Finde jedes Unternehmen.",
@@ -343,7 +344,17 @@
     "deleteConfirmBtn": "Ja, mein Konto loeschen",
     "deleteScheduled": "Kontoloesch­ung in 30 Tagen geplant",
     "cancel": "Abbrechen",
-    "backToSearch": "Zurueck zu MapSearch"
+    "backToSearch": "Zurueck zu MapSearch",
+    "emailTitle": "E-Mail-Adresse",
+    "emailSubtitle": "Deine Login-E-Mail-Adresse",
+    "changePasswordSubtitle": "Aktualisiere dein Passwort, um dein Konto zu sichern",
+    "passwordHint": "Mindestens 8 Zeichen",
+    "deleteSubtitle": "Dein Konto und alle zugehoerigen Daten dauerhaft loeschen",
+    "deleteConfirmMessage": "Bist du sicher? Alle deine Daten, Suchen und verbleibenden Credits gehen verloren. Dies kann nicht rueckgaengig gemacht werden.",
+    "networkError": "Netzwerkfehler. Bitte versuche es erneut.",
+    "fillAllFields": "Bitte fuell alle Passwort-Felder aus.",
+    "passwordTooShort": "Das neue Passwort muss mindestens 8 Zeichen lang sein.",
+    "deleteFailed": "Konto konnte nicht geloescht werden. Bitte versuche es erneut."
   },
   "billing": {
     "title": "Abrechnung & Credits",
@@ -357,7 +368,12 @@
     "amount": "Credits",
     "purchase": "Kauf",
     "searchType": "Suche",
-    "noTransactions": "Noch keine Transaktionen"
+    "noTransactions": "Noch keine Transaktionen",
+    "loading": "Transaktionen werden geladen...",
+    "error": "Transaktionen konnten nicht geladen werden. Bitte versuche es erneut.",
+    "redirecting": "Weiterleiten...",
+    "checkoutError": "Bezahlvorgang konnte nicht gestartet werden. Bitte versuche es erneut.",
+    "buy": "Kaufen"
   },
   "historyPage": {
     "title": "Suchverlauf",
@@ -372,7 +388,14 @@
     "rerun": "Suche wiederholen (neue Daten)",
     "exportCsv": "CSV exportieren",
     "backToHistory": "Zurueck zum Verlauf",
-    "searchNotFound": "Suche nicht gefunden"
+    "searchNotFound": "Suche nicht gefunden",
+    "loading": "Suchen werden geladen...",
+    "error": "Suchverlauf konnte nicht geladen werden. Bitte versuche es erneut.",
+    "loadingSearch": "Suche wird geladen...",
+    "loadingResults": "Ergebnisse werden geladen...",
+    "running": "Laeuft...",
+    "rerunFailed": "Wiederholung fehlgeschlagen",
+    "resultsLabel": "Ergebnisse"
   },
   "resetPassword": {
     "title": "Passwort zuruecksetzen",
@@ -383,13 +406,24 @@
     "success": "Passwort erfolgreich zurueckgesetzt! Du kannst dich jetzt anmelden.",
     "invalidLink": "Ungültiger Zuruecksetz-Link. Kein Token gefunden.",
     "expired": "Zuruecksetzen fehlgeschlagen. Der Link ist moeglicherweise abgelaufen.",
-    "backToHome": "Zurueck zu MapSearch"
+    "backToHome": "Zurueck zu MapSearch",
+    "passwordMismatch": "Passwoerter stimmen nicht ueberein.",
+    "passwordTooShort": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+    "networkError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "successWithLink": "Dein Passwort wurde zurueckgesetzt. Du kannst dich jetzt anmelden."
   },
   "forgotPassword": {
     "title": "Passwort zuruecksetzen",
     "description": "Gib deine E-Mail ein und wir senden dir einen Zuruecksetz-Link.",
     "submitBtn": "Zuruecksetz-Link senden",
     "success": "Falls diese E-Mail existiert, wurde ein Zuruecksetz-Link gesendet.",
-    "backToLogin": "Zurueck zum Login"
+    "backToLogin": "Zurueck zum Login",
+    "enterEmail": "Bitte gib deine E-Mail-Adresse ein.",
+    "sending": "Wird gesendet...",
+    "networkError": "Netzwerkfehler. Bitte versuche es erneut."
+  },
+  "pagination": {
+    "prev": "Zur.",
+    "next": "Wei."
   }
 }

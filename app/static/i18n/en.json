@@ -3,7 +3,8 @@
   "nav": {
     "signIn": "Sign in",
     "credits": "credits",
-    "buyCredits": "Buy credits"
+    "buyCredits": "Buy credits",
+    "backToApp": "Back to MapSearch"
   },
   "hero": {
     "headline": "Search any area. Get every business.",
@@ -343,7 +344,17 @@
     "deleteConfirmBtn": "Yes, Delete My Account",
     "deleteScheduled": "Account scheduled for deletion in 30 days",
     "cancel": "Cancel",
-    "backToSearch": "Back to MapSearch"
+    "backToSearch": "Back to MapSearch",
+    "emailTitle": "Email Address",
+    "emailSubtitle": "Your login email address",
+    "changePasswordSubtitle": "Update your password to keep your account secure",
+    "passwordHint": "At least 8 characters",
+    "deleteSubtitle": "Permanently delete your account and all associated data",
+    "deleteConfirmMessage": "Are you sure? All your data, searches, and remaining credits will be lost. This cannot be undone.",
+    "networkError": "Network error. Please try again.",
+    "fillAllFields": "Please fill in all password fields.",
+    "passwordTooShort": "New password must be at least 8 characters.",
+    "deleteFailed": "Failed to delete account. Please try again."
   },
   "billing": {
     "title": "Billing & Credits",
@@ -357,7 +368,12 @@
     "amount": "Credits",
     "purchase": "Purchase",
     "searchType": "Search",
-    "noTransactions": "No transactions yet"
+    "noTransactions": "No transactions yet",
+    "loading": "Loading transactions...",
+    "error": "Could not load transactions. Please try again.",
+    "redirecting": "Redirecting...",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "buy": "Buy"
   },
   "historyPage": {
     "title": "Search History",
@@ -372,7 +388,14 @@
     "rerun": "Re-run Search (Fresh Data)",
     "exportCsv": "Export CSV",
     "backToHistory": "Back to History",
-    "searchNotFound": "Search not found"
+    "searchNotFound": "Search not found",
+    "loading": "Loading searches...",
+    "error": "Could not load search history. Please try again.",
+    "loadingSearch": "Loading search...",
+    "loadingResults": "Loading results...",
+    "running": "Running...",
+    "rerunFailed": "Re-run failed",
+    "resultsLabel": "results"
   },
   "resetPassword": {
     "title": "Reset Password",
@@ -383,13 +406,24 @@
     "success": "Password reset successfully! You can now log in.",
     "invalidLink": "Invalid reset link. No token found.",
     "expired": "Reset failed. The link may have expired.",
-    "backToHome": "Back to MapSearch"
+    "backToHome": "Back to MapSearch",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 8 characters.",
+    "networkError": "Something went wrong. Please try again.",
+    "successWithLink": "Your password has been reset. You can now sign in."
   },
   "forgotPassword": {
     "title": "Reset Password",
     "description": "Enter your email and we'll send you a reset link.",
     "submitBtn": "Send Reset Link",
     "success": "If that email exists, a reset link has been sent.",
-    "backToLogin": "Back to login"
+    "backToLogin": "Back to login",
+    "enterEmail": "Please enter your email address.",
+    "sending": "Sending...",
+    "networkError": "Network error. Please try again."
+  },
+  "pagination": {
+    "prev": "Prev",
+    "next": "Next"
   }
 }
