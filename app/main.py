@@ -38,6 +38,13 @@ from app.routers import export
 app.include_router(export.router)
 
 
+@app.on_event("startup")
+async def startup_purge():
+    """Purge users who were soft-deleted more than 30 days ago."""
+    from app.database import queries
+    await queries.purge_deleted_users()
+
+
 @app.get("/health")
 async def health():
     return {"status": "ok", "version": "1.0.0"}
