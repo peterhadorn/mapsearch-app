@@ -65,7 +65,7 @@
 
       try {
         const res = await fetch('/api/auth/password', {
-          method: 'POST',
+          method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             current_password: currentPassword,
