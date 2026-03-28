@@ -37,6 +37,9 @@ app.include_router(pages.router)
 from app.routers import export
 app.include_router(export.router)
 
+from app.routers import search_history
+app.include_router(search_history.router)
+
 
 @app.on_event("startup")
 async def startup_purge():
