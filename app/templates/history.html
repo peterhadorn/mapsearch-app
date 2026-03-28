@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}Search History — MapSearch{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/static/css/pages.css?v=9">
+{% endblock %}
+
+{% block content %}
+
+  <header class="header--glass">
+    <a href="/" class="header__logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      MapSearch
+    </a>
+    <div class="header__actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-container">
+
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to app
+    </a>
+
+    <div class="page-header">
+      <h1>Search History</h1>
+      <p>Your past searches and results</p>
+    </div>
+
+    <!-- Search History Table -->
+    <div class="card">
+      <div id="history-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Keyword</th>
+              <th>Location</th>
+              <th>Results</th>
+              <th>Credits</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody">
+            <tr>
+              <td colspan="6" class="loading-state">Loading searches&hellip;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="history-pagination" class="pagination"></div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 MapSearch. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="mailto:hello@mapsearch.app">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // ── Pagination helper ──────────────────────────────────────────────────────
+  function renderPagination(containerId, currentPage, total, perPage, loadFn) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const totalPages = Math.ceil(total / perPage);
+    if (totalPages <= 1) { container.innerHTML = ''; return; }
+
+    let html = '';
+    if (currentPage > 1) {
+      html += `<button class="pagination__btn" data-page="${currentPage - 1}">&laquo; Prev</button>`;
+    }
+    for (let p = 1; p <= totalPages; p++) {
+      if (
+        p === 1 || p === totalPages ||
+        (p >= currentPage - 2 && p <= currentPage + 2)
+      ) {
+        html += `<button class="pagination__btn${p === currentPage ? ' pagination__btn--active' : ''}" data-page="${p}">${p}</button>`;
+      } else if (p === currentPage - 3 || p === currentPage + 3) {
+        html += `<span class="pagination__ellipsis">&hellip;</span>`;
+      }
+    }
+    if (currentPage < totalPages) {
+      html += `<button class="pagination__btn" data-page="${currentPage + 1}">Next &raquo;</button>`;
+    }
+
+    container.innerHTML = html;
+    container.querySelectorAll('.pagination__btn').forEach(btn => {
+      btn.addEventListener('click', () => loadFn(parseInt(btn.dataset.page, 10)));
+    });
+  }
+
+  // ── History loader ─────────────────────────────────────────────────────────
+  async function loadHistory(page) {
+    const tbody = document.getElementById('history-tbody');
+    tbody.innerHTML = '<tr><td colspan="6" class="loading-state">Loading searches&hellip;</td></tr>';
+
+    try {
+      const res = await fetch(`/api/searches?page=${page}`);
+      if (!res.ok) throw new Error('Failed to load search history');
+      const data = await res.json();
+
+      const { searches, total, per_page } = data;
+
+      if (!searches || searches.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No searches yet. Head back to the app to run your first search.</td></tr>';
+        document.getElementById('history-pagination').innerHTML = '';
+        return;
+      }
+
+      tbody.innerHTML = searches.map(s => {
+        const date = new Date(s.created_at).toLocaleDateString(undefined, {
+          year: 'numeric', month: 'short', day: 'numeric'
+        });
+        const resultCount = (s.result_count != null) ? s.result_count.toLocaleString() : '—';
+        const credits = (s.credits_used != null) ? s.credits_used.toLocaleString() : '—';
+        return `<tr>
+          <td>${date}</td>
+          <td>${s.keyword || '—'}</td>
+          <td>${s.location || '—'}</td>
+          <td>${resultCount}</td>
+          <td>${credits}</td>
+          <td><a href="/history/${s.id}" class="table-link">View</a></td>
+        </tr>`;
+      }).join('');
+
+      renderPagination('history-pagination', page, total, per_page, loadHistory);
+    } catch (err) {
+      tbody.innerHTML = `<tr><td colspan="6" class="error-state">Could not load search history. Please try again.</td></tr>`;
+    }
+  }
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  loadHistory(1);
+</script>
+{% endblock %}
