@@ -125,3 +125,91 @@ async def get_search_with_results(search_id, user_id):
         WHERE sri.search_id = $1
     """, search_id)
     return search, results
+
+
+# --- Admin queries ---
+
+async def admin_get_stats():
+    """Get system-wide stats for admin dashboard."""
+    users = await fetchrow("SELECT COUNT(*) as total FROM users WHERE deleted_at IS NULL")
+    searches = await fetchrow("SELECT COUNT(*) as total FROM searches")
+    credits_sold = await fetchrow(
+        "SELECT COALESCE(SUM(amount), 0) as total FROM credit_transactions WHERE type = 'purchase'"
+    )
+    total_credits = credits_sold["total"]
+    estimated_revenue = round(total_credits * 1.40 / 1000, 2)
+    return {
+        "total_users": users["total"],
+        "total_searches": searches["total"],
+        "total_credits_sold": total_credits,
+        "estimated_revenue": estimated_revenue,
+    }
+
+
+async def admin_get_users(limit=50, offset=0):
+    return await fetch("""
+        SELECT u.id, u.email, u.credits_remaining, u.created_at, u.last_login_at, u.deleted_at,
+               COUNT(s.id) as search_count
+        FROM users u
+        LEFT JOIN searches s ON s.user_id = u.id
+        GROUP BY u.id
+        ORDER BY u.created_at DESC
+        LIMIT $1 OFFSET $2
+    """, limit, offset)
+
+
+async def admin_count_users():
+    row = await fetchrow("SELECT COUNT(*) as total FROM users")
+    return row["total"]
+
+
+async def admin_get_searches(limit=50, offset=0):
+    return await fetch("""
+        SELECT s.id, s.filtered_result_count, s.credits_used, s.created_at,
+               sc.keyword, sc.location,
+               u.email as user_email
+        FROM searches s
+        JOIN scrape_cache sc ON s.scrape_cache_id = sc.id
+        JOIN users u ON s.user_id = u.id
+        ORDER BY s.created_at DESC
+        LIMIT $1 OFFSET $2
+    """, limit, offset)
+
+
+async def admin_count_searches():
+    row = await fetchrow("SELECT COUNT(*) as total FROM searches")
+    return row["total"]
+
+
+async def admin_get_revenue(limit=50, offset=0):
+    return await fetch("""
+        SELECT ct.amount, ct.stripe_payment_id, ct.created_at,
+               u.email as user_email
+        FROM credit_transactions ct
+        JOIN users u ON ct.user_id = u.id
+        WHERE ct.type = 'purchase'
+        ORDER BY ct.created_at DESC
+        LIMIT $1 OFFSET $2
+    """, limit, offset)
+
+
+async def admin_count_revenue():
+    row = await fetchrow("SELECT COUNT(*) as total FROM credit_transactions WHERE type = 'purchase'")
+    return row["total"]
+
+
+async def admin_adjust_credits(user_id, amount):
+    """Add or subtract credits. Amount can be negative."""
+    await execute(
+        "UPDATE users SET credits_remaining = credits_remaining + $1 WHERE id = $2",
+        amount, user_id
+    )
+    await execute("""
+        INSERT INTO credit_transactions (user_id, amount, type)
+        VALUES ($1, $2, $3)
+    """, user_id, amount, "admin_adjustment")
+
+
+async def admin_delete_user(user_id):
+    """Soft delete a user (sets deleted_at, consistent with existing architecture)."""
+    await execute("UPDATE users SET deleted_at = NOW() WHERE id = $1", user_id)
