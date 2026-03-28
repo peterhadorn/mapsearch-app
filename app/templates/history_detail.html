@@ -10,22 +10,22 @@
 {% block content %}
   <div class="page-container" style="max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4);">
 
-    <a href="/history" class="back-link">Search History</a>
+    <a href="/history" class="back-link" data-i18n="historyPage.backToHistory">Search History</a>
 
     <div class="page-header" id="search-header" style="margin-top:var(--space-5);margin-bottom:var(--space-5);">
-      <h1>Loading search…</h1>
+      <h1 data-i18n="historyPage.loadingSearch">Loading search…</h1>
       <p class="page-header__meta" id="search-meta" style="color:var(--color-text-muted);margin-top:var(--space-2);">—</p>
     </div>
 
     <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-5);">
-      <button class="btn-primary" id="rerun-btn" type="button">Re-run Search (Fresh Data)</button>
+      <button class="btn-primary" id="rerun-btn" type="button" data-i18n="historyPage.rerun">Re-run Search (Fresh Data)</button>
       <a class="btn-primary" id="export-link" href="#" style="text-decoration:none;display:inline-flex;align-items:center;gap:var(--space-2);">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
           <line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
-        Export CSV
+        <span data-i18n="historyPage.exportCsv">Export CSV</span>
       </a>
     </div>
 
@@ -36,26 +36,26 @@
     <div class="card">
       <div class="data-table-toolbar">
         <div class="data-table-toolbar__left">
-          <span class="data-table-count"><strong id="result-count">0</strong> results</span>
+          <span class="data-table-count"><strong id="result-count">0</strong> <span data-i18n="historyPage.resultsLabel">results</span></span>
         </div>
       </div>
       <div style="overflow-x:auto;">
         <table class="data-table" id="results-table">
           <thead>
             <tr>
-              <th>Business</th>
-              <th>Category</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Rating</th>
-              <th>Reviews</th>
-              <th>City</th>
+              <th data-i18n="results.columns.businessName">Business</th>
+              <th data-i18n="results.columns.category">Category</th>
+              <th data-i18n="results.columns.phone">Phone</th>
+              <th data-i18n="results.columns.email">Email</th>
+              <th data-i18n="results.columns.rating">Rating</th>
+              <th data-i18n="results.columns.reviews">Reviews</th>
+              <th data-i18n="results.columns.city">City</th>
             </tr>
           </thead>
           <tbody id="results-tbody">
             <tr>
               <td colspan="7" class="data-table-empty">
-                <div class="data-table-empty__title">Loading results…</div>
+                <div class="data-table-empty__title" data-i18n="historyPage.loadingResults">Loading results…</div>
               </td>
             </tr>
           </tbody>
@@ -80,7 +80,7 @@
       data = await res.json();
     } catch (err) {
       document.getElementById('search-header').querySelector('h1').textContent =
-        'Failed to load search.';
+        I18n.get('historyPage.error') || 'Failed to load search.';
       console.error('loadSearch error:', err);
       return;
     }
@@ -108,7 +108,7 @@
     document.getElementById('rerun-btn').addEventListener('click', async () => {
       const btn = document.getElementById('rerun-btn');
       btn.disabled = true;
-      btn.textContent = 'Running…';
+      btn.textContent = I18n.get('historyPage.running') || 'Running\u2026';
       try {
         const body = {
           keyword: data.keyword,
@@ -131,9 +131,9 @@
           throw new Error('No search_id in response');
         }
       } catch (err) {
-        alert('Re-run failed: ' + err.message);
+        alert((I18n.get('historyPage.rerunFailed') || 'Re-run failed') + ': ' + err.message);
         btn.disabled = false;
-        btn.textContent = 'Re-run Search (Fresh Data)';
+        btn.textContent = I18n.get('historyPage.rerun') || 'Re-run Search (Fresh Data)';
       }
     });
 
@@ -180,7 +180,7 @@
       tbody.innerHTML = `
         <tr>
           <td colspan="7" class="data-table-empty">
-            <div class="data-table-empty__title">No results found.</div>
+            <div class="data-table-empty__title">${I18n.get('historyPage.noSearches') || 'No results found.'}</div>
           </td>
         </tr>`;
     } else {

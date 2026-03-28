@@ -31,12 +31,12 @@
         <line x1="19" y1="12" x2="5" y2="12"/>
         <polyline points="12 19 5 12 12 5"/>
       </svg>
-      Back to app
+      <span data-i18n="nav.backToApp">Back to app</span>
     </a>
 
     <div class="page-header">
-      <h1>Search History</h1>
-      <p>Your past searches and results</p>
+      <h1 data-i18n="historyPage.title">Search History</h1>
+      <p data-i18n="historyPage.subtitle">Your past searches and results</p>
     </div>
 
     <!-- Search History Table -->
@@ -45,17 +45,17 @@
         <table class="data-table">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Keyword</th>
-              <th>Location</th>
-              <th>Results</th>
-              <th>Credits</th>
+              <th data-i18n="historyPage.date">Date</th>
+              <th data-i18n="historyPage.keyword">Keyword</th>
+              <th data-i18n="historyPage.location">Location</th>
+              <th data-i18n="historyPage.results">Results</th>
+              <th data-i18n="historyPage.credits">Credits</th>
               <th></th>
             </tr>
           </thead>
           <tbody id="history-tbody">
             <tr>
-              <td colspan="6" class="loading-state">Loading searches&hellip;</td>
+              <td colspan="6" class="loading-state" data-i18n="historyPage.loading">Loading searches&hellip;</td>
             </tr>
           </tbody>
         </table>
@@ -67,11 +67,11 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-copy">&copy; 2026 MapSearch. All rights reserved.</span>
+      <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 MapSearch. All rights reserved.</span>
       <div class="footer-links">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="mailto:hello@mapsearch.app">Contact</a>
+        <a href="/privacy" data-i18n="footer.privacy">Privacy</a>
+        <a href="/terms" data-i18n="footer.terms">Terms</a>
+        <a href="mailto:hello@mapsearch.app" data-i18n="footer.contact">Contact</a>
       </div>
     </div>
   </footer>
@@ -89,7 +89,7 @@
 
     let html = '';
     if (currentPage > 1) {
-      html += `<button class="pagination__btn" data-page="${currentPage - 1}">&laquo; Prev</button>`;
+      html += `<button class="pagination__btn" data-page="${currentPage - 1}">&laquo; ${I18n.get('pagination.prev') || 'Prev'}</button>`;
     }
     for (let p = 1; p <= totalPages; p++) {
       if (
@@ -102,7 +102,7 @@
       }
     }
     if (currentPage < totalPages) {
-      html += `<button class="pagination__btn" data-page="${currentPage + 1}">Next &raquo;</button>`;
+      html += `<button class="pagination__btn" data-page="${currentPage + 1}">${I18n.get('pagination.next') || 'Next'} &raquo;</button>`;
     }
 
     container.innerHTML = html;
@@ -114,7 +114,7 @@
   // ── History loader ─────────────────────────────────────────────────────────
   async function loadHistory(page) {
     const tbody = document.getElementById('history-tbody');
-    tbody.innerHTML = '<tr><td colspan="6" class="loading-state">Loading searches&hellip;</td></tr>';
+    tbody.innerHTML = `<tr><td colspan="6" class="loading-state">${I18n.get('historyPage.loading') || 'Loading searches\u2026'}</td></tr>`;
 
     try {
       const res = await fetch(`/api/searches?page=${page}`);
@@ -124,7 +124,7 @@
       const { searches, total, per_page } = data;
 
       if (!searches || searches.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No searches yet. Head back to the app to run your first search.</td></tr>';
+        tbody.innerHTML = `<tr><td colspan="6" class="empty-state">${I18n.get('historyPage.noSearches') || 'No searches yet. Head back to the app to run your first search.'}</td></tr>`;
         document.getElementById('history-pagination').innerHTML = '';
         return;
       }
@@ -141,13 +141,13 @@
           <td>${s.location || '—'}</td>
           <td>${resultCount}</td>
           <td>${credits}</td>
-          <td><a href="/history/${s.id}" class="table-link">View</a></td>
+          <td><a href="/history/${s.id}" class="table-link">${I18n.get('historyPage.view') || 'View'}</a></td>
         </tr>`;
       }).join('');
 
       renderPagination('history-pagination', page, total, per_page, loadHistory);
     } catch (err) {
-      tbody.innerHTML = `<tr><td colspan="6" class="error-state">Could not load search history. Please try again.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="6" class="error-state">${I18n.get('historyPage.error') || 'Could not load search history. Please try again.'}</td></tr>`;
     }
   }
 

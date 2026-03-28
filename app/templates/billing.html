@@ -31,57 +31,57 @@
         <line x1="19" y1="12" x2="5" y2="12"/>
         <polyline points="12 19 5 12 12 5"/>
       </svg>
-      Back to app
+      <span data-i18n="nav.backToApp">Back to app</span>
     </a>
 
     <div class="page-header">
-      <h1>Billing &amp; Credits</h1>
-      <p>Your credit balance and purchase history</p>
+      <h1 data-i18n="billing.title">Billing &amp; Credits</h1>
+      <p data-i18n="billing.subtitle">Your credit balance and purchase history</p>
     </div>
 
     <!-- Credit Balance -->
     <div class="card">
       <div class="credit-balance">
         <span class="credit-balance__amount">{{ user.credits_remaining }}</span>
-        <span class="credit-balance__label">credits remaining</span>
+        <span class="credit-balance__label" data-i18n="billing.creditsRemaining">credits remaining</span>
       </div>
     </div>
 
     <!-- Buy Credits -->
     <div class="card">
-      <h2>Buy Credits</h2>
+      <h2 data-i18n="billing.buyCredits">Buy Credits</h2>
       <div class="credit-packs">
 
         <div class="pack-card">
           <div class="pack-credits">1,000</div>
-          <div class="pack-name">Starter</div>
+          <div class="pack-name" data-i18n="pricing.starter_name">Starter</div>
           <div class="pack-price">$1.50</div>
           <div class="pack-rate">$1.50 / 1k credits</div>
-          <button class="btn-primary" data-pack="starter">Buy</button>
+          <button class="btn-primary" data-pack="starter" data-i18n="billing.buy">Buy</button>
         </div>
 
         <div class="pack-card">
           <div class="pack-credits">5,000</div>
-          <div class="pack-name">Growth</div>
+          <div class="pack-name" data-i18n="pricing.growth_name">Growth</div>
           <div class="pack-price">$7.00</div>
           <div class="pack-rate">$1.40 / 1k credits</div>
-          <button class="btn-primary" data-pack="growth">Buy</button>
+          <button class="btn-primary" data-pack="growth" data-i18n="billing.buy">Buy</button>
         </div>
 
         <div class="pack-card">
           <div class="pack-credits">25,000</div>
-          <div class="pack-name">Pro</div>
+          <div class="pack-name" data-i18n="pricing.pro_name">Pro</div>
           <div class="pack-price">$32.00</div>
           <div class="pack-rate">$1.28 / 1k credits</div>
-          <button class="btn-primary" data-pack="pro">Buy</button>
+          <button class="btn-primary" data-pack="pro" data-i18n="billing.buy">Buy</button>
         </div>
 
         <div class="pack-card">
           <div class="pack-credits">100,000</div>
-          <div class="pack-name">Agency</div>
+          <div class="pack-name" data-i18n="pricing.agency_name">Agency</div>
           <div class="pack-price">$120.00</div>
           <div class="pack-rate">$1.20 / 1k credits</div>
-          <button class="btn-primary" data-pack="agency">Buy</button>
+          <button class="btn-primary" data-pack="agency" data-i18n="billing.buy">Buy</button>
         </div>
 
       </div>
@@ -89,9 +89,9 @@
 
     <!-- Transaction History -->
     <div class="card">
-      <h2>Transaction History</h2>
+      <h2 data-i18n="billing.transactionHistory">Transaction History</h2>
       <div id="transactions-container">
-        <p class="loading-state">Loading transactions&hellip;</p>
+        <p class="loading-state" data-i18n="billing.loading">Loading transactions&hellip;</p>
       </div>
       <div id="transactions-pagination" class="pagination"></div>
     </div>
@@ -100,11 +100,11 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-copy">&copy; 2026 MapSearch. All rights reserved.</span>
+      <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 MapSearch. All rights reserved.</span>
       <div class="footer-links">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="mailto:hello@mapsearch.app">Contact</a>
+        <a href="/privacy" data-i18n="footer.privacy">Privacy</a>
+        <a href="/terms" data-i18n="footer.terms">Terms</a>
+        <a href="mailto:hello@mapsearch.app" data-i18n="footer.contact">Contact</a>
       </div>
     </div>
   </footer>
@@ -122,7 +122,7 @@
 
     let html = '';
     if (currentPage > 1) {
-      html += `<button class="pagination__btn" data-page="${currentPage - 1}">&laquo; Prev</button>`;
+      html += `<button class="pagination__btn" data-page="${currentPage - 1}">&laquo; ${I18n.get('pagination.prev') || 'Prev'}</button>`;
     }
     for (let p = 1; p <= totalPages; p++) {
       if (
@@ -135,7 +135,7 @@
       }
     }
     if (currentPage < totalPages) {
-      html += `<button class="pagination__btn" data-page="${currentPage + 1}">Next &raquo;</button>`;
+      html += `<button class="pagination__btn" data-page="${currentPage + 1}">${I18n.get('pagination.next') || 'Next'} &raquo;</button>`;
     }
 
     container.innerHTML = html;
@@ -147,7 +147,7 @@
   // ── Transaction loader ─────────────────────────────────────────────────────
   async function loadTransactions(page) {
     const container = document.getElementById('transactions-container');
-    container.innerHTML = '<p class="loading-state">Loading transactions&hellip;</p>';
+    container.innerHTML = `<p class="loading-state">${I18n.get('billing.loading') || 'Loading transactions\u2026'}</p>`;
 
     try {
       const res = await fetch(`/api/credits/transactions?page=${page}`);
@@ -157,7 +157,7 @@
       const { transactions, total, per_page } = data;
 
       if (!transactions || transactions.length === 0) {
-        container.innerHTML = '<p class="empty-state">No transactions yet.</p>';
+        container.innerHTML = `<p class="empty-state">${I18n.get('billing.noTransactions') || 'No transactions yet.'}</p>`;
         document.getElementById('transactions-pagination').innerHTML = '';
         return;
       }
@@ -170,9 +170,14 @@
         const date = new Date(tx.created_at).toLocaleDateString(undefined, {
           year: 'numeric', month: 'short', day: 'numeric'
         });
+        const typeLabel = tx.type === 'purchase'
+          ? (I18n.get('billing.purchase') || tx.type)
+          : tx.type === 'search'
+            ? (I18n.get('billing.searchType') || tx.type)
+            : (tx.type || '—');
         return `<tr>
           <td>${date}</td>
-          <td>${tx.type || '—'}</td>
+          <td>${typeLabel}</td>
           <td class="${amountClass}">${amountStr}</td>
         </tr>`;
       }).join('');
@@ -181,9 +186,9 @@
         <table class="data-table">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Credits</th>
+              <th>${I18n.get('billing.date') || 'Date'}</th>
+              <th>${I18n.get('billing.type') || 'Type'}</th>
+              <th>${I18n.get('billing.amount') || 'Credits'}</th>
             </tr>
           </thead>
           <tbody>${rows}</tbody>
@@ -191,7 +196,7 @@
 
       renderPagination('transactions-pagination', page, total, per_page, loadTransactions);
     } catch (err) {
-      container.innerHTML = `<p class="error-state">Could not load transactions. Please try again.</p>`;
+      container.innerHTML = `<p class="error-state">${I18n.get('billing.error') || 'Could not load transactions. Please try again.'}</p>`;
     }
   }
 
@@ -200,7 +205,7 @@
     btn.addEventListener('click', async () => {
       const pack = btn.dataset.pack;
       btn.disabled = true;
-      btn.textContent = 'Redirecting…';
+      btn.textContent = I18n.get('billing.redirecting') || 'Redirecting\u2026';
       try {
         const res = await fetch('/api/credits/checkout', {
           method: 'POST',
@@ -216,8 +221,8 @@
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Buy';
-        alert('Could not start checkout. Please try again.');
+        btn.textContent = I18n.get('billing.buy') || 'Buy';
+        alert(I18n.get('billing.checkoutError') || 'Could not start checkout. Please try again.');
       }
     });
   });

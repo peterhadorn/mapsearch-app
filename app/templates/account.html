@@ -10,55 +10,55 @@
 
   <div class="page-container">
 
-    <a href="/" class="back-link">Back to app</a>
+    <a href="/" class="back-link" data-i18n="nav.backToApp">Back to app</a>
 
     <div class="page-header">
-      <h1>Account Settings</h1>
-      <p>Manage your account and security</p>
+      <h1 data-i18n="account.title">Account Settings</h1>
+      <p data-i18n="account.subtitle">Manage your account and security</p>
     </div>
 
     <div id="alert-container"></div>
 
     <!-- Email card -->
     <div class="card">
-      <h2 class="card-title">Email Address</h2>
-      <p class="card-subtitle">Your login email address.</p>
+      <h2 class="card-title" data-i18n="account.emailTitle">Email Address</h2>
+      <p class="card-subtitle" data-i18n="account.emailSubtitle">Your login email address.</p>
       <div class="form-group">
-        <label for="email-display">Email</label>
+        <label for="email-display" data-i18n="account.email">Email</label>
         <input type="email" id="email-display" value="{{ user.email }}" disabled>
       </div>
     </div>
 
     <!-- Change password card -->
     <div class="card">
-      <h2 class="card-title">Change Password</h2>
-      <p class="card-subtitle">Update your password to keep your account secure.</p>
+      <h2 class="card-title" data-i18n="account.changePassword">Change Password</h2>
+      <p class="card-subtitle" data-i18n="account.changePasswordSubtitle">Update your password to keep your account secure.</p>
       <form id="change-password-form" novalidate>
         <div class="form-group">
-          <label for="current-password">Current Password</label>
+          <label for="current-password" data-i18n="account.currentPassword">Current Password</label>
           <input type="password" id="current-password" name="current_password" autocomplete="current-password" required>
         </div>
         <div class="form-group">
-          <label for="new-password">New Password</label>
+          <label for="new-password" data-i18n="account.newPassword">New Password</label>
           <input type="password" id="new-password" name="new_password" autocomplete="new-password" required>
-          <p class="form-hint">At least 8 characters.</p>
+          <p class="form-hint" data-i18n="account.passwordHint">At least 8 characters.</p>
         </div>
         <div class="form-group">
-          <label for="confirm-password">Confirm New Password</label>
+          <label for="confirm-password" data-i18n="account.confirmPassword">Confirm New Password</label>
           <input type="password" id="confirm-password" name="confirm_password" autocomplete="new-password" required>
         </div>
         <div class="form-actions">
-          <button type="submit" class="btn-primary">Update Password</button>
+          <button type="submit" class="btn-primary" data-i18n="account.changePasswordBtn">Update Password</button>
         </div>
       </form>
     </div>
 
     <!-- Delete account card -->
     <div class="card">
-      <h2 class="card-title">Delete Account</h2>
-      <p class="card-subtitle">Permanently delete your account and all associated data. This action cannot be undone.</p>
+      <h2 class="card-title" data-i18n="account.deleteAccount">Delete Account</h2>
+      <p class="card-subtitle" data-i18n="account.deleteSubtitle">Permanently delete your account and all associated data. This action cannot be undone.</p>
       <div class="form-actions">
-        <button type="button" id="delete-account-btn" class="btn-danger">Delete My Account</button>
+        <button type="button" id="delete-account-btn" class="btn-danger" data-i18n="account.deleteConfirmBtn">Delete My Account</button>
       </div>
     </div>
 
@@ -68,11 +68,11 @@
   <div id="delete-modal" class="modal-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="delete-modal-title">
     <div class="modal-backdrop" id="delete-modal-backdrop"></div>
     <div class="modal-card" style="max-width:440px;">
-      <h2 class="modal-title" id="delete-modal-title">Delete Account</h2>
-      <p class="modal-subtitle" style="margin-bottom:1.5rem;">Are you sure you want to permanently delete your account? All your data, searches, and remaining credits will be lost. This cannot be undone.</p>
+      <h2 class="modal-title" id="delete-modal-title" data-i18n="account.deleteConfirmTitle">Delete Account</h2>
+      <p class="modal-subtitle" style="margin-bottom:1.5rem;" data-i18n="account.deleteConfirmMessage">Are you sure you want to permanently delete your account? All your data, searches, and remaining credits will be lost. This cannot be undone.</p>
       <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
-        <button type="button" id="delete-modal-confirm" class="btn-danger">Yes, Delete My Account</button>
-        <button type="button" id="delete-modal-cancel" class="btn-secondary">Cancel</button>
+        <button type="button" id="delete-modal-confirm" class="btn-danger" data-i18n="account.deleteConfirmBtn">Yes, Delete My Account</button>
+        <button type="button" id="delete-modal-cancel" class="btn-secondary" data-i18n="account.cancel">Cancel</button>
       </div>
     </div>
   </div>

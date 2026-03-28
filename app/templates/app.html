@@ -69,10 +69,10 @@
           <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
         </button>
         <div id="user-menu-items" class="user-menu-items" style="display:none;">
-          <a href="/account">Account</a>
-          <a href="/billing">Billing &amp; Credits</a>
-          <a href="/history">Search History</a>
-          <button id="nav-logout-btn">Sign Out</button>
+          <a href="/account" data-i18n="userMenu.account">Account</a>
+          <a href="/billing" data-i18n="userMenu.billing">Billing &amp; Credits</a>
+          <a href="/history" data-i18n="userMenu.history">Search History</a>
+          <button id="nav-logout-btn" data-i18n="userMenu.signOut">Sign Out</button>
         </div>
       </div>
 
@@ -131,9 +131,9 @@
     </div>
     <div class="mobile-menu__divider"></div>
     <div class="mobile-menu__auth-links" id="mobile-auth-links" style="display:none;">
-      <a href="/account" class="mobile-menu__link">Account</a>
-      <a href="/billing" class="mobile-menu__link">Billing &amp; Credits</a>
-      <a href="/history" class="mobile-menu__link">Search History</a>
+      <a href="/account" class="mobile-menu__link" data-i18n="userMenu.account">Account</a>
+      <a href="/billing" class="mobile-menu__link" data-i18n="userMenu.billing">Billing &amp; Credits</a>
+      <a href="/history" class="mobile-menu__link" data-i18n="userMenu.history">Search History</a>
     </div>
     <div class="mobile-menu__auth">
       <button class="btn--signin mobile-menu__signin" id="signin-btn-mobile" data-i18n="sign_in">Sign In</button>
@@ -591,20 +591,20 @@
           <label for="signup-password" data-i18n="password">Password</label>
           <input type="password" class="form-input" id="signup-password" placeholder="At least 8 characters" data-i18n-placeholder="password_placeholder" autocomplete="new-password">
         </div>
-        <a href="#" id="forgot-password-link" style="font-size: var(--text-sm); color: var(--accent); display: none; margin-top: var(--space-2);">Forgot password?</a>
+        <a href="#" id="forgot-password-link" style="font-size: var(--text-sm); color: var(--accent); display: none; margin-top: var(--space-2);" data-i18n="login.forgotPassword">Forgot password?</a>
         <button type="submit" class="btn--submit" data-i18n="sign_up">Sign up</button>
       </form>
 
       <!-- Forgot password view -->
       <div id="forgot-password-view" style="display:none;">
-        <h3 style="margin-bottom: var(--space-4);">Reset Password</h3>
-        <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-size: var(--text-sm);">Enter your email and we'll send you a reset link.</p>
+        <h3 style="margin-bottom: var(--space-4);" data-i18n="forgotPassword.title">Reset Password</h3>
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-size: var(--text-sm);" data-i18n="forgotPassword.description">Enter your email and we'll send you a reset link.</p>
         <div class="form-group">
-          <input type="email" class="form-input" id="forgot-email" placeholder="Email" required>
+          <input type="email" class="form-input" id="forgot-email" placeholder="Email" data-i18n-placeholder="signup.emailPlaceholder" required>
         </div>
-        <button id="forgot-submit-btn" class="btn--submit" style="width:100%;">Send Reset Link</button>
+        <button id="forgot-submit-btn" class="btn--submit" style="width:100%;" data-i18n="forgotPassword.submitBtn">Send Reset Link</button>
         <p id="forgot-message" style="margin-top: var(--space-3); font-size: var(--text-sm);"></p>
-        <a href="#" id="back-to-login-link" style="font-size: var(--text-sm); color: var(--accent); display: block; margin-top: var(--space-3);">Back to login</a>
+        <a href="#" id="back-to-login-link" style="font-size: var(--text-sm); color: var(--accent); display: block; margin-top: var(--space-3);" data-i18n="forgotPassword.backToLogin">Back to login</a>
       </div>
 
       <p class="modal-footer-text">
