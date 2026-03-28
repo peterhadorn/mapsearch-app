@@ -10,7 +10,8 @@ CREATE TABLE users (
     locale VARCHAR(5) DEFAULT 'en',
     stripe_customer_id VARCHAR(255),
     created_at TIMESTAMP DEFAULT NOW(),
-    last_login_at TIMESTAMP
+    last_login_at TIMESTAMP,
+    deleted_at TIMESTAMP
 );
 
 CREATE TABLE scrape_cache (
@@ -97,4 +98,21 @@ CREATE TABLE exports (
     row_count INTEGER,
     filters_applied JSONB,
     created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE password_reset_tokens (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    token_hash VARCHAR(64) NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    used_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+CREATE INDEX idx_reset_tokens_hash ON password_reset_tokens(token_hash);
+CREATE INDEX idx_reset_tokens_user ON password_reset_tokens(user_id);
+
+CREATE TABLE search_result_ids (
+    search_id UUID REFERENCES searches(id) ON DELETE CASCADE,
+    search_result_id UUID REFERENCES search_results(id) ON DELETE CASCADE,
+    PRIMARY KEY (search_id, search_result_id)
 );
