@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.5.0 — 2026-03-28
+
+### Added
+- Admin panel (`/admin`) — user management, search stats, revenue tracking
+- System stats: total users, searches, credits sold, estimated revenue
+- User table: email, credits, search count, signup/login dates, adjust credits, delete
+- Search history: all searches across users with keyword, location, results, credits
+- Revenue: credit purchase transactions with Stripe payment IDs
+- `ADMIN_EMAIL` env var for access control
+- Self-delete prevention (admin cannot delete own account)
+
+### Security
+- Admin access via hardcoded email check (ADMIN_EMAIL env var)
+- POST actions use `Depends(require_admin)` — raises 401/403, no redirect
+- Soft delete for admin user deletion (consistent with existing architecture)
+
 ## v0.4.0 — 2026-03-28
 
 ### Added
