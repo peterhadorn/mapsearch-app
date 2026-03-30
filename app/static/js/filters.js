@@ -25,28 +25,15 @@ const Filters = {
             });
         });
 
-        // Range sliders
-        const ratingSlider = document.getElementById('rating-slider');
-        const ratingValue = document.getElementById('rating-value');
-        ratingSlider.addEventListener('input', () => {
-            ratingValue.textContent = parseFloat(ratingSlider.value).toFixed(1);
-            State.set('filters', this.getFilterState());
-        });
-
-        const reviewsSlider = document.getElementById('reviews-slider');
-        const reviewsValue = document.getElementById('reviews-value');
-        reviewsSlider.addEventListener('input', () => {
-            reviewsValue.textContent = reviewsSlider.value;
-            State.set('filters', this.getFilterState());
+        // Checkbox filters (email, phone)
+        document.querySelectorAll('.filter-item--checkbox input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', () => {
+                State.set('filters', this.getFilterState());
+            });
         });
 
         // Near me toggle
         document.getElementById('nearme-toggle').addEventListener('change', () => {
-            State.set('filters', this.getFilterState());
-        });
-
-        // Category select
-        document.getElementById('category-select').addEventListener('change', () => {
             State.set('filters', this.getFilterState());
         });
 
@@ -62,15 +49,12 @@ const Filters = {
     },
 
     getFilterState() {
+        const ratingVal = this.getTriToggle('rating');
         return {
             has_website: this.getTriToggle('website'),
-            has_email: this.getTriToggle('email'),
-            has_phone: this.getTriToggle('phone'),
-            min_rating: parseFloat(document.getElementById('rating-slider').value),
-            min_reviews: parseInt(document.getElementById('reviews-slider').value),
-            is_claimed: this.getTriToggle('claimed'),
-            has_photos: this.getTriToggle('photos'),
-            category: document.getElementById('category-select').value || null,
+            has_email: document.getElementById('email-toggle').checked ? 'yes' : 'any',
+            has_phone: document.getElementById('phone-toggle').checked ? 'yes' : 'any',
+            min_rating: ratingVal === 'any' ? 0 : parseFloat(ratingVal),
             price_level: this.getTriToggle('price'),
         };
     },
@@ -82,22 +66,6 @@ const Filters = {
 
     isNearMe() {
         return document.getElementById('nearme-toggle').checked;
-    },
-
-    // Populate category dropdown from search results
-    populateCategories(results) {
-        const select = document.getElementById('category-select');
-        const categories = [...new Set(results.map(r => r.category).filter(Boolean))].sort();
-
-        // Keep first "All categories" option, remove rest
-        while (select.options.length > 1) select.remove(1);
-
-        categories.forEach(cat => {
-            const opt = document.createElement('option');
-            opt.value = cat;
-            opt.textContent = cat;
-            select.appendChild(opt);
-        });
     },
 };
 

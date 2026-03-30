@@ -39,6 +39,7 @@ const Credits = {
         if (this._packs.length === 0) {
             try {
                 const resp = await fetch('/api/credits/packs');
+                if (!resp.ok) throw new Error('Failed to load packs');
                 const data = await resp.json();
                 this._packs = data.packs;
             } catch (e) {

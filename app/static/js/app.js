@@ -86,9 +86,6 @@ const App = {
             document.getElementById('results-count').textContent =
                 `${data.result_count} results for "${keyword}" in ${location}`;
 
-            // Populate category dropdown from results
-            Filters.populateCategories(data.results);
-
             // Show results view
             this.showResultsView();
 

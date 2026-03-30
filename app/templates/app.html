@@ -9,7 +9,7 @@
        ================================================================ -->
   <header class="header--glass">
     <a href="/" class="header__logo">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="8"/>
         <line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
@@ -31,7 +31,7 @@
       </select>
 
       <div class="credits-pill" id="credits-pill" title="99 credits remaining">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <polyline points="12 6 12 12 16 14"/>
         </svg>
@@ -39,7 +39,7 @@
       </div>
 
       <button class="theme-toggle hide-mobile" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-        <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg aria-hidden="true" class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
           <line x1="12" y1="21" x2="12" y2="23"/>
@@ -50,10 +50,10 @@
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
-        <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg aria-hidden="true" class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
-        <svg class="theme-icon--system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg aria-hidden="true" class="theme-icon--system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
           <line x1="8" y1="21" x2="16" y2="21"/>
           <line x1="12" y1="17" x2="12" y2="21"/>
@@ -66,7 +66,7 @@
       <div id="user-menu" class="user-dropdown hide-mobile" style="display:none;">
         <button id="user-menu-trigger" class="user-menu-btn">
           <span id="user-email-display">Account</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
+          <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
         </button>
         <div id="user-menu-items" class="user-menu-items" style="display:none;">
           <a href="/account" data-i18n="userMenu.account">Account</a>
@@ -77,13 +77,13 @@
       </div>
 
       <!-- Hamburger menu (mobile only) -->
-      <button class="hamburger show-mobile-only" id="hamburger-btn" type="button" aria-label="Menu" aria-expanded="false">
-        <svg class="hamburger__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="hamburger show-mobile-only" id="hamburger-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg aria-hidden="true" class="hamburger__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
           <line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
-        <svg class="hamburger__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg aria-hidden="true" class="hamburger__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"/>
           <line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
@@ -113,17 +113,17 @@
       <div class="mobile-menu__row">
         <span class="mobile-menu__label" data-i18n="ui.theme">Theme</span>
         <button class="theme-toggle" id="theme-toggle-mobile" type="button" aria-label="Toggle theme">
-          <svg class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" class="theme-icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
             <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
             <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
-          <svg class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" class="theme-icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
-          <svg class="theme-icon--system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" class="theme-icon--system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
           </svg>
         </button>
@@ -141,6 +141,7 @@
     </div>
   </div>
 
+  <main>
   <div class="hero-viewport" id="hero">
 
   <!-- ================================================================
@@ -153,33 +154,36 @@
        SEARCH CARD — Floating over map
        ================================================================ -->
   <div class="search-float" id="search-float">
+    <p class="search-float__tagline" data-i18n="hero.tagline">Pull up to 700 businesses in a single search</p>
     <div class="search-card">
       <div class="search-card__row">
         <div class="search-card__input-group">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <input type="text" class="search-input" id="keyword-input" placeholder="Search businesses..." data-i18n-placeholder="hero.keywordPlaceholder" autocomplete="off">
+          <label class="search-card__label" for="keyword-input" data-i18n="hero.keywordLabel">Keyword</label>
+          <input type="text" class="search-input" id="keyword-input" placeholder="dentist, IT services, law firm..." data-i18n-placeholder="hero.keywordPlaceholder" autocomplete="off">
         </div>
         <div class="search-card__input-group">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
-          <input type="text" class="search-input" id="location-input" placeholder="City or click on map..." data-i18n-placeholder="hero.locationPlaceholder" autocomplete="off">
+          <label class="search-card__label" for="location-input" data-i18n="hero.locationLabel">Location</label>
+          <input type="text" class="search-input" id="location-input" placeholder="city or coordinates" data-i18n-placeholder="hero.locationPlaceholder" autocomplete="off">
         </div>
       </div>
 
       <div class="search-card__actions">
         <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters-panel">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
           <span data-i18n="filters.label">Filters</span>
         </button>
         <button class="btn--search" id="search-btn" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
@@ -201,50 +205,29 @@
           </div>
 
           <!-- Has email -->
-          <div class="filter-item">
-            <label data-i18n="filters.hasEmail">Has email</label>
-            <div class="tri-toggle" data-filter="email">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
-            </div>
+          <div class="filter-item filter-item--checkbox">
+            <label class="filter-checkbox">
+              <input type="checkbox" id="email-toggle">
+              <span data-i18n="filters.hasEmail">Has email</span>
+            </label>
           </div>
 
           <!-- Has phone -->
+          <div class="filter-item filter-item--checkbox">
+            <label class="filter-checkbox">
+              <input type="checkbox" id="phone-toggle">
+              <span data-i18n="filters.hasPhone">Has phone</span>
+            </label>
+          </div>
+
+          <!-- Min Google rating -->
           <div class="filter-item">
-            <label data-i18n="filters.hasPhone">Has phone</label>
-            <div class="tri-toggle" data-filter="phone">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
+            <label data-i18n="filters.ratingMin">Min. Google Rating</label>
+            <div class="tri-toggle" data-filter="rating">
               <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
-            </div>
-          </div>
-
-          <!-- Min rating -->
-          <div class="filter-item">
-            <label data-i18n="filters.ratingMin">Min rating</label>
-            <div class="range-slider">
-              <input type="range" min="1" max="5" step="0.5" value="1" id="rating-slider">
-              <span class="range-value" id="rating-value">1.0</span>
-            </div>
-          </div>
-
-          <!-- Min reviews -->
-          <div class="filter-item">
-            <label data-i18n="filters.reviewsMin">Min reviews</label>
-            <div class="range-slider">
-              <input type="range" min="0" max="500" step="10" value="0" id="reviews-slider">
-              <span class="range-value" id="reviews-value">0</span>
-            </div>
-          </div>
-
-          <!-- Claimed -->
-          <div class="filter-item">
-            <label data-i18n="filters.claimed">Claimed</label>
-            <div class="tri-toggle" data-filter="claimed">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
+              <button class="tri-toggle__btn" data-value="3">3+</button>
+              <button class="tri-toggle__btn" data-value="4">4+</button>
+              <button class="tri-toggle__btn" data-value="4.5">4.5+</button>
             </div>
           </div>
 
@@ -271,14 +254,6 @@
             </div>
           </div>
 
-          <!-- Category -->
-          <div class="filter-item">
-            <label data-i18n="filters.category">Category</label>
-            <select class="filter-select" id="category-select">
-              <option value="" data-i18n="filters.categoryPlaceholder">All categories</option>
-            </select>
-          </div>
-
           <!-- Price level -->
           <div class="filter-item">
             <label data-i18n="filters.priceLevel">Price level</label>
@@ -290,16 +265,8 @@
             </div>
           </div>
 
-          <!-- Has photos -->
-          <div class="filter-item">
-            <label data-i18n="filters.hasPhotos">Has photos</label>
-            <div class="tri-toggle" data-filter="photos">
-              <button class="tri-toggle__btn" data-value="yes" data-i18n="filters.yes">Yes</button>
-              <button class="tri-toggle__btn" data-value="no" data-i18n="filters.no">No</button>
-              <button class="tri-toggle__btn is-active" data-value="any" data-i18n="filters.any">Any</button>
-            </div>
-          </div>
         </div>
+        <p class="filters-cta"><a href="mailto:info@swissportalsolutions.ch">Need regular or bulk done-for-you exports? Contact us.</a></p>
       </div>
     </div>
   </div>
@@ -311,16 +278,16 @@
     <!-- Toolbar -->
     <div class="results-toolbar">
       <div class="results-toolbar__left">
-        <button class="btn--back" id="back-btn" type="button" title="Back to search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="btn--back" id="back-btn" type="button" title="Back to search" aria-label="Go back">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="15 18 9 12 15 6"/>
           </svg>
         </button>
         <span class="results-count" id="results-count" aria-live="polite"></span>
       </div>
       <div class="results-toolbar__right">
-        <button class="btn--export" id="export-btn" type="button" title="Export as CSV">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="btn--export" id="export-btn" type="button" title="Export as CSV" aria-label="Export as CSV">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
@@ -328,8 +295,8 @@
           <span data-i18n="results.exportCsv">Export CSV</span>
         </button>
         <div class="columns-dropdown">
-          <button class="columns-dropdown__trigger" id="columns-toggle" type="button" title="Toggle columns">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <button class="columns-dropdown__trigger" id="columns-toggle" type="button" title="Toggle columns" aria-label="Toggle columns">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="7" height="7"/>
               <rect x="14" y="3" width="7" height="7"/>
               <rect x="14" y="14" width="7" height="7"/>
@@ -378,77 +345,108 @@
   <section class="page-section" id="features">
     <div class="section-inner">
       <p class="section-label" data-i18n="features.label">Features</p>
+      <p class="section-desc" style="margin-bottom: var(--space-2);" data-i18n="features.audience">Built for agencies, sales teams, and marketers who need local business data without the busywork.</p>
       <h2 class="section-title" data-i18n="features.title">Everything you need to find businesses at scale</h2>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           </div>
-          <h3 class="feature-card__title" data-i18n="features.realtime_title">Real-time results</h3>
-          <p class="feature-card__desc" data-i18n="features.realtime_desc">Results in seconds, not hours. No task queues, no waiting.</p>
+          <h3 class="feature-card__title" data-i18n="features.scale_title">700 businesses per search</h3>
+          <p class="feature-card__desc" data-i18n="features.scale_desc">Most tools cap at 20. MapSearch pulls up to 700 results from a single keyword + location. Adjust the radius from a single block to an entire metro.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
           </div>
-          <h3 class="feature-card__title" data-i18n="features.filters_title">10+ filters</h3>
-          <p class="feature-card__desc" data-i18n="features.filters_desc">Website, email, phone, rating, reviews, claimed, photos, price, category. Pay only for what passes.</p>
+          <h3 class="feature-card__title" data-i18n="features.filters_title">Filters save you credits</h3>
+          <p class="feature-card__desc" data-i18n="features.filters_desc">Only need businesses with an email? A website? A 4-star rating? Set your filters — you only pay for results that match.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <h3 class="feature-card__title" data-i18n="features.export_title">CSV export</h3>
-          <p class="feature-card__desc" data-i18n="features.export_desc">Download your results as CSV. Free with every search.</p>
+          <h3 class="feature-card__title" data-i18n="features.location_title">Search like a local, anywhere</h3>
+          <p class="feature-card__desc" data-i18n="features.location_desc">Enter a city, a neighborhood, or drop a pin. MapSearch shows you what a local Google Maps search would return — from anywhere in the world.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
-          <h3 class="feature-card__title" data-i18n="features.map_title">Interactive map</h3>
-          <p class="feature-card__desc" data-i18n="features.map_desc">See every result on a live map. Click pins, hover rows.</p>
+          <h3 class="feature-card__title" data-i18n="features.global_title">Any country. Any language.</h3>
+          <p class="feature-card__desc" data-i18n="features.global_desc">Search Google Maps in Tokyo, São Paulo, or Dubai — in the local language. Same tool, same pricing, worldwide.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
-          <h3 class="feature-card__title" data-i18n="features.langs_title">4 languages</h3>
-          <p class="feature-card__desc" data-i18n="features.langs_desc">EN, FR, DE, ES. Auto-detects your browser language.</p>
+          <h3 class="feature-card__title" data-i18n="features.export_title">Export to CSV instantly</h3>
+          <p class="feature-card__desc" data-i18n="features.export_desc">Download your results as a spreadsheet. Drop them straight into your CRM, email tool, or outreach workflow.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
           </div>
-          <h3 class="feature-card__title" data-i18n="features.cache_title">Smart cache</h3>
-          <p class="feature-card__desc" data-i18n="features.cache_desc">Same search within 72h costs zero extra credits.</p>
+          <h3 class="feature-card__title" data-i18n="features.cache_title">Never pay for the same lead twice</h3>
+          <p class="feature-card__desc" data-i18n="features.cache_desc">MapSearch remembers what you've already found. Run overlapping searches without wasting credits.</p>
         </div>
       </div>
 
-      <!-- Data fields pills -->
-      <h3 class="section-subtitle" data-i18n="features.data_title">40+ data points per business</h3>
-      <div class="data-pills">
-        <span class="data-pill">Business name</span><span class="data-pill">Category</span><span class="data-pill">Address</span><span class="data-pill">City</span><span class="data-pill">State</span><span class="data-pill">ZIP</span><span class="data-pill">Country</span><span class="data-pill">Phone</span><span class="data-pill">Email</span><span class="data-pill">Domain</span><span class="data-pill">URL</span><span class="data-pill">Rating</span><span class="data-pill">Reviews</span><span class="data-pill">Claimed</span><span class="data-pill">Verified</span><span class="data-pill">Photos</span><span class="data-pill">Main image</span><span class="data-pill">Latitude</span><span class="data-pill">Longitude</span><span class="data-pill">Google Maps URL</span><span class="data-pill">Price level</span><span class="data-pill">Work hours</span><span class="data-pill">Business status</span><span class="data-pill">Rating distribution</span><span class="data-pill">Additional categories</span><span class="data-pill">Place ID</span><span class="data-pill">CID</span>
+      <!-- Data fields grouped -->
+      <h3 class="section-subtitle" data-i18n="features.data_title">40+ fields per business — everything you need to reach out</h3>
+      <p class="section-desc" style="margin-bottom: var(--space-4);" data-i18n="features.data_source">All data comes directly from Google Maps — the same results you'd see searching manually, pulled at scale.</p>
+      <div class="data-groups">
+        <div class="data-group">
+          <div class="data-group__label">Business</div>
+          <div class="data-group__items">
+            <span>Business name</span><span>Category</span><span>Additional categories</span><span>Price level</span><span>Work hours</span><span>Business status</span>
+          </div>
+        </div>
+        <div class="data-group">
+          <div class="data-group__label">Location</div>
+          <div class="data-group__items">
+            <span>Address</span><span>City</span><span>State</span><span>ZIP</span><span>Country</span><span>Latitude</span><span>Longitude</span>
+          </div>
+        </div>
+        <div class="data-group">
+          <div class="data-group__label">Contact</div>
+          <div class="data-group__items">
+            <span>Phone</span><span>Email</span><span>Domain</span><span>URL</span>
+          </div>
+        </div>
+        <div class="data-group">
+          <div class="data-group__label">Reputation</div>
+          <div class="data-group__items">
+            <span>Rating</span><span>Reviews</span><span>Rating distribution</span><span>Claimed</span><span>Verified</span><span>Photos</span>
+          </div>
+        </div>
+        <div class="data-group">
+          <div class="data-group__label">IDs</div>
+          <div class="data-group__items">
+            <span>Place ID</span><span>CID</span><span>Google Maps URL</span><span>Main image</span>
+          </div>
+        </div>
       </div>
 
       <!-- Why MapSearch -->
-      <h3 class="section-subtitle" data-i18n="features.why_title">Same data. Half the price. Better experience.</h3>
+      <h3 class="section-subtitle" data-i18n="features.why_title">Why MapSearch?</h3>
       <div class="why-grid">
         <div class="why-card">
-          <strong data-i18n="features.why_cheaper">2x cheaper</strong>
-          <span data-i18n="features.why_cheaper_desc">$1.50/1,000 vs Outscraper's $3/1,000</span>
+          <strong data-i18n="features.why_cheap">From $1.50 per 1,000 results</strong>
+          <span data-i18n="features.why_cheap_desc">Outscraper, PhantomBuster, and others charge $3+ per 1,000. MapSearch is half the price at every tier.</span>
         </div>
         <div class="why-card">
-          <strong data-i18n="features.why_instant">Instant results</strong>
-          <span data-i18n="features.why_instant_desc">Real-time API, not async task queues</span>
+          <strong data-i18n="features.why_easy">No coding. No setup. No learning curve.</strong>
+          <span data-i18n="features.why_easy_desc">Type a keyword, pick a location, hit search. If you can use Google, you can use MapSearch.</span>
         </div>
         <div class="why-card">
-          <strong data-i18n="features.why_noapi">No API keys</strong>
-          <span data-i18n="features.why_noapi_desc">Just sign up and search. No developer setup.</span>
+          <strong data-i18n="features.why_api">API for power users</strong>
+          <span data-i18n="features.why_api_desc">Need to automate? The full REST API lets you integrate MapSearch into your own workflows and tools.</span>
         </div>
         <div class="why-card">
-          <strong data-i18n="features.why_filters">Filters save money</strong>
-          <span data-i18n="features.why_filters_desc">618 raw results → 234 with email → pay for 234</span>
+          <strong data-i18n="features.why_filters">Filters save you money</strong>
+          <span data-i18n="features.why_filters_desc">A search returns 618 results but you only need businesses with email? You only pay for the 234 that match.</span>
         </div>
       </div>
     </div>
@@ -461,46 +459,47 @@
     <div class="section-inner section-center">
       <p class="section-label" data-i18n="pricing.label">Pricing</p>
       <h2 class="section-title" data-i18n="pricing.title">Pay as you go. No subscriptions.</h2>
-      <p class="section-desc" data-i18n="pricing.subtitle">1 credit = 1 filtered result. Filters save you money.</p>
+      <p class="section-desc" data-i18n="pricing.subtitle">1 credit = 1 filtered result. Most searches cost a few cents.</p>
 
       <div class="pricing-grid">
         <div class="pricing-card">
           <div class="pricing-name" data-i18n="pricing.free_name">Free</div>
-          <div class="pricing-credits">99 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-credits">100 <small data-i18n="pricing.credits_label">credits</small></div>
           <div class="pricing-price pricing-price--free" data-i18n="pricing.free_price">$0</div>
           <div class="pricing-per" data-i18n="pricing.free_per">On signup</div>
           <button class="btn--pricing" onclick="Auth.showModal()" data-i18n="pricing.get_started">Get started</button>
         </div>
         <div class="pricing-card">
           <div class="pricing-name" data-i18n="pricing.starter_name">Starter</div>
-          <div class="pricing-credits">1,000 <small data-i18n="pricing.credits_label">credits</small></div>
-          <div class="pricing-price">$1.50</div>
-          <div class="pricing-per">$1.50 / 1,000</div>
+          <div class="pricing-credits">5,500 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$10</div>
+          <div class="pricing-per">$1.80 / 1,000</div>
           <button class="btn--pricing" onclick="Credits.buyPack('starter')" data-i18n="pricing.buy">Buy</button>
         </div>
         <div class="pricing-card popular">
           <div class="popular-badge" data-i18n="pricing.popular">Popular</div>
           <div class="pricing-name" data-i18n="pricing.growth_name">Growth</div>
-          <div class="pricing-credits">5,000 <small data-i18n="pricing.credits_label">credits</small></div>
-          <div class="pricing-price">$7.00</div>
-          <div class="pricing-per">$1.40 / 1,000</div>
+          <div class="pricing-credits">30,000 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$50</div>
+          <div class="pricing-per">$1.67 / 1,000</div>
           <button class="btn--pricing" onclick="Credits.buyPack('growth')" data-i18n="pricing.buy">Buy</button>
         </div>
         <div class="pricing-card">
           <div class="pricing-name" data-i18n="pricing.pro_name">Pro</div>
-          <div class="pricing-credits">25,000 <small data-i18n="pricing.credits_label">credits</small></div>
-          <div class="pricing-price">$32</div>
-          <div class="pricing-per">$1.28 / 1,000</div>
+          <div class="pricing-credits">65,000 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$100</div>
+          <div class="pricing-per">$1.54 / 1,000</div>
           <button class="btn--pricing" onclick="Credits.buyPack('pro')" data-i18n="pricing.buy">Buy</button>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card agency">
           <div class="pricing-name" data-i18n="pricing.agency_name">Agency</div>
-          <div class="pricing-credits">100,000 <small data-i18n="pricing.credits_label">credits</small></div>
-          <div class="pricing-price">$120</div>
-          <div class="pricing-per">$1.20 / 1,000</div>
+          <div class="pricing-credits">666,000 <small data-i18n="pricing.credits_label">credits</small></div>
+          <div class="pricing-price">$1,000</div>
+          <div class="pricing-per">$1.50 / 1,000</div>
           <button class="btn--pricing" onclick="Credits.buyPack('agency')" data-i18n="pricing.buy">Buy</button>
         </div>
       </div>
+      <p class="pricing-cta"><a href="mailto:info@swissportalsolutions.ch">Need regular or bulk done-for-you exports? Contact us.</a></p>
     </div>
   </section>
 
@@ -511,32 +510,32 @@
     <div class="section-inner section-center">
       <p class="section-label" data-i18n="how.label">How it works</p>
       <h2 class="section-title" data-i18n="how.title">Three steps. That's it.</h2>
-      <p class="section-desc" data-i18n="how.subtitle">No API keys. No task queues. No waiting.</p>
+      <p class="section-desc" data-i18n="how.subtitle">No accounts to connect. No scripts to write. Results in minutes.</p>
 
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
           <div class="step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <h3 class="step-title" data-i18n="how.step1_title">Search</h3>
-          <p class="step-desc" data-i18n="how.step1_desc">Enter a keyword and location. We search Google Maps in real time.</p>
+          <p class="step-desc" data-i18n="how.step1_desc">Enter a keyword like "dentist" and a location like "Chicago." Results come back in minutes.</p>
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
           <div class="step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
           </div>
           <h3 class="step-title" data-i18n="how.step2_title">Filter</h3>
-          <p class="step-desc" data-i18n="how.step2_desc">Narrow results with 10+ filters. Only pay for what passes.</p>
+          <p class="step-desc" data-i18n="how.step2_desc">Keep only businesses with a website, email, phone, or minimum rating. You only pay for what's left.</p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
           <div class="step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
           <h3 class="step-title" data-i18n="how.step3_title">Export</h3>
-          <p class="step-desc" data-i18n="how.step3_desc">Download CSV or browse the interactive table + map.</p>
+          <p class="step-desc" data-i18n="how.step3_desc">View results in a table or download as CSV. Ready for your CRM or outreach tool.</p>
         </div>
       </div>
     </div>
@@ -546,10 +545,12 @@
        CTA
        ================================================================ -->
   <section class="cta-section">
-    <h2 class="cta-title" data-i18n="cta.title">Ready to find every business in your area?</h2>
-    <p class="cta-desc" data-i18n="cta.desc">99 free credits. No credit card required.</p>
-    <button class="btn--cta" onclick="Auth.showModal()" data-i18n="cta.button">Sign up for free</button>
+    <h2 class="cta-title" data-i18n="cta.title">Try it free — search any market, right now.</h2>
+    <p class="cta-desc" data-i18n="cta.desc">100 free credits. No credit card required.</p>
+    <button class="btn--cta" onclick="Auth.showModal()" data-i18n="cta.button">Start with 100 free credits</button>
   </section>
+
+  </main>
 
   <!-- ================================================================
        FOOTER
@@ -560,7 +561,7 @@
       <div class="footer-links">
         <a href="/privacy" data-i18n="footer.privacy">Privacy</a>
         <a href="/terms" data-i18n="footer.terms">Terms</a>
-        <a href="mailto:hello@mapsearch.app" data-i18n="footer.contact">Contact</a>
+        <a href="mailto:info@swissportalsolutions.ch" data-i18n="footer.contact">Contact</a>
       </div>
     </div>
   </footer>
@@ -568,11 +569,11 @@
   <!-- ================================================================
        SIGNUP MODAL
        ================================================================ -->
-  <div class="modal-overlay" id="signup-modal">
+  <div class="modal-overlay" id="signup-modal" role="dialog" aria-modal="true">
     <div class="modal-backdrop" id="modal-backdrop"></div>
     <div class="modal-content">
       <button class="modal-close" id="modal-close" type="button" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"/>
           <line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
@@ -585,11 +586,11 @@
       <form id="signup-form">
         <div class="form-group">
           <label for="signup-email" data-i18n="signup.emailLabel">Email</label>
-          <input type="email" class="form-input" id="signup-email" placeholder="you@company.com" autocomplete="email">
+          <input type="email" class="form-input" id="signup-email" placeholder="you@company.com" autocomplete="email" required>
         </div>
         <div class="form-group">
           <label for="signup-password" data-i18n="signup.passwordLabel">Password</label>
-          <input type="password" class="form-input" id="signup-password" placeholder="At least 8 characters" data-i18n-placeholder="signup.passwordPlaceholder" autocomplete="new-password">
+          <input type="password" class="form-input" id="signup-password" placeholder="At least 8 characters" data-i18n-placeholder="signup.passwordPlaceholder" autocomplete="new-password" required>
         </div>
         <a href="#" id="forgot-password-link" style="font-size: var(--text-sm); color: var(--accent); display: none; margin-top: var(--space-2);" data-i18n="login.forgotPassword">Forgot password?</a>
         <button type="submit" class="btn--submit" data-i18n="signup.submit">Sign up</button>
@@ -600,6 +601,7 @@
         <h3 style="margin-bottom: var(--space-4);" data-i18n="forgotPassword.title">Reset Password</h3>
         <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-size: var(--text-sm);" data-i18n="forgotPassword.description">Enter your email and we'll send you a reset link.</p>
         <div class="form-group">
+          <label for="forgot-email" class="sr-only">Email</label>
           <input type="email" class="form-input" id="forgot-email" placeholder="Email" data-i18n-placeholder="signup.emailPlaceholder" required>
         </div>
         <button id="forgot-submit-btn" class="btn--submit" style="width:100%;" data-i18n="forgotPassword.submitBtn">Send Reset Link</button>
@@ -616,10 +618,10 @@
 {% endblock %}
 
 {% block scripts %}
-  <script src="/static/js/auth.js?v=11"></script>
-  <script src="/static/js/map.js?v=11"></script>
-  <script src="/static/js/filters.js?v=11"></script>
-  <script src="/static/js/table.js?v=11"></script>
-  <script src="/static/js/app.js?v=11"></script>
-  <script src="/static/js/credits.js?v=11"></script>
+  <script src="/static/js/auth.js?v=12"></script>
+  <script src="/static/js/map.js?v=12"></script>
+  <script src="/static/js/filters.js?v=12"></script>
+  <script src="/static/js/table.js?v=12"></script>
+  <script src="/static/js/app.js?v=12"></script>
+  <script src="/static/js/credits.js?v=12"></script>
 {% endblock %}

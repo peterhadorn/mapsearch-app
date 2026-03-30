@@ -40,10 +40,22 @@ const Table = {
             this.render();
         });
 
-        // Row hover → highlight map pin
+        // Pagination delegation (single listener survives re-renders)
+        document.getElementById('pagination')?.addEventListener('click', (e) => {
+            const btn = e.target.closest('.pagination__btn');
+            if (btn && btn.dataset.page) {
+                this._page = parseInt(btn.dataset.page);
+                this.render();
+            }
+        });
+
+        // Row hover → highlight map pin (debounced)
         document.getElementById('results-table-body').addEventListener('mouseover', (e) => {
             const row = e.target.closest('tr[data-index]');
-            if (row) State.set('highlightedResult', parseInt(row.dataset.index));
+            clearTimeout(this._hoverTimeout);
+            this._hoverTimeout = setTimeout(() => {
+                if (row) State.set('highlightedResult', parseInt(row.dataset.index));
+            }, 16);
         });
 
         document.getElementById('results-table-body').addEventListener('mouseout', () => {
@@ -143,12 +155,6 @@ const Table = {
         if (this._page < totalPages) html += `<button class="pagination__btn" data-page="${this._page + 1}">&raquo;</button>`;
 
         pagination.innerHTML = html;
-        pagination.querySelectorAll('.pagination__btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                this._page = parseInt(btn.dataset.page);
-                this.render();
-            });
-        });
     },
 
     highlightRow(index) {

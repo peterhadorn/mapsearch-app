@@ -1,6 +1,7 @@
 const Auth = {
     _isLogin: false,
     _pendingSearch: null,  // callback to execute after auth
+    _listenersAttached: false,
 
     init() {
         // Sign in buttons (desktop + mobile)
@@ -28,13 +29,15 @@ const Auth = {
         if (menuTrigger) {
             menuTrigger.addEventListener('click', () => this._toggleDropdown());
         }
-        // Close dropdown on outside click
-        document.addEventListener('click', (e) => {
-            const dropdown = document.getElementById('user-menu');
-            if (dropdown && !dropdown.contains(e.target)) {
-                this._closeDropdown();
-            }
-        });
+        // Close dropdown on outside click (only attach once)
+        if (!this._listenersAttached) {
+            document.addEventListener('click', (e) => {
+                const dropdown = document.getElementById('user-menu');
+                if (dropdown && !dropdown.contains(e.target)) {
+                    this._closeDropdown();
+                }
+            });
+        }
 
         // Close modal
         document.getElementById('modal-close').addEventListener('click', () => this.hideModal());
@@ -43,10 +46,12 @@ const Auth = {
         // Email/password form
         document.getElementById('signup-form').addEventListener('submit', (e) => this.handleSubmit(e));
 
-        // Toggle login/signup
-        document.getElementById('login-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.toggleMode();
+        // Toggle login/signup (use delegation on footer to survive innerHTML replacement)
+        document.querySelector('.modal-footer-text').addEventListener('click', (e) => {
+            if (e.target.id === 'login-link') {
+                e.preventDefault();
+                this.toggleMode();
+            }
         });
 
         // Forgot password link
@@ -73,10 +78,13 @@ const Auth = {
             });
         }
 
-        // Escape key closes modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') this.hideModal();
-        });
+        // Escape key closes modal (only attach once)
+        if (!this._listenersAttached) {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') this.hideModal();
+            });
+            this._listenersAttached = true;
+        }
 
         // Hamburger menu
         const hamburger = document.getElementById('hamburger-btn');
@@ -234,11 +242,6 @@ const Auth = {
             footer.innerHTML = (I18n.get('signup.loginLink') || 'Already have an account? <a id="login-link">Log in</a>');
             if (forgotLink) forgotLink.style.display = 'none';
         }
-        // Re-bind toggle link
-        document.getElementById('login-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.toggleMode();
-        });
     },
 
     async handleSubmit(e) {

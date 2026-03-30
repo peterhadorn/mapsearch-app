@@ -86,29 +86,16 @@ def apply_filters(results, filters):
         elif val == "no":
             filtered = [r for r in filtered if not r.get(db_col)]
 
-    if filters.get("is_claimed") == "yes":
-        filtered = [r for r in filtered if r.get("is_claimed")]
-    elif filters.get("is_claimed") == "no":
-        filtered = [r for r in filtered if not r.get("is_claimed")]
-
-    if filters.get("has_photos") == "yes":
-        filtered = [r for r in filtered if (r.get("photos_count") or 0) > 0]
-    elif filters.get("has_photos") == "no":
-        filtered = [r for r in filtered if (r.get("photos_count") or 0) == 0]
-
-    # Range filters
+    # Rating filter (preset buckets: 3+, 4+, 4.5+)
     min_rating = filters.get("min_rating", 0)
     if min_rating and min_rating > 0:
         filtered = [r for r in filtered if (r.get("rating") or 0) >= min_rating]
 
-    min_reviews = filters.get("min_reviews", 0)
-    if min_reviews and min_reviews > 0:
-        filtered = [r for r in filtered if (r.get("reviews_count") or 0) >= min_reviews]
-
-    # Category filter
-    category = filters.get("category")
-    if category:
-        filtered = [r for r in filtered if r.get("category") == category]
+    # Price level filter
+    price_level = filters.get("price_level", "any")
+    if price_level and price_level != "any":
+        level = int(price_level)
+        filtered = [r for r in filtered if r.get("price_level") == level]
 
     return filtered
 
